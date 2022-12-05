@@ -17,7 +17,7 @@ class FinanceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            '' => randomFloat(1, 20,30)
         ];
     }
 }

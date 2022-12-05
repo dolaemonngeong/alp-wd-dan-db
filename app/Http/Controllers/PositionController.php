@@ -25,7 +25,9 @@ class PositionController extends Controller
      */
     public function create()
     {
-        //
+        return view('createjabatan', [
+            "positions" =>Position::all()
+        ]);
     }
 
     /**
@@ -36,7 +38,14 @@ class PositionController extends Controller
      */
     public function store(StorePositionRequest $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        Position::create([
+            'name' => $request->name,
+        ]);
+        return redirect('/jabatan');
     }
 
     /**
@@ -70,7 +79,9 @@ class PositionController extends Controller
      */
     public function update(UpdatePositionRequest $request, Position $position)
     {
-        //
+        return view("updatejabatan", [
+            "position"=>Position::findOrFail($id),
+        ]);
     }
 
     /**
