@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('achievement_categories', function (Blueprint $table) {
+        Schema::create('achievementcategories', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('achievement_categories');
+        Schema::dropIfExists('achievementcategories');
     }
 };

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Letter_type;
+use App\Models\Lettertype;
 use App\Http\Requests\StoreLetter_typeRequest;
 use App\Http\Requests\UpdateLetter_typeRequest;
 

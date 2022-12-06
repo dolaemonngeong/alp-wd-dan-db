@@ -30,10 +30,10 @@ class VillagerSeeder extends Seeder
         Villager::create([
             'name' => $fakerID->name,
             'birth_place' => 'Kediri',
-            'birth_date' => $fakerID->dateTimeBetween('-50 year','-30 year'),
+            'birth_date' => $fakerID->dateTimeBetween('-18 year','-5 year'),
             'nik' => $fakerID->nik,
             'phone'=>$fakerID->phoneNumber,
-            'role' => 'pekerja'
+            'role' => 'pelajar'
         ]);
 
         Villager::create([
@@ -48,10 +48,10 @@ class VillagerSeeder extends Seeder
         Villager::create([
             'name' => $fakerID->name,
             'birth_place' => 'Tulungrejo',
-            'birth_date' => $fakerID->dateTimeBetween('-50 year','-30 year'),
+            'birth_date' => $fakerID->dateTimeBetween('-18 year','-5 year'),
             'nik' => $fakerID->nik,
             'phone'=>$fakerID->phoneNumber,
-            'role' => 'pekerja'
+            'role' => 'pelajar'
         ]);
     }
 }

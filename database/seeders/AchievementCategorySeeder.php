@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Achievementcategory;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AchievementCategorySeeder extends Seeder
 {
@@ -14,6 +15,12 @@ class AchievementCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        Achievementcategory::factory()->create([
+            'name' => 'olahraga'
+        ]);
+        
+        Achievementcategory::factory()->create([
+           'name' => 'cerdas cermat'
+        ]);
     }
 }

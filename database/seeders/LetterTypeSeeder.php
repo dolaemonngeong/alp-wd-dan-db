@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Lettertype;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class LetterTypeSeeder extends Seeder
 {
@@ -14,6 +15,16 @@ class LetterTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Lettertype::factory()->create([
+            'name' => 'tipe 1'
+        ]);
+        
+        Lettertype::factory()->create([
+           'name' => 'tipe 2'
+        ]);
+
+        Lettertype::factory()->create([
+           'name' => 'tipe 3'
+        ]);
     }
 }

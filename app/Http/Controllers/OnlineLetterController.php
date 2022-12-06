@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Online_letter;
+use App\Models\Onlineletter;
 use App\Http\Requests\StoreOnline_letterRequest;
 use App\Http\Requests\UpdateOnline_letterRequest;
 

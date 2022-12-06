@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Online_letter extends Model
+class Achievementcategory extends Model
 {
     use HasFactory;
 }

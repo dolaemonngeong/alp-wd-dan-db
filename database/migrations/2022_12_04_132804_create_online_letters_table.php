@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use App\Models\Letter_type;
+use App\Models\Lettertype;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,12 +15,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('online_letters', function (Blueprint $table) {
+        Schema::create('onlineletters', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->string("nik");
             $table->string("email");
-            $table->foreignIdFor(Letter_type::class);
+            $table->foreignIdFor(Lettertype::class);
             $table->string("message");
             $table->foreignIdFor(User::class);
             $table->timestamps();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('online_letters');
+        Schema::dropIfExists('onlineletters');
     }
 };
