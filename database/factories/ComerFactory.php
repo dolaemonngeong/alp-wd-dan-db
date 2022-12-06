@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Report>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comer>
  */
-class ReportFactory extends Factory
+class ComerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,6 @@ class ReportFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'image' => 'laporan.jpg'
         ];
     }
 }

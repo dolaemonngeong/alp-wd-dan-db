@@ -13,9 +13,19 @@ class PositionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->has('search')){
+            return view('jabatan',[
+                'title' =>'Jabatan',
+                'positions' => Position::where('name','like','%'.$request->search.'%')->paginate()
+            ]);
+        }else{
+            return view('jabatan',[
+                'title' =>'Jabatan',
+                'posiitions' => Position::paginate(5),
+            ]);
+        }
     }
 
     /**
@@ -26,7 +36,8 @@ class PositionController extends Controller
     public function create()
     {
         return view('createjabatan', [
-            "positions" =>Position::all()
+            "theTitle" => "Membuat Jabatan Baru",
+            "positions" => Position::all()
         ]);
     }
 
@@ -65,9 +76,12 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function edit(Position $position)
+    public function edit($id)
     {
-        //
+        return view("updatejabatan", [
+            "theTitle" => "Membuat Jabatan Baru",
+            "position"=>Position::findOrFail($id)
+        ]);
     }
 
     /**
@@ -79,9 +93,16 @@ class PositionController extends Controller
      */
     public function update(UpdatePositionRequest $request, Position $position)
     {
-        return view("updatejabatan", [
-            "position"=>Position::findOrFail($id),
+        $position = Position::findOrFail($id);
+
+        $position->update([
+            "name" => $request->name
         ]);
+
+        return redirect('/jabatan');
+        // return view("updatejabatan", [
+        //     "position"=>Position::findOrFail($id),
+        // ]);
     }
 
     /**
@@ -92,6 +113,10 @@ class PositionController extends Controller
      */
     public function destroy(Position $position)
     {
-        //
+        $position = Position::findOrFail($id);
+
+        $position->delete();
+
+        return redirect('/jabatan');
     }
 }

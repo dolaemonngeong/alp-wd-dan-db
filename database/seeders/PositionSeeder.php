@@ -15,21 +15,18 @@ class PositionSeeder extends Seeder
      */
     public function run()
     {
-        $index=0;
-        foreach(Position::all() as $position){
-            if($index==0){
-                Position::factory()->create([
-                    'name' => 'ketua'
-                ]);
-            }else if($index==1){
-                Position::factory()->create([
-                    'name' => 'wakil ketua'
-                ]);
-            }else if($index==2){
-                Position::factory()->create([
-                    'name' => 'bendahara'
-                ]);
-            }
+        
+        Position::factory()->create([
+            'name' => 'ketua'
+        ]);
+        
+        Position::factory()->create([
+           'name' => 'wakil ketua'
+        ]);
+        
+        Position::factory()->create([
+            'name' => 'bendahara'
+        ]);
+            
         }
     }
-}

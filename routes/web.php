@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PositionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+        'theTitle' => 'Home',
+    ]);
 });
 
-Route::get('/pelaporan', function () {
-    return view('pelaporan.pelaporan');
-});
+Route::get('/pelaporan', [PositionController::class, 'index']);
 
 Route::get('/jabatan', function () {
-    return view('jabatan.jabatan');
+    return view('jabatan.jabatan',[
+        'theTitle'=> 'Jabatan',
+    ]);
 });
 
 Route::get('/dashboard', function () {

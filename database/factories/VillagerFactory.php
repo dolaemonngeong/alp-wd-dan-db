@@ -17,7 +17,9 @@ class VillagerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'phone' => $this->faker->phoneNumber,
+            'birth_date' => $this->faker->dateTimeBetween(),
         ];
     }
 }

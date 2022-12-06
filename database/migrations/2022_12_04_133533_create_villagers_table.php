@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('villagers', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
+            $table->string("birth_place");
+            $table->date("birth_date");
+            $table->string("nik");
+            $table->string("phone");
+            $table->enum('role', ['pelajar', 'pekerja']);
             $table->timestamps();
         });
     }

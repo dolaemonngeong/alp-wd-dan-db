@@ -13,7 +13,7 @@ class Position extends Model
         "name"
     ];
 
-    public function position(){
-        return $this->belongsTo(Villager::class);
-    }
+    // public function position(){
+    //     return $this->belongsTo(Structure::class);
+    // }
 }
