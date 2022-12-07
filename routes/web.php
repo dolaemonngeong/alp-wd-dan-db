@@ -16,9 +16,7 @@ use App\Http\Controllers\PositionController;
 */
 
 Route::get('/', function () {
-    return view('home',[
-        'theTitle' => 'Home',
-    ]);
+    return view('home');
 });
 
 Route::get('/pelaporan', [PositionController::class, 'index']);

@@ -46,6 +46,7 @@ class ReportSeeder extends Seeder
                     'description' => 'ket 4'
                 ]);
             }
+            $index++;
         }
         
     }

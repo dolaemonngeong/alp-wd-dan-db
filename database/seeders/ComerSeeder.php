@@ -29,6 +29,7 @@ class ComerSeeder extends Seeder
                     'phone'=>$fakerID->phoneNumber,
                     'phone'=>$fakerID->phoneNumber,
                     'role' => 'pekerja',
+                    'gender' => 'laki-laki',
                     'villager_id' => $villager->id,
                 ]);
             }else if($index==1){
@@ -39,6 +40,7 @@ class ComerSeeder extends Seeder
                     'nik' => $fakerID->nik,
                     'phone'=>$fakerID->phoneNumber,
                     'role' => 'pelajar',
+                    'gender' => 'perempuan',
                     'villager_id' => $villager->id,
                 ]);
             }else if($index==2){
@@ -48,7 +50,8 @@ class ComerSeeder extends Seeder
                     'birth_date' => $fakerID->dateTimeBetween('-50 year','-25 year'),
                     'nik' => $fakerID->nik,
                     'phone'=>$fakerID->phoneNumber,
-                    'role' => 'pekerja',
+                    'role' => 'tidak bekerja',
+                    'gender' => 'perempuan',
                     'villager_id' => $villager->id,
                 ]);
             }else if($index==3){
@@ -59,6 +62,7 @@ class ComerSeeder extends Seeder
                     'nik' => $fakerID->nik,
                     'phone'=>$fakerID->phoneNumber,
                     'role' => 'pelajar',
+                    'gender' => 'laki-laki',
                     'villager_id' => $villager->id,
                 ]);
             }

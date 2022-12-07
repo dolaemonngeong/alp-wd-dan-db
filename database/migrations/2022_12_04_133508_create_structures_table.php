@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(Villager::class);
             $table->date("appointed_date");
             $table->date("resign_date");
+            $table->enum('status_jabat', ['berjalan', 'selesai']);
             $table->timestamps();
         });
     }

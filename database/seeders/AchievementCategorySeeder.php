@@ -22,5 +22,9 @@ class AchievementCategorySeeder extends Seeder
         Achievementcategory::factory()->create([
            'name' => 'cerdas cermat'
         ]);
+
+        Achievementcategory::factory()->create([
+           'name' => 'lingkungan'
+        ]);
     }
 }

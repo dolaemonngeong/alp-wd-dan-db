@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use index;
 use Faker\Factory;
 use App\Models\User;
-use App\Models\Lettertype;
+use App\Models\Template;
 use App\Models\Onlineletter;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,48 +19,57 @@ class OnlineLetterSeeder extends Seeder
     public function run()
     {
         $fakerID=Factory::create('id_ID');
+
         $index=0;
-        foreach(Lettertype::all() as $lt){
-            foreach(User::all() as $u){
+        foreach(User::all() as $u){
+            foreach(Template::all() as $t){
             if($index==0){
                 Onlineletter::create([
                     'name' => $fakerID->name,
-                    'nik' => $fakerID->nik,
                     'email' => $fakerID->email,
-                    'lettertype_id'=> $lt->id,
+                    'phone' => $fakerID->phoneNumber,
+                    'template_id' => $t->id,
+                    'file_letter' => 'file1.pdf',
                     'message' => 'message 1',
+                    'proses' => 'selesai',
                     'user_id' => $u->id,
                 ]);
             }else if($index==1){
                 Onlineletter::create([
                     'name' => $fakerID->name,
-                    'nik' => $fakerID->nik,
                     'email' => $fakerID->email,
-                    'lettertype_id' => $lt->id,
+                    'phone' => $fakerID->phoneNumber,
+                    'template_id' => $t->id,
+                    'file_letter' => 'file2.pdf',
                     'message' => 'message 2',
+                    'proses' => 'dalam proses',
                     'user_id' => $u->id,
                 ]);
             }else if($index==2){
                 Onlineletter::create([
                     'name' => $fakerID->name,
-                    'nik' => $fakerID->nik,
                     'email' => $fakerID->email,
-                    'lettertype_id' => $lt->id,
+                    'phone' => $fakerID->phoneNumber,
+                    'template_id' => $t->id,
+                    'file_letter' => 'file3.pdf',
                     'message' => 'message 3',
+                    'proses' => 'dalam proses',
                     'user_id' => $u->id,
                 ]);
             }else if($index==3){
                 Onlineletter::create([
                     'name' => $fakerID->name,
-                    'nik' => $fakerID->nik,
                     'email' => $fakerID->email,
-                    'lettertype_id' => $lt->id,
+                    'phone' => $fakerID->phoneNumber,
+                    'template_id' => $t->id,
+                    'file_letter' => 'file4.pdf',
                     'message' => 'message 4',
+                    'proses' => 'menunggu',
                     'user_id' => $u->id,
                 ]);
             }
             $index++;
         }
-        }
+    }
     }
 }

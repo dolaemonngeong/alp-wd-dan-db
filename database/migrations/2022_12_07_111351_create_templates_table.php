@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lettertypes', function (Blueprint $table) {
+        Schema::create('templates', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("description");
+            $table->string("file");
+            $table->string("screenshoot");
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lettertypes');
+        Schema::dropIfExists('templates');
     }
 };

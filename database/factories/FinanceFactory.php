@@ -17,8 +17,8 @@ class FinanceFactory extends Factory
     public function definition()
     {
         return [
-            'budget' => $this->faker->randomNumber(9, true),
-            'percentage' => $this->faker->randomFloat(2, 10, 30)
+            // 'budget' => $this->faker->randomNumber(9, true),
+            // 'percentage' => $this->faker->randomFloat(2, 10, 30)
         ];
     }
 }

@@ -18,7 +18,7 @@
 </head>
 
 <body>
-        <h1 class="">{{$theTitle}}</h1>
+        {{-- <h1 class="">{{$theTitle}}</h1> --}}
 {{-- 
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">

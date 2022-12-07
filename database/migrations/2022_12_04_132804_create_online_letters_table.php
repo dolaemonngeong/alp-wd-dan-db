@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use App\Models\Lettertype;
+use App\Models\Template;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -18,10 +18,12 @@ return new class extends Migration
         Schema::create('onlineletters', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("nik");
             $table->string("email");
-            $table->foreignIdFor(Lettertype::class);
+            $table->string("phone");
+            $table->foreignIdFor(Template::class);
+            $table->string("file_letter");
             $table->string("message");
+            $table->enum('proses', ['menunggu', 'dalam proses','selesai']);
             $table->foreignIdFor(User::class);
             $table->timestamps();
         });

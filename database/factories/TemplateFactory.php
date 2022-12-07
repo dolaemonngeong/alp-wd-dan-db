@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Letter_type>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Template>
  */
-class LettertypeFactory extends Factory
+class TemplateFactory extends Factory
 {
     /**
      * Define the model's default state.

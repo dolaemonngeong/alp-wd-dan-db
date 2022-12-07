@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lettertype;
-use App\Http\Requests\StoreLetter_typeRequest;
-use App\Http\Requests\UpdateLetter_typeRequest;
+use App\Models\Template;
+use App\Http\Requests\StoreTemplateRequest;
+use App\Http\Requests\UpdateTemplateRequest;
 
-class LetterTypeController extends Controller
+class TemplateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class LetterTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreLetter_typeRequest  $request
+     * @param  \App\Http\Requests\StoreTemplateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLetter_typeRequest $request)
+    public function store(StoreTemplateRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class LetterTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Letter_type  $letter_type
+     * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function show(Letter_type $letter_type)
+    public function show(Template $template)
     {
         //
     }
@@ -53,10 +53,10 @@ class LetterTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Letter_type  $letter_type
+     * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function edit(Letter_type $letter_type)
+    public function edit(Template $template)
     {
         //
     }
@@ -64,11 +64,11 @@ class LetterTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateLetter_typeRequest  $request
-     * @param  \App\Models\Letter_type  $letter_type
+     * @param  \App\Http\Requests\UpdateTemplateRequest  $request
+     * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLetter_typeRequest $request, Letter_type $letter_type)
+    public function update(UpdateTemplateRequest $request, Template $template)
     {
         //
     }
@@ -76,10 +76,10 @@ class LetterTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Letter_type  $letter_type
+     * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Letter_type $letter_type)
+    public function destroy(Template $template)
     {
         //
     }

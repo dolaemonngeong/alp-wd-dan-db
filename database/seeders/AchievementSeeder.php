@@ -22,17 +22,23 @@ class AchievementSeeder extends Seeder
             if($index==0){
                 Achievement::create([
                     'name' => 'juara 1 lomba ftc',
+                    'image' => 'achievement1.jpg',
                     'achievementcategory_id' => $ac->id,
+                    'description' => 'desc 1',
                 ]);
             }else if($index==1){
                 Achievement::create([
-                    'name' => 'juara harapan 2 lomba lo berharga',
+                    'name' => 'juara harapan 3 lomba lo berharga',
+                    'image' => 'achievement2.jpg',
                     'achievementcategory_id' => $ac->id,
+                    'description' => 'desc 2',
                 ]);
             }else if($index==2){
                 Achievement::create([
-                    'name' => 'juara 3 desa tersersih di jawa Timur',
+                    'name' => 'juara 3 desa terbersih di jawa Timur',
+                    'image' => 'achievement3.jpg',
                     'achievementcategory_id' => $ac->id,
+                    'description' => 'desc 3',
                 ]);
             }
             $index++;

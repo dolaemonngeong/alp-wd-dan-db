@@ -20,7 +20,9 @@ return new class extends Migration
             $table->date("birth_date");
             $table->string("nik");
             $table->string("phone");
-            $table->enum('role', ['pelajar', 'pekerja']);
+            $table->enum('gender', ['laki-laki', 'perempuan']);
+            $table->enum('role', ['pelajar', 'pekerja', 'tidak bekerja']);
+            $table->enum('status', ['hidup', 'meninggal','pindah']);
             $table->timestamps();
         });
     }

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Onlineletter extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

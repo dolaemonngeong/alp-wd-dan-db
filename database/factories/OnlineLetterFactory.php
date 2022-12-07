@@ -17,7 +17,7 @@ class OnlineLetterFactory extends Factory
     public function definition()
     {
         return [
-            
+            // 'file_letter' => 'file.pdf'
         ];
     }
 }
