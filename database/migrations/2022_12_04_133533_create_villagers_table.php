@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string("phone");
             $table->enum('gender', ['laki-laki', 'perempuan']);
             $table->enum('role', ['pelajar', 'pekerja', 'tidak bekerja']);
-            $table->enum('status', ['hidup', 'meninggal','pindah']);
+            $table->enum('status', ['hidup', 'meninggal','pindah'])->default('hidup');
+            $table->string("image");
             $table->timestamps();
         });
     }

@@ -17,12 +17,12 @@ class PositionController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            return view('jabatan.jabatan',[
+            return view('ourlayouts.jabatan.jabatan',[
                 'title' =>'Jabatan',
                 'positions' => Position::where('name','like','%'.$request->search.'%')->paginate()
             ]);
         }else{
-            return view('jabatan.jabatan',[
+            return view('ourlayouts.jabatan.jabatan',[
                 'title' =>'Jabatan',
                 'positions' => Position::paginate(5),
             ]);
@@ -36,7 +36,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        return view('jabatan.createjabatan', [
+        return view('ourlayouts.jabatan.createjabatan', [
             'title' =>'Jabatan',
             "positions" => Position::all()
         ]);
@@ -79,7 +79,7 @@ class PositionController extends Controller
      */
     public function edit($id)
     {
-        return view("updatejabatan", [
+        return view("ourlayouts.jabatan.updatejabatan", [
             "theTitle" => "Membuat Jabatan Baru",
             "position"=>Position::findOrFail($id)
         ]);

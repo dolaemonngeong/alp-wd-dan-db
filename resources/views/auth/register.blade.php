@@ -1,9 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <h1 style="font-size: 2rem; font-weight: bolder;">
+                Daftar Akun Baru
+            </h1>
         </x-slot>
 
         <form method="POST" action="{{ route('register') }}">
@@ -11,9 +11,16 @@
 
             <!-- Name -->
             <div>
-                <x-input-label for="name" :value="__('Name')" />
+                <x-input-label for="name" :value="__('Nama')" />
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            </div>
+
+            <!-- Name -->
+            <div class="mt-4">
+                <x-input-label for="username" :value="__('Username')" />
+                <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required />
+                <x-input-error :messages="$errors->get('username')" class="mt-2" />
             </div>
 
             <!-- Email Address -->
@@ -37,7 +44,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" />
 
                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
@@ -46,14 +53,18 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
+            <div class="flex items-center justify-center mt-4">
+                <x-primary-button class="justify-center w-full" style="background-color: #124A49">
+                    {{ __('Daftar') }}
                 </x-primary-button>
+            </div>
+            <div class="flex items-center justify-center mt-4">
+                <p class="mr-2">
+                    {{ __('Sudah punya akun?') }}
+                </p>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                    {{ __('Masuk') }}
+                </a>
             </div>
         </form>
     </x-auth-card>

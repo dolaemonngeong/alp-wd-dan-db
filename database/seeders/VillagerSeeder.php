@@ -24,8 +24,10 @@ class VillagerSeeder extends Seeder
             'birth_date' => $fakerID->dateTimeBetween('-50 year','-30 year'),
             'nik' => $fakerID->nik,
             'phone'=>$fakerID->phoneNumber,
+            'gender' => 'laki-laki',
             'role' => 'pekerja',
-            'gender' => 'laki-laki'
+            'status' => 'hidup',
+            'image' => 'villager1.jpg'
         ]);
 
         Villager::create([
@@ -34,8 +36,10 @@ class VillagerSeeder extends Seeder
             'birth_date' => $fakerID->dateTimeBetween('-18 year','-5 year'),
             'nik' => $fakerID->nik,
             'phone'=>$fakerID->phoneNumber,
+            'gender' => 'perempuan',
             'role' => 'pelajar',
-            'gender' => 'perempuan'
+            'status' => 'hidup',
+            'image' => 'villager2.jpg'
         ]);
 
         Villager::create([
@@ -44,8 +48,10 @@ class VillagerSeeder extends Seeder
             'birth_date' => $fakerID->dateTimeBetween('-50 year','-30 year'),
             'nik' => $fakerID->nik,
             'phone'=>$fakerID->phoneNumber,
+            'gender' => 'laki-laki',
             'role' => 'pekerja',
-            'gender' => 'laki-laki'
+            'status' => 'hidup',
+            'image' => 'villager3.jpeg'
         ]);
 
         Villager::create([
@@ -54,8 +60,10 @@ class VillagerSeeder extends Seeder
             'birth_date' => $fakerID->dateTimeBetween('-18 year','-5 year'),
             'nik' => $fakerID->nik,
             'phone'=>$fakerID->phoneNumber,
+            'gender' => 'perempuan',
             'role' => 'tidak bekerja',
-            'gender' => 'perempuan'
+            'status' => 'pindah',
+            'image' => ''
         ]);
     }
 }

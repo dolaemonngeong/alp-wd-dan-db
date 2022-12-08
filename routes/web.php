@@ -31,6 +31,38 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+require __DIR__.'/auth.php';
+
 Route::resource('positions', PositionController::class)->middleware(['admin']);
 
-require __DIR__.'/auth.php';
+Route::view('/reg-penduduk', 'reg-penduduk', 
+    [
+        "pagetitle" => "Registrasi Penduduk",
+        "maintitle" => "Registrasi Penduduk"
+    ]
+);
+Route::view('/reg-pendatang', 'reg-pendatang', 
+    [
+        "pagetitle" => "Registrasi Pendatang",
+        "maintitle" => "Registrasi Pendatang"
+    ]
+);
+
+Route::view('/add-keuangan', 'add-keuangan', 
+    [
+        "pagetitle" => "Tambah Keuangan",
+        "maintitle" => "Tambah Keuangan"
+    ]
+);
+Route::view('/add-perangkat', 'add-perangkat', 
+    [
+        "pagetitle" => "Tambah Perangkat",
+        "maintitle" => "Tambah Perangkat"
+    ]
+);
+Route::view('/add-jabatan', 'add-jabatan', 
+    [
+        "pagetitle" => "Tambah Jabatan",
+        "maintitle" => "Tambah Jabatan"
+    ]
+);
