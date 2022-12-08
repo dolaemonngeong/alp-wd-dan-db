@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/jabatan', [PositionController::class, 'index']);
+Route::get('/jabatan', [PositionController::class, 'index'])->middleware(['admin']);;
 
 Route::get('/dashboard', function () {
     return view('dashboard');

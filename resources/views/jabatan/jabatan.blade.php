@@ -26,8 +26,8 @@
   </tbody>
 </table>
 
-@if(Auth::check() && Auth::user()->status == 'admin')
+{{-- @if(Auth::check() && Auth::user()->status == 'admin') --}}
   <a href="{{ route("positions.create") }}" class="btn btn-outline-primary">Create</a>
-@endif
+{{-- @endif --}}
 
 @endsection

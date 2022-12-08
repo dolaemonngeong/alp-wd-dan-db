@@ -1,4 +1,4 @@
-@extends('header')
+@extends('ourlayout.header')
 
 @section('title', 'Error')
 
