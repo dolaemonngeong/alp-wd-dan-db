@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Structure;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Position extends Model
 {
@@ -13,7 +14,7 @@ class Position extends Model
         "name"
     ];
 
-    // public function position(){
-    //     return $this->belongsTo(Structure::class);
-    // }
+    public function position(){
+        return $this->belongsTo(Structure::class);
+    }
 }

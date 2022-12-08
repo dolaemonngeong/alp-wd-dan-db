@@ -19,13 +19,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/pelaporan', [PositionController::class, 'index']);
-
-Route::get('/jabatan', function () {
-    return view('jabatan.jabatan',[
-        'theTitle'=> 'Jabatan',
-    ]);
-});
+Route::get('/jabatan', [PositionController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,5 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::resource('positions', PositionController::class)->middleware(['admin']);
 
 require __DIR__.'/auth.php';
