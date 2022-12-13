@@ -13,9 +13,30 @@ class ComerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->has('search')){
+            return view('ourlayouts.pendatang.data-pendatang',[
+                'title' =>'Pendatang',
+                'comers' => Comer::where(
+                    'name','like','%'.$request->search.'%')
+                    ->orWhere('birth_place', 'like', '%'.$request->search.'%')
+                    ->orWhere('birth_date', 'like', '%'.$request->search.'%')
+                    ->orWhere('nik', 'like', '%'.$request->search.'%')
+                    ->orWhere('phone', 'like', '%'.$request->search.'%')
+                    ->orWhere('role', 'like', '%'.$request->search.'%')
+                    ->orWhere('gender', 'like', '%'.$request->search.'%')
+                    ->orWhere('status', 'like', '%'.$request->search.'%')
+                    ->paginate(),
+                'villagers' => Villager::whereRelation('villager', 'name', 'like','%'.$request->search.'%')->get()
+            ]);
+        }else{
+            return view('ourlayouts.pendatang.data-pendatang',[
+                'title' =>'Pendatang',
+                'comers' => Comer::paginate(20),
+                'villagers' => Villager::all()
+            ]);
+        }
     }
 
     /**

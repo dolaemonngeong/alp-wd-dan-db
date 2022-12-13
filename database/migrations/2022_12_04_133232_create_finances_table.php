@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("description");
             $table->integer("budget");
-            $table->float("percentage", 8,2);
+            $table->string("note");
             $table->timestamps();
         });
     }

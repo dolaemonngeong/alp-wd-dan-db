@@ -25,6 +25,7 @@ class AchievementSeeder extends Seeder
                     'image' => 'achievement1.jpg',
                     'achievementcategory_id' => $ac->id,
                     'description' => 'desc 1',
+                    'date_achievement' => date('Y_m_d'),
                 ]);
             }else if($index==1){
                 Achievement::create([
@@ -32,6 +33,7 @@ class AchievementSeeder extends Seeder
                     'image' => 'achievement2.jpg',
                     'achievementcategory_id' => $ac->id,
                     'description' => 'desc 2',
+                    'date_achievement' => date('Y_m_d'),
                 ]);
             }else if($index==2){
                 Achievement::create([
@@ -39,6 +41,7 @@ class AchievementSeeder extends Seeder
                     'image' => 'achievement3.jpg',
                     'achievementcategory_id' => $ac->id,
                     'description' => 'desc 3',
+                    'date_achievement' => date('Y_m_d'),
                 ]);
             }
             $index++;

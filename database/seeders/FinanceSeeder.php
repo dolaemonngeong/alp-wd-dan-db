@@ -24,7 +24,7 @@ class FinanceSeeder extends Seeder
                 // 'budget' => '572700000',
                 // 'percentage' => 47.32,
                 'budget' => $faker->randomNumber(9, true),
-                'percentage' => $faker->randomFloat(2, 10, 30)
+                'note' => 'note 1'
             ]);
 
             Finance::factory()->create([
@@ -32,7 +32,7 @@ class FinanceSeeder extends Seeder
                 // 'budget' => '472000000',
                 // 'percentage' => 39.00,
                 'budget' => $faker->randomNumber(9, true),
-                'percentage' => $faker->randomFloat(2, 10, 30)
+                'note' => 'note 2'
             ]);
             
             Finance::factory()->create([
@@ -40,7 +40,7 @@ class FinanceSeeder extends Seeder
                 // 'budget' => '81600',
                 // 'percentage' => 6.74,
                 'budget' => $faker->randomNumber(9, true),
-                'percentage' => $faker->randomFloat(2, 10, 30)
+                'note' => 'note 3'
             ]);
             
             Finance::factory()->create([
@@ -48,7 +48,7 @@ class FinanceSeeder extends Seeder
                 // 'budget' => '82000',
                 // 'percentage' => 6.78,
                 'budget' => $faker->randomNumber(9, true),
-                'percentage' => $faker->randomFloat(2, 10, 30)
+                'note' => 'note 4'
             ]);
             
         

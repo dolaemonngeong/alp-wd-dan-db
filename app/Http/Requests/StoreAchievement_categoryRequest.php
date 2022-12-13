@@ -13,7 +13,7 @@ class StoreAchievement_categoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

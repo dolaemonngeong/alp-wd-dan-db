@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("image");
             $table->foreignIdFor(Achievementcategory::class);
             $table->string("description");
+            $table->date("date_achievement");
             $table->timestamps();
         });
     }

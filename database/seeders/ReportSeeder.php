@@ -25,25 +25,29 @@ class ReportSeeder extends Seeder
                 Report::factory()->create([
                     'user_id' => $user->id,
                     'name' => $fakerID->name,
-                    'description' => 'ket 1'
+                    'description' => 'ket 1',
+                    'phone' => $fakerID->phoneNumber
                 ]);
             }else if($index==1){
                 Report::factory()->create([
                     'user_id' => $user->id,
                     'name' => $fakerID->name,
-                    'description' => 'ket 2'
+                    'description' => 'ket 2',
+                    'phone' => $fakerID->phoneNumber
                 ]);
             }else if($index==2){
                 Report::factory()->create([
                     'user_id' => $user->id,
                     'name' => $fakerID->name,
-                    'description' => 'ket 3'
+                    'description' => 'ket 3',
+                    'phone' => $fakerID->phoneNumber
                 ]);
             }else if($index==3){
                 User::factory()->create([
                     'user_id' => $user->id,
                     'name' => $fakerID->name,
-                    'description' => 'ket 4'
+                    'description' => 'ket 4',
+                    'phone' => $fakerID->phoneNumber
                 ]);
             }
             $index++;

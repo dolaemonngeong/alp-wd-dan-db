@@ -13,9 +13,28 @@ class StructureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        //design view blm ada
+        if($request->has('search')){
+            return view('ourlayouts.penduduk.data-penduduk',[
+                'title' =>'Penduduk',
+                'structures' => Writer::where(
+                    'name','like','%'.$request->search.'%')
+                    ->orWhere('appointed_date', 'like', '%'.$request->search.'%')
+                    ->orWhere('resign_date', 'like', '%'.$request->search.'%')
+                    ->paginate(),
+                'positions' => Position::whereRelation('position', 'name', 'like','%'.$request->search.'%')->get(),
+                'villagers' => Position::whereRelation('villager', 'name', 'like','%'.$request->search.'%')->get(),
+            ]);
+        }else{
+            return view('ourlayouts.penduduk.data-penduduk',[
+                'title' =>'Penduduk',
+                'structures' => Writer::paginate(10),
+                'positions' => Position::all(),
+                'villagers' => Villager::all(),
+            ]);
+        }
     }
 
     /**

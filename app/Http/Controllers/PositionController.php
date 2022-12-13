@@ -36,7 +36,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        return view('ourlayouts.jabatan.createjabatan', [
+        return view('ourlayouts.jabatan.createposition', [
             'title' =>'Jabatan',
             "positions" => Position::all()
         ]);
@@ -79,7 +79,7 @@ class PositionController extends Controller
      */
     public function edit($id)
     {
-        return view("ourlayouts.jabatan.updatejabatan", [
+        return view("ourlayouts.jabatan.updateposition", [
             "theTitle" => "Membuat Jabatan Baru",
             "position"=>Position::findOrFail($id)
         ]);

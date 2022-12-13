@@ -13,9 +13,30 @@ class VillagerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->has('search')){
+            return view('ourlayouts.penduduk.data-penduduk',[
+                'title' =>'Penduduk',
+                'villagers' => Villager::where(
+                    'name','like','%'.$request->search.'%')
+                    ->orWhere('birth_place', 'like', '%'.$request->search.'%')
+                    ->orWhere('birth_date', 'like', '%'.$request->search.'%')
+                    ->orWhere('nik', 'like', '%'.$request->search.'%')
+                    ->orWhere('phone', 'like', '%'.$request->search.'%')
+                    ->orWhere('role', 'like', '%'.$request->search.'%')
+                    ->orWhere('gender', 'like', '%'.$request->search.'%')
+                    ->orWhere('status', 'like', '%'.$request->search.'%')
+                    ->paginate(),
+                // 'books' => Book::whereRelation('villager', 'name', 'like','%'.$request->search.'%')->get()
+            ]);
+        }else{
+            return view('ourlayouts.penduduk.data-penduduk',[
+                'title' =>'Penduduk',
+                'villagers' => Villager::paginate(20),
+                // 'books' => Book::all()
+            ]);
+        }
     }
 
     /**

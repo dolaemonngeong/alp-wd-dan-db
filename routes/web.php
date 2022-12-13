@@ -66,3 +66,42 @@ Route::view('/add-jabatan', 'add-jabatan',
         "maintitle" => "Tambah Jabatan"
     ]
 );
+
+//
+Route::view('/data-penduduk', 'data-penduduk', 
+    [
+        "pagetitle" => "Data Penduduk",
+        "maintitle" => "Data Penduduk"
+    ]
+);
+Route::view('/data-pendatang', 'data-pendatang', 
+    [
+        "pagetitle" => "Data Pendatang",
+        "maintitle" => "Data Pendatang"
+    ]
+);
+
+Route::view('/data-keuangan', 'data-keuangan', 
+    [
+        "pagetitle" => "Data Keuangan",
+        "maintitle" => "Data Keuangan"
+    ]
+);
+Route::view('/data-perangkat', 'data-perangkat', 
+    [
+        "pagetitle" => "Data Perangkat",
+        "maintitle" => "Data Perangkat"
+    ]
+);
+Route::view('/data-user', 'data-user', 
+    [
+        "pagetitle" => "Data User",
+        "maintitle" => "Data User"
+    ]
+);
+Route::view('/data-surat', 'data-surat', 
+    [
+        "pagetitle" => "Data Surat Online",
+        "maintitle" => "Data Surat Online"
+    ]
+);

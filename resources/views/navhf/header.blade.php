@@ -5,6 +5,16 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans Pro&display=swap" rel="stylesheet">
+    <title>@yield('title')</title>
+    <link rel="stylesheet" type="text/css" href="mydesign/desain.css">
+</head>
+{{-- <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans Pro&display=swap" rel="stylesheet">
     <title>@yield('title')</title>
     <link rel="stylesheet" type="text/css" href="mydesign/desain.css">
-</head>
+</head> --}}
 
 <body>
     <section class="relative w-full text-gray-700 bg-white body-font tails-selected-element" data-tails-scripts="//unpkg.com/alpinejs" contenteditable="true">
