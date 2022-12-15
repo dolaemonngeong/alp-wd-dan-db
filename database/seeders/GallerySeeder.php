@@ -16,15 +16,15 @@ class GallerySeeder extends Seeder
     public function run()
     {
         Gallery::factory()->create([
-            'image_name' => 'galeri1.png'
+            'image' => 'galeri1.png'
         ]);
 
         Gallery::factory()->create([
-            'image_name' => 'galeri2.jpg'
+            'image' => 'galeri2.jpg'
         ]);
 
         Gallery::factory()->create([
-            'image_name' => 'galeri3.jpg'
+            'image' => 'galeri3.jpg'
         ]);
     }
 }

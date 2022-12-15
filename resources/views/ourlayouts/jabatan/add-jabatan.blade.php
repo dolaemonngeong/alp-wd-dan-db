@@ -6,17 +6,14 @@
             </h1>
         </x-slot>
 
-        <form method="POST" action="{{ route('positions.store"') }}">
+        <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- Name -->
             <div>
                 <x-input-label for="name" :value="__('Nama Jabatan')" />
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-                {{-- <x-input-error :messages="$errors->get('name')" class="mt-2" /> --}}
-            @if($errors->has('name'))
-            <p class="text-danger">{{ $errors->first('name')}}</p>
-        @endif
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
             <!-- Description -->
@@ -27,7 +24,7 @@
             </div>
 
             <div class="flex items-center justify-center mt-4">
-                <x-primary-button class="justify-center w-full" style="background-color: #124A49" type="submit">
+                <x-primary-button class="justify-center w-full" style="background-color: #124A49">
                     {{ __('Tambah') }}
                 </x-primary-button>
             </div>

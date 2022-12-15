@@ -1,5 +1,5 @@
-<x-guest-layout>
-    <x-auth-card>
+<x-layout>
+
         <x-slot name="logo">
             <h1 style="font-size: 2rem; font-weight: bolder;">
                 Tambah Data Keuangan
@@ -43,5 +43,5 @@
                 </x-primary-button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    
+</x-layout>

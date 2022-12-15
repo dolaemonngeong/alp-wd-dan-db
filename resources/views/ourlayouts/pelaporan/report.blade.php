@@ -1,8 +1,8 @@
-@extends('navhf.header')
+@extends('layouts.app')
 
 @section('title', 'Pelaporan')
 
-@section('isi')
+@section('container')
 
 <table class="border-collapse border border-slate-500 ...">
   <thead>

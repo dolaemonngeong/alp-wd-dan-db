@@ -13,9 +13,19 @@ class AchievementCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->has('search')){
+            return view('ourlayouts.achievementcategory.achievementcategory',[
+                'title' =>'Achievement category',
+                'achievementcategorys' => Position::where('name','like','%'.$request->search.'%')->paginate()
+            ]);
+        }else{
+            return view('ourlayouts.achievementcategory.achievementcategory',[
+                'title' =>'Achievement category',
+                'achievementcategorys' => Position::paginate(5),
+            ]);
+        }
     }
 
     /**
@@ -25,7 +35,10 @@ class AchievementCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('ourlayouts.jabatan.createposition', [
+            'title' =>'Jabatan',
+            "achievementcategorys" => Position::all()
+        ]);
     }
 
     /**
@@ -36,7 +49,14 @@ class AchievementCategoryController extends Controller
      */
     public function store(StoreAchievement_categoryRequest $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        Position::create([
+            'name' => $request->name,
+        ]);
+        return redirect('/jabatan');
     }
 
     /**

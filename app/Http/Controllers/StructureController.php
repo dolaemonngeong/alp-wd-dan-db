@@ -15,10 +15,9 @@ class StructureController extends Controller
      */
     public function index(Request $request)
     {
-        //design view blm ada
         if($request->has('search')){
-            return view('ourlayouts.penduduk.data-penduduk',[
-                'title' =>'Penduduk',
+            return view('ourlayouts.perangkat.data-perangkat',[
+                'title' =>'Perangkat',
                 'structures' => Writer::where(
                     'name','like','%'.$request->search.'%')
                     ->orWhere('appointed_date', 'like', '%'.$request->search.'%')
@@ -28,8 +27,8 @@ class StructureController extends Controller
                 'villagers' => Position::whereRelation('villager', 'name', 'like','%'.$request->search.'%')->get(),
             ]);
         }else{
-            return view('ourlayouts.penduduk.data-penduduk',[
-                'title' =>'Penduduk',
+            return view('ourlayouts.perangkat.data-perangkat',[
+                'title' =>'Perangkat',
                 'structures' => Writer::paginate(10),
                 'positions' => Position::all(),
                 'villagers' => Villager::all(),

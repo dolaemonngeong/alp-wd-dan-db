@@ -15,7 +15,22 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        //
+        if($request->has('search')){
+            return view('ourlayouts.ach',[
+                'title' =>'Prestasi',
+                'villagers' => Villager::where(
+                    'name','like','%'.$request->search.'%')
+                    ->orWhere('status', 'like', '%'.$request->search.'%')
+                    ->paginate(),
+                // 'books' => Book::whereRelation('villager', 'name', 'like','%'.$request->search.'%')->get()
+            ]);
+        }else{
+            return view('ourlayouts.penduduk.data-penduduk',[
+                'title' =>'Prestasi',
+                'villagers' => Villager::paginate(20),
+                // 'books' => Book::all()
+            ]);
+        }
     }
 
     /**

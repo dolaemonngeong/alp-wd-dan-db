@@ -1,4 +1,4 @@
-@extends('navhf.header')
+@extends('layouts.app')
 @section('container')
 <div class="flex items-center w-100% container-fluid">
     <h1 class="justify-start" style="font-weight: bold">

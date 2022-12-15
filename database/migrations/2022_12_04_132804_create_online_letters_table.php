@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string("email");
             $table->string("phone");
             $table->foreignIdFor(Template::class);
-            $table->string("file_letter");
+            $table->string("file");
             $table->string("message");
             $table->enum('proses', ['menunggu', 'dalam proses','selesai']);
             $table->foreignIdFor(User::class);

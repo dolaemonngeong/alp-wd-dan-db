@@ -17,14 +17,14 @@ class PositionController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            return view('ourlayouts.jabatan.jabatan',[
+            return view('ourlayouts.jabatan.data-jabatan',[
                 'title' =>'Jabatan',
-                'positions' => Position::where('name','like','%'.$request->search.'%')->paginate()
+                'positions' => Position::where('name','like','%'.$request->search.'%')->orWhere('description', 'like', '%'.$request->search.'%')->paginate()
             ]);
         }else{
-            return view('ourlayouts.jabatan.jabatan',[
+            return view('ourlayouts.jabatan.data-jabatan',[
                 'title' =>'Jabatan',
-                'positions' => Position::paginate(5),
+                'positions' => Position::paginate(2),
             ]);
         }
     }
@@ -51,11 +51,13 @@ class PositionController extends Controller
     public function store(StorePositionRequest $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
+            'description' => 'required'
         ]);
 
         Position::create([
             'name' => $request->name,
+            'description' => $request->description,
         ]);
         return redirect('/jabatan');
     }
@@ -92,12 +94,13 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePositionRequest $request, Position $position)
+    public function update(UpdatePositionRequest $request, $id)
     {
         $position = Position::findOrFail($id);
 
         $position->update([
-            "name" => $request->name
+            "name" => $request->name,
+            "description" => $request->description
         ]);
 
         return redirect('/jabatan');
@@ -112,7 +115,7 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position $position)
+    public function destroy($id)
     {
         $position = Position::findOrFail($id);
 

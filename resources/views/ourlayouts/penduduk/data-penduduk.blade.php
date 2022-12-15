@@ -1,4 +1,4 @@
-@extends('navhf.header')
+@extends('layouts.app')
 @section('container')
 <div class="flex items-center w-100% container-fluid">
     <h1 class="justify-start" style="font-weight: bold">
@@ -41,16 +41,25 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-3 px-6">
-                    Product name
+                    Nama
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Color
+                    Tempat lahir
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Category
+                    Tanggal lahir
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Price
+                    NIK
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    No Handphone
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Peran
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Gender
                 </th>
                 <th scope="col" class="py-3 px-6">
                     Aksi
@@ -58,27 +67,42 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($villagers as $villager)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                    {{ $loop->iteration }}
                 </th>
                 <td class="py-4 px-6">
-                    Sliver
+                    {{ $villager['name'] }}
                 </td>
                 <td class="py-4 px-6">
-                    Laptop
+                    {{ $villager['birth_date'] }}
                 </td>
                 <td class="py-4 px-6">
-                    $2999
+                    {{ $villager['birth_place'] }}
+                </td>
+                <td class="py-4 px-6">
+                    {{ $villager['nik'] }}
+                </td>
+                <td class="py-4 px-6">
+                    {{ $villager['phone'] }}
+                </td>
+                <td class="py-4 px-6">
+                    {{ $villager['role'] }}
+                </td>
+                <td class="py-4 px-6">
+                    {{ $villager['gender'] }}
                 </td>
                 <td class="py-4 pl-6 text-right">
                     <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 mr-3 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Ubah</button>
                     <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button>
                 </td>
             </tr>
+        @endforeach
         </tbody>
     </table>
 </div>
+{{$villagers->links('ourlayouts.custompagination')}}
 <div class="my-4 flex flex-col items-center">
     <!-- Help text -->
     <span class="text-sm text-gray-700 dark:text-gray-400">

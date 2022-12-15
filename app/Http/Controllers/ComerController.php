@@ -33,7 +33,7 @@ class ComerController extends Controller
         }else{
             return view('ourlayouts.pendatang.data-pendatang',[
                 'title' =>'Pendatang',
-                'comers' => Comer::paginate(20),
+                'comers' => Comer::paginate(100),
                 'villagers' => Villager::all()
             ]);
         }

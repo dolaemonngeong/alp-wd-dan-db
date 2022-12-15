@@ -46,7 +46,10 @@ class VillagerController extends Controller
      */
     public function create()
     {
-        //
+        return view('ourlayouts.penduduk.reg-penduduk', [
+            'title' =>'Penduduk',
+            "positions" => Villager::all()
+        ]);
     }
 
     /**
@@ -57,7 +60,28 @@ class VillagerController extends Controller
      */
     public function store(StoreVillagerRequest $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'birth_place' => 'required',
+            'birth_date' => 'required',
+            'nik' => 'required',
+            'phone' => 'required',
+            'role' => 'required',
+            'gender' => 'required',
+        ]);
+
+        Villager::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'birth_place' => $request->birth_place,
+            'birth_date' => $request->birth_date,
+            'nik' => $request->nik,
+            'phone' => $request->phone,
+            'role' => $request->role,
+            'gender' => $request->gender,
+            'status' => 'hidup',
+        ]);
+        return redirect('/data-penduduk');
     }
 
     /**
@@ -77,9 +101,12 @@ class VillagerController extends Controller
      * @param  \App\Models\Villager  $villager
      * @return \Illuminate\Http\Response
      */
-    public function edit(Villager $villager)
+    public function edit($id)
     {
-        //
+        return view("ourlayouts.penduduk.update-penduduk", [
+            "theTitle" => "Membuat Penduduk Baru",
+            "villager"=>Position::findOrFail($id)
+        ]);
     }
 
     /**
@@ -89,9 +116,21 @@ class VillagerController extends Controller
      * @param  \App\Models\Villager  $villager
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateVillagerRequest $request, Villager $villager)
+    public function update(UpdateVillagerRequest $request, $id)
     {
-        //
+        $position = Position::findOrFail($id);
+
+        $position->update([
+            "name" => $request->name,
+            "birth_place" => $request->birth_place,
+            "birth_date" => $request->birth_date,
+            "nik" => $request->nik,
+            "phone" => $request->phone,
+            "role" => $request->role,
+            "gender" => $request->gender,
+        ]);
+
+        return redirect('/data-penduduk');
     }
 
     /**
@@ -102,6 +141,12 @@ class VillagerController extends Controller
      */
     public function destroy(Villager $villager)
     {
-        //
+        $position = Position::findOrFail($id);
+
+        $position->update([
+            "status" => $request->status,
+        ]);
+
+        return redirect('/data-penduduk');
     }
 }

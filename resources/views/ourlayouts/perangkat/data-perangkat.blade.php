@@ -1,4 +1,4 @@
-@extends('navhf.header')
+@extends('layouts.app')
 @section('container')
 <div class="flex items-center w-100% container-fluid">
     <h1 class="justify-start" style="font-weight: bold">
@@ -58,24 +58,32 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($structures as $structure)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                    {{ $loop->iteration }}
                 </th>
                 <td class="py-4 px-6">
-                    Sliver
+                    {{ $structure->position->name }}
                 </td>
                 <td class="py-4 px-6">
-                    Laptop
+                    {{ $structure->villager->name }}
                 </td>
                 <td class="py-4 px-6">
-                    $2999
+                    {{ $structure['appointed_date'] }}
+                </td>
+                <td class="py-4 px-6">
+                    {{ $structure['resign_date'] }}
+                </td>
+                <td class="py-4 px-6">
+                    {{ $structure['status_jabat'] }}
                 </td>
                 <td class="py-4 pl-6 text-right">
                     <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 mr-3 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Ubah</button>
                     <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button>
                 </td>
             </tr>
+        @endforeach
         </tbody>
     </table>
 </div>

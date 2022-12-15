@@ -17,15 +17,18 @@ class PositionSeeder extends Seeder
     {
         
         Position::factory()->create([
-            'name' => 'ketua'
+            'name' => 'ketua',
+            'description' => 'desc for ketua'
         ]);
         
         Position::factory()->create([
-           'name' => 'wakil ketua'
+           'name' => 'wakil ketua',
+           'description' => 'desc for wakil ketua'
         ]);
         
         Position::factory()->create([
-            'name' => 'bendahara'
+            'name' => 'bendahara',
+            'description' => 'desc for bendahara'
         ]);
             
         }
