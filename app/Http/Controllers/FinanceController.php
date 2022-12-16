@@ -15,7 +15,24 @@ class FinanceController extends Controller
      */
     public function index()
     {
-        //
+        if($request->has('search')){
+            return view('ourlayouts.keuangan.data-keuangan',[
+                'title' =>'keuangan',
+                'finances' => Finance::where(
+                    'name','like','%'.$request->search.'%')
+                    ->orWhere('description', 'like', '%'.$request->search.'%')
+                    ->orWhere('budget', 'like', '%'.$request->search.'%')
+                    ->orWhere('note', 'like', '%'.$request->search.'%')
+                    ->paginate(),
+                // 'books' => Book::whereRelation('Finance', 'name', 'like','%'.$request->search.'%')->get()
+            ]);
+        }else{
+            return view('ourlayouts.keuangan.data-keuangan',[
+                'title' =>'Keuangan',
+                'finances' => Finance::paginate(20),
+                // 'books' => Book::all()
+            ]);
+        }
     }
 
     /**

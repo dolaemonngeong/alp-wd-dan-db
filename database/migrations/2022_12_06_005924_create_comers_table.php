@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string("nik");
             $table->string("phone");
             $table->enum('gender', ['laki-laki', 'perempuan']);
-            $table->enum('role', ['pelajar', 'pekerja', 'tidak bekerja']);
+            $table->enum('role', ['pelajar', 'pekerja', 'lainnya']);
             $table->foreignIdFor(Villager::class);
             $table->timestamps();
         });

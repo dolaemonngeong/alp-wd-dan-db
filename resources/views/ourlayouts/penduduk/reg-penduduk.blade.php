@@ -6,12 +6,12 @@
 </h1>
 {{-- </x-slot> --}}
 
-<form method="POST" action="{{ route('villager.store') }}">
+<form method="POST" action="{{ route('villagers.store') }}">
     @csrf
 
     <!-- Name -->
     <div>
-        <label for="name" :value="__('Nama')" />
+        <x-input-label for="name" :value="__('Nama')" />
         <input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
         @if($errors->has('name'))
         <p class="text-danger">{{ $errors->first('name')}}</p>
@@ -32,7 +32,7 @@
         <input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required />
         @if($errors->has('phone'))
         <p class="text-danger">{{ $errors->first('phone')}}</p>
-        @endif>
+        @endif
     </div>
 
     <!-- Birthplace -->
@@ -41,16 +41,16 @@
         <input id="birth_place" class="block mt-1 w-full" type="text" name="birth_place" :value="old('birth_place')" required />
         @if($errors->has('birth_place'))
         <p class="text-danger">{{ $errors->first('birth_place')}}</p>
-        @endif" />
+        @endif
     </div>
 
     <!-- Birthdate -->
     <div class="mt-4">
         <x-input-label for="birth_date" :value="__('Tanggal Lahir')" />
-        <input id="birth_date" class="block mt-1 w-full" type="text" name="birth_date" :value="old('birth_date')" required />
-        @if($errors->has('name'))
-        <p class="text-danger">{{ $errors->first('name')}}</p>
-        @endif" />
+        <input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date" :value="old('birth_date')" required />
+        @if($errors->has('birth_date'))
+        <p class="text-danger">{{ $errors->first('birth_date')}}</p>
+        @endif
     </div>
 
     <!-- Gender -->
@@ -65,12 +65,12 @@
         </div>
         @if($errors->has('gender'))
         <p class="text-danger">{{ $errors->first('gender')}}</p>
-        @endif/>
+        @endif
     </div>
 
     <!-- Role -->
     <div class="mt-4">
-        <label class="form-check-label" for="role" :value="__('Peran')"></label>
+        <x-input-label class="form-check-label" for="role" :value="__('Peran')"/>
         <div class="form-check form-check-inline" required>
             <input style="color: #124A49" class="form-check-input mr-1" type="radio" name="role" id="role1" value="Pelajar">
             <label class="form-check-label text-gray-700" for="role1">Pelajar</label>

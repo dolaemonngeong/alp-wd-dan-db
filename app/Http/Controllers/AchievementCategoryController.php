@@ -56,7 +56,7 @@ class AchievementCategoryController extends Controller
         Position::create([
             'name' => $request->name,
         ]);
-        return redirect('/jabatan');
+        return redirect('/data-jabatan');
     }
 
     /**

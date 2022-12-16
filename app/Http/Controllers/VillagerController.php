@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Villager;
 use App\Http\Requests\StoreVillagerRequest;
 use App\Http\Requests\UpdateVillagerRequest;
+use Illuminate\Http\Request;
 
 class VillagerController extends Controller
 {
@@ -15,26 +16,26 @@ class VillagerController extends Controller
      */
     public function index(Request $request)
     {
+//    dd("indes ini");
         if($request->has('search')){
+            // dd("search");
             return view('ourlayouts.penduduk.data-penduduk',[
                 'title' =>'Penduduk',
                 'villagers' => Villager::where(
                     'name','like','%'.$request->search.'%')
-                    ->orWhere('birth_place', 'like', '%'.$request->search.'%')
-                    ->orWhere('birth_date', 'like', '%'.$request->search.'%')
+                    // ->orWhere('birth_place', 'like', '%'.$request->search.'%')
+                    // ->orWhere('birth_date', 'like', '%'.$request->search.'%')
                     ->orWhere('nik', 'like', '%'.$request->search.'%')
-                    ->orWhere('phone', 'like', '%'.$request->search.'%')
-                    ->orWhere('role', 'like', '%'.$request->search.'%')
-                    ->orWhere('gender', 'like', '%'.$request->search.'%')
-                    ->orWhere('status', 'like', '%'.$request->search.'%')
+                    // ->orWhere('phone', 'like', '%'.$request->search.'%')
+                    // ->orWhere('role', 'like', '%'.$request->search.'%')
+                    // ->orWhere('gender', 'like', '%'.$request->search.'%')
+                    // ->orWhere('status', 'like', '%'.$request->search.'%')
                     ->paginate(),
-                // 'books' => Book::whereRelation('villager', 'name', 'like','%'.$request->search.'%')->get()
             ]);
         }else{
             return view('ourlayouts.penduduk.data-penduduk',[
                 'title' =>'Penduduk',
-                'villagers' => Villager::paginate(20),
-                // 'books' => Book::all()
+                'villagers' => Villager::paginate(100),
             ]);
         }
     }
@@ -48,7 +49,7 @@ class VillagerController extends Controller
     {
         return view('ourlayouts.penduduk.reg-penduduk', [
             'title' =>'Penduduk',
-            "positions" => Villager::all()
+            "villagers" => Villager::all()
         ]);
     }
 
@@ -79,7 +80,6 @@ class VillagerController extends Controller
             'phone' => $request->phone,
             'role' => $request->role,
             'gender' => $request->gender,
-            'status' => 'hidup',
         ]);
         return redirect('/data-penduduk');
     }
@@ -104,8 +104,8 @@ class VillagerController extends Controller
     public function edit($id)
     {
         return view("ourlayouts.penduduk.update-penduduk", [
-            "theTitle" => "Membuat Penduduk Baru",
-            "villager"=>Position::findOrFail($id)
+            "theTitle" => "Perbarui Penduduk",
+            "villager"=>Villager::findOrFail($id)
         ]);
     }
 
@@ -118,9 +118,9 @@ class VillagerController extends Controller
      */
     public function update(UpdateVillagerRequest $request, $id)
     {
-        $position = Position::findOrFail($id);
+        $villager = Villager::findOrFail($id);
 
-        $position->update([
+        $villager->update([
             "name" => $request->name,
             "birth_place" => $request->birth_place,
             "birth_date" => $request->birth_date,
@@ -133,20 +133,38 @@ class VillagerController extends Controller
         return redirect('/data-penduduk');
     }
 
+    public function updatestatus(Request $request){
+        $villager = Villager::findOrFail($request->id);
+
+        $villager->update([
+            "status" => $request->status,
+        ]);
+
+        return redirect('/data-penduduk');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Villager  $villager
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Villager $villager)
+    public function destroy(Request $request, $id)
     {
-        $position = Position::findOrFail($id);
-
-        $position->update([
+        dd("tes");
+        // dd($villager->status);
+        $villager = Villager::where('id', $id)->update([
             "status" => $request->status,
         ]);
-
+       // dd($request->status);
+        // $cek=$villager->update([
+        //     "status" => 'meninggal',
+        // ]);
+    //    dd($request->id);
+       dd($request->status);
+       dd($villager);
+       dd("tes2");
+        //dd($cek);
         return redirect('/data-penduduk');
     }
 }

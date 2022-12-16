@@ -50,7 +50,7 @@ class ComerSeeder extends Seeder
                     'birth_date' => $fakerID->dateTimeBetween('-50 year','-25 year'),
                     'nik' => $fakerID->nik,
                     'phone'=>$fakerID->phoneNumber,
-                    'role' => 'tidak bekerja',
+                    'role' => 'lainnya',
                     'gender' => 'perempuan',
                     'villager_id' => $villager->id,
                 ]);

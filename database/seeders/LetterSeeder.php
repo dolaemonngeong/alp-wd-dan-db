@@ -4,12 +4,12 @@ namespace Database\Seeders;
 
 use Faker\Factory;
 use App\Models\User;
+use App\Models\Letter;
 use App\Models\Template;
-use App\Models\Onlineletter;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class OnlineLetterSeeder extends Seeder
+class LetterSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -24,7 +24,7 @@ class OnlineLetterSeeder extends Seeder
         foreach(User::all() as $u){
             foreach(Template::all() as $t){
             if($index==0){
-                Onlineletter::create([
+                Letter::create([
                     'name' => $fakerID->name,
                     'email' => $fakerID->email,
                     'phone' => $fakerID->phoneNumber,
@@ -35,7 +35,7 @@ class OnlineLetterSeeder extends Seeder
                     'user_id' => $u->id,
                 ]);
             }else if($index==1){
-                Onlineletter::create([
+                Letter::create([
                     'name' => $fakerID->name,
                     'email' => $fakerID->email,
                     'phone' => $fakerID->phoneNumber,
@@ -46,7 +46,7 @@ class OnlineLetterSeeder extends Seeder
                     'user_id' => $u->id,
                 ]);
             }else if($index==2){
-                Onlineletter::create([
+                Letter::create([
                     'name' => $fakerID->name,
                     'email' => $fakerID->email,
                     'phone' => $fakerID->phoneNumber,
@@ -57,7 +57,7 @@ class OnlineLetterSeeder extends Seeder
                     'user_id' => $u->id,
                 ]);
             }else if($index==3){
-                Onlineletter::create([
+                Letter::create([
                     'name' => $fakerID->name,
                     'email' => $fakerID->email,
                     'phone' => $fakerID->phoneNumber,

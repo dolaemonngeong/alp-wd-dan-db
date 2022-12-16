@@ -14,14 +14,15 @@ class Structure extends Model
         "villager_id",
         "appointed_date",
         "resign_date",
-        "status_jabat"
+        "status_jabat",
+        "image"
     ];
 
-    // public function position(){
-    //     return $this->hasMany(Position::class);
-    // }
+    public function position(){
+        return $this->belongsTo(Position::class);
+    }
 
-    // public function villager(){
-    //     return $this->hasMany(Villager::class);
-    // }
+    public function villager(){
+        return $this->belongsTo(Villager::class);
+    }
 }

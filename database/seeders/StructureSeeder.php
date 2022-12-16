@@ -25,7 +25,8 @@ class StructureSeeder extends Seeder
                     'villager_id' => $v->id,
                     'appointed_date' => date('Y_m_d'),
                     'resign_date' => date('Y_m_d'),
-                    'status_jabat' => 'selesai'
+                    'status_jabat' => 'selesai',
+                    'image' => 'villager1.jpg'
                 ]);
             }else if($index==1){
                 Structure::create([
@@ -33,7 +34,8 @@ class StructureSeeder extends Seeder
                     'villager_id' => $v->id,
                     'appointed_date' => date('Y_m_d'),
                     'resign_date' => date('Y_m_d'),
-                    'status_jabat' => 'berjalan'
+                    'status_jabat' => 'berjalan',
+                    'image' => 'villager2.jpg'
                 ]);
             }else if($index==2){
                 Structure::create([
@@ -41,7 +43,8 @@ class StructureSeeder extends Seeder
                     'villager_id' => $v->id,
                     'appointed_date' => date('Y_m_d'),
                     'resign_date' => date('Y_m_d'),
-                    'status_jabat' => 'berjalan'
+                    'status_jabat' => 'berjalan',
+                    'image' => 'villager3.jpeg'
                 ]);
             }
             $index++;

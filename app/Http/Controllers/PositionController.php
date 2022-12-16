@@ -37,7 +37,7 @@ class PositionController extends Controller
     public function create()
     {
         return view('ourlayouts.jabatan.createposition', [
-            'title' =>'Jabatan',
+            'title' =>'Tambah Jabatan',
             "positions" => Position::all()
         ]);
     }
@@ -59,7 +59,7 @@ class PositionController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]);
-        return redirect('/jabatan');
+        return redirect('/data-jabatan');
     }
 
     /**
@@ -82,7 +82,7 @@ class PositionController extends Controller
     public function edit($id)
     {
         return view("ourlayouts.jabatan.updateposition", [
-            "theTitle" => "Membuat Jabatan Baru",
+            "theTitle" => "Perbarui Jabatan",
             "position"=>Position::findOrFail($id)
         ]);
     }
@@ -103,7 +103,7 @@ class PositionController extends Controller
             "description" => $request->description
         ]);
 
-        return redirect('/jabatan');
+        return redirect('/data-jabatan');
         // return view("updatejabatan", [
         //     "position"=>Position::findOrFail($id),
         // ]);
@@ -121,6 +121,6 @@ class PositionController extends Controller
 
         $position->delete();
 
-        return redirect('/jabatan');
+        return redirect('/data-jabatan');
     }
 }

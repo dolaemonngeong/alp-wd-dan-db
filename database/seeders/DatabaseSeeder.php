@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ReportSeeder::class,
             PositionSeeder::class,
             TemplateSeeder::class,
-            OnlineLetterSeeder::class,
+            LetterSeeder::class,
             AchievementCategorySeeder::class,
             AchievementSeeder::class,
             FinanceSeeder::class,

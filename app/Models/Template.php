@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Onlineletter;
+use App\Models\Letter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,7 +17,7 @@ class Template extends Model
         "date_achievement"
     ];
 
-    public function onlineletter(){
-        return $this->belongsTo(Onlineletter::class);
+    public function letter(){
+        return $this->belongsTo(Letter::class);
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('onlineletters', function (Blueprint $table) {
+        Schema::create('letters', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->string("email");
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignIdFor(Template::class);
             $table->string("file");
             $table->string("message");
-            $table->enum('proses', ['menunggu', 'dalam proses','selesai']);
+            $table->enum('proses', ['menunggu', 'dalam proses','selesai'])->default('menunggu');
             $table->foreignIdFor(User::class);
             $table->timestamps();
         });
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('onlineletters');
+        Schema::dropIfExists('letters');
     }
 };

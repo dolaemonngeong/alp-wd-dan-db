@@ -1,0 +1,107 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Letter;
+use App\Models\Template;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreLetterRequest;
+use App\Http\Requests\UpdateLetterRequest;
+
+class LetterController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        if($request->has('search')){
+            // dd('tes');
+            return view('ourlayouts.surat.data-surat',[
+                'title' =>'Surat',
+                'letters' => Letters::where(
+                    'name','like','%'.$request->search.'%')
+                    ->orWhere('email', 'like', '%'.$request->search.'%')
+                    ->orWhere('phone', 'like', '%'.$request->search.'%')
+                    ->orWhere('file', 'like', '%'.$request->search.'%')
+                    ->orWhere('message', 'like', '%'.$request->search.'%')
+                    ->paginate(),
+                'templates' => Template::whereRelation('template', 'name', 'like','%'.$request->search.'%')->get()
+            ]);
+        }else{
+            return view('ourlayouts.surat.data-surat',[
+                'title' =>'Surat',
+                'letters' => Letter::paginate(10),
+                'templetes' => Template::all(),
+            ]);
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreLetterRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreLetterRequest $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Letter  $letter
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Letter $letter)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Letter  $letter
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Letter $letter)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateLetterRequest  $request
+     * @param  \App\Models\Letter  $letter
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateLetterRequest $request, Letter $letter)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Letter  $letter
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Letter $letter)
+    {
+        //
+    }
+}

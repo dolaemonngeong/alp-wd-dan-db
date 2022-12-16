@@ -6,11 +6,10 @@ use App\Models\Template;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Onlineletter extends Model
+class Letter extends Model
 {
     use HasFactory;
 
-    // protected $guarded = [];
     protected $fillable = [
         "name",
         "email",
@@ -19,7 +18,6 @@ class Onlineletter extends Model
         "file",
         "message",
         "proses",
-        // "user_id",
     ];
 
     public function template(){

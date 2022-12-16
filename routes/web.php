@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LetterController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\VillagerController;
+use App\Http\Controllers\StructureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,14 +37,12 @@ require __DIR__.'/auth.php';
 
 Route::resource('positions', PositionController::class)->middleware(['admin']);
 Route::resource('villagers', VillagerController::class)->middleware(['admin']);
+Route::get('/villagertest', [VillagerController::class, 'updatestatus'])->middleware(['admin'])->name('villagers.updatestatus');
 Route::resource('structures', StructureController::class)->middleware(['admin']);
+Route::resource('letters', LetterController::class)->middleware(['admin']);
 
-Route::view('/reg-penduduk', 'ourlayouts.penduduk.reg-penduduk', 
-    [
-        "pagetitle" => "Registrasi Penduduk",
-        "maintitle" => "Registrasi Penduduk"
-    ]
-);
+// Route::get('/reg-penduduk', [VillagerController::class],'create')->middleware(['admin']);
+
 Route::view('/reg-pendatang', 'ourlayouts.pendatang.reg-pendatang', 
     [
         "pagetitle" => "Registrasi Pendatang",
@@ -55,22 +56,13 @@ Route::view('/add-keuangan', 'ourlayouts.keuangan.add-keuangan',
         "maintitle" => "Tambah Keuangan"
     ]
 );
-Route::view('/add-perangkat', 'ourlayouts.perangkat.add-perangkat', 
-    [
-        "pagetitle" => "Tambah Perangkat",
-        "maintitle" => "Tambah Perangkat"
-    ]
-);
-Route::view('/add-jabatan', 'ourlayouts.jabatan.add-jabatan', 
-    [
-        "pagetitle" => "Tambah Jabatan",
-        "maintitle" => "Tambah Jabatan"
-    ]
-);
+// Route::view('/add-perangkat', [StructureController::class, 'create'])->middleware(['admin']);
 
-Route::get('/jabatan', [PositionController::class, 'index'])->middleware(['admin']);
+// Route::view('/add-jabatan', [PositionController::class, 'create'])->middleware(['admin']);
 
-Route::view('/data-penduduk', [VillagerController::class, 'index'])->middleware(['admin']);
+Route::get('/data-jabatan', [PositionController::class, 'index'])->middleware(['admin']);
+
+Route::get('/data-penduduk', [VillagerController::class, 'index'])->middleware(['admin']);
 
 Route::view('/data-pendatang', 'ourlayouts.pendatang.data-pendatang', 
     [
@@ -85,7 +77,7 @@ Route::view('/data-keuangan', 'ourlayouts.keuangan.data-keuangan',
         "maintitle" => "Data Keuangan"
     ]
 );
-Route::view('/data-perangkat', [StructureController::class, 'index'])->middleware(['admin']);
+Route::get('/data-perangkat', [StructureController::class, 'index'])->middleware(['admin']);
 
 Route::view('/data-user', 'ourlayouts.user.data-user', 
     [
@@ -93,9 +85,13 @@ Route::view('/data-user', 'ourlayouts.user.data-user',
         "maintitle" => "Data User"
     ]
 );
-Route::view('/data-surat', 'ourlayouts.surat.data-surat', 
+Route::get('/data-surat', [LetterController::class,'index'])->middleware(['admin']);
+
+Route::get('/data-pelaporan', [ReportController::class, 'index'])->middleware(['admin']);
+
+Route::view('/data-kategoriprestasi', 'data-kategoriprestasi', 
     [
-        "pagetitle" => "Data Surat Online",
-        "maintitle" => "Data Surat Online"
+        "pagetitle" => "Daftar Kategori Prestasi",
+        "maintitle" => "Daftar Kategori Prestasi"
     ]
 );

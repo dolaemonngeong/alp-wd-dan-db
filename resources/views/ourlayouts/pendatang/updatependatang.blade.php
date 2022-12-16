@@ -65,7 +65,9 @@
                 </div> --}}
                 <select name="villager" id="villager" class="js-example-basic-single block text-gray-700 mt-1 w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" required>
                     @foreach($villagers as $villager)
+                        @if(old('villager_id') === $villager_id)
                         <option value="{{ $villager->id }}" selected>{{ $villager->name }}</option>
+                        @else
                         <option value="{{ $villager->id }}">{{ $villager->name }}</option>
                     @endforeach
                     <option value="a">alabama</option>

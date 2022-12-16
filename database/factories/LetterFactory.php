@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Online_letter>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Letter>
  */
-class OnlineLetterFactory extends Factory
+class LetterFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class OnlineLetterFactory extends Factory
     public function definition()
     {
         return [
-            // 'file_letter' => 'file.pdf'
+            //
         ];
     }
 }

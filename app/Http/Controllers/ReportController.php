@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Report;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreReportRequest;
 use App\Http\Requests\UpdateReportRequest;
 
@@ -13,9 +15,24 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->has('search')){
+            return view('ourlayouts.pelaporan.data-pelaporan',[
+                'title' =>'pelaporan',
+                'reports' => Report::where(
+                    'name','like','%'.$request->search.'%')
+                    ->orWhere('description', 'like', '%'.$request->search.'%')
+                    ->orWhere('phone', 'like', '%'.$request->search.'%')
+                    ->paginate(),
+        ]);
+        }else{
+            return view('ourlayouts.pelaporan.data-pelaporan',[
+                'title' =>'pelaporan',
+                'reports' => Report::paginate(20),
+                'users' => User::all()
+            ]);
+        }
     }
 
     /**
@@ -25,7 +42,10 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        return view('ourlayouts.pelaporan.createpelaporan', [
+            'title' =>'pelaporan',
+            'reports' => Report::all(),
+        ]);
     }
 
     /**
@@ -36,7 +56,32 @@ class ReportController extends Controller
      */
     public function store(StoreReportRequest $request)
     {
-        //
+        $validatedData = $this->validate($request, [
+            'name' => 'required|string|max:60',
+            'image' => 'required|image',
+            'description' => 'required|string|max:155',
+            'phone' => 'required',
+        ]);
+
+        //kl eror pk ini
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:60',
+        //     'image' => 'required|image',
+        //     'description' => 'required|string|max:155',
+        //     'phone' => 'required',
+        // ]);
+
+        // $validatedData['user_id'] = auth()->user()->id;
+
+        Report::create([
+            'name' => $request->name,
+            'image' => $request->$request->file('image')->store('image', 'public'),
+            'description' => $request->description,
+            'phone' => $request->phone,
+            'user_id' => auth()->user()->id
+        ]);
+        
+        return redirect('/data-pelaporan');
     }
 
     /**
@@ -56,9 +101,12 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function edit(Report $report)
+    public function edit($id)
     {
-        //
+        return view("ourlayouts.pelaporan.updatelaporan",[
+            'report' => Report::findOrFail($id),
+            'user' => User::all(),
+        ]);
     }
 
     /**
@@ -68,9 +116,27 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateReportRequest $request, Report $report)
+    public function update(UpdateReportRequest $request, $id)
     {
-        //
+        $report = Report::findOrFail($id);
+
+        if($request->file('image')){
+            unlink('storage/'.$report->image);
+            $report->update([
+                'name' => $request->name,
+                'image' => $request->$request->file('image')->store('image', 'public'),
+                'description' => $request->description,
+                'phone' => $request->phone,
+                'user_id' => auth()->user()->id
+            ]);
+        }else{
+            $report->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'phone' => $request->phone,
+                'user_id' => auth()->user()->id
+            ]);
+        }
     }
 
     /**
@@ -79,8 +145,10 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Report $report)
+    public function destroy($id)
     {
-        //
+        $report = Report::findOrFail($id);
+        $report->delete();
+        return redirect('/data-pelaporan');
     }
 }

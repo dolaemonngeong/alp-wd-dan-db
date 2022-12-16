@@ -15,7 +15,24 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        //
+        if($request->has('search')){
+            return view('ourlayouts.jenisSurat.data-jenisSurat',[
+                'title' =>'Jenis Surat',
+                'templates' => Template::where(
+                    'name','like','%'.$request->search.'%')
+                    ->orWhere('description', 'like', '%'.$request->search.'%')
+                    ->orWhere('file', 'like', '%'.$request->search.'%')
+                    ->orWhere('screenshoot', 'like', '%'.$request->search.'%')
+                    ->get(),
+                // 'books' => Book::whereRelation('Template', 'name', 'like','%'.$request->search.'%')->get()
+            ]);
+        }else{
+            return view('ourlayouts.jenisSurat.data-jenisSurat',[
+                'title' =>'Jenis Surat',
+                // 'templates' => Template::paginate(20),
+                // 'books' => Book::all()
+            ]);
+        }
     }
 
     /**
