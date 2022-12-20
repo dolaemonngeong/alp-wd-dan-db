@@ -1,25 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\ComerController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\GalleryController;
->>>>>>> Stashed changes
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PositionController;
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\VillagerController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AchievementController;
->>>>>>> Stashed changes
 
 /*
 |--------------------------------------------------------------------------
@@ -64,34 +58,33 @@ Route::get('/perangkat', function(){
 Route::resource('achievements', AchievementController::class);
 
 Route::resource('positions', PositionController::class)->middleware(['admin']);
-<<<<<<< Updated upstream
 
-Route::view('/reg-penduduk', 'reg-penduduk', 
+Route::view('/reg-penduduk', 'reg-penduduk',
     [
         "pagetitle" => "Registrasi Penduduk",
         "maintitle" => "Registrasi Penduduk"
     ]
 );
-Route::view('/reg-pendatang', 'reg-pendatang', 
+Route::view('/reg-pendatang', 'reg-pendatang',
     [
         "pagetitle" => "Registrasi Pendatang",
         "maintitle" => "Registrasi Pendatang"
     ]
 );
 
-Route::view('/add-keuangan', 'add-keuangan', 
+Route::view('/add-keuangan', 'add-keuangan',
     [
         "pagetitle" => "Tambah Keuangan",
         "maintitle" => "Tambah Keuangan"
     ]
 );
-Route::view('/add-perangkat', 'add-perangkat', 
+Route::view('/add-perangkat', 'add-perangkat',
     [
         "pagetitle" => "Tambah Perangkat",
         "maintitle" => "Tambah Perangkat"
     ]
 );
-Route::view('/add-jabatan', 'add-jabatan', 
+Route::view('/add-jabatan', 'add-jabatan',
     [
         "pagetitle" => "Tambah Jabatan",
         "maintitle" => "Tambah Jabatan"
@@ -99,44 +92,43 @@ Route::view('/add-jabatan', 'add-jabatan',
 );
 
 //
-Route::view('/data-penduduk', 'data-penduduk', 
+Route::view('/data-penduduk', 'data-penduduk',
     [
         "pagetitle" => "Data Penduduk",
         "maintitle" => "Data Penduduk"
     ]
 );
-Route::view('/data-pendatang', 'data-pendatang', 
+Route::view('/data-pendatang', 'data-pendatang',
     [
         "pagetitle" => "Data Pendatang",
         "maintitle" => "Data Pendatang"
     ]
 );
 
-Route::view('/data-keuangan', 'data-keuangan', 
+Route::view('/data-keuangan', 'data-keuangan',
     [
         "pagetitle" => "Data Keuangan",
         "maintitle" => "Data Keuangan"
     ]
 );
-Route::view('/data-perangkat', 'data-perangkat', 
+Route::view('/data-perangkat', 'data-perangkat',
     [
         "pagetitle" => "Data Perangkat",
         "maintitle" => "Data Perangkat"
     ]
 );
-Route::view('/data-user', 'data-user', 
+Route::view('/data-user', 'data-user',
     [
         "pagetitle" => "Data User",
         "maintitle" => "Data User"
     ]
 );
-Route::view('/data-surat', 'data-surat', 
+Route::view('/data-surat', 'data-surat',
     [
         "pagetitle" => "Data Surat Online",
         "maintitle" => "Data Surat Online"
     ]
 );
-=======
 
 Route::resource('finances', FinanceController::class)->middleware(['admin']);
 
@@ -209,4 +201,3 @@ Route::get('/add-gallery', [GalleryControler::class,'create'])->middleware(['adm
 Route::get('/add-kategoriprestasi', [AchievemtCategoryController::class,'create'])->middleware(['admin']);
 
 Route::get('/add-prestasi', [AchievementController::class,'create'])->middleware(['admin']);
->>>>>>> Stashed changes
