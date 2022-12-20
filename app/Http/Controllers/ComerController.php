@@ -17,7 +17,6 @@ class ComerController extends Controller
      */
     public function index(Request $request)
     {
-<<<<<<< Updated upstream
         if($request->has('search')){
             return view('ourlayouts.pendatang.data-pendatang',[
                 'title' =>'Pendatang',
@@ -40,11 +39,10 @@ class ComerController extends Controller
                 'villagers' => Villager::all()
             ]);
         }
-=======
         $sort = $request->query('sort');
         $search = $request->query('search');
         $comers = Comer::select('*')
-        ->with('villager') 
+        ->with('villager')
         ->when($search !='', function($query) use ($search) {
             $query->whereHas('villager', function($query) use ($search) {
                 $query->where('name', 'like', '%'.$search.'%');
@@ -105,7 +103,6 @@ class ComerController extends Controller
             'males' => $males,
             'females' => $females
         ]);
->>>>>>> Stashed changes
     }
 
     /**

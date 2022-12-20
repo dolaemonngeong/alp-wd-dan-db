@@ -15,7 +15,6 @@ class StructureController extends Controller
      */
     public function index(Request $request)
     {
-<<<<<<< Updated upstream
         //design view blm ada
         if($request->has('search')){
             return view('ourlayouts.penduduk.data-penduduk',[
@@ -32,7 +31,6 @@ class StructureController extends Controller
             return view('ourlayouts.penduduk.data-penduduk',[
                 'title' =>'Penduduk',
                 'structures' => Writer::paginate(10),
-=======
         // if($request->has('search')){
         //     $searchTerm = $request->search;
         //     return view('ourlayouts.perangkat.data-perangkat',[
@@ -53,7 +51,6 @@ class StructureController extends Controller
                 'search' =>'',
                 'status_jabat' =>'',
                 'structures' => Structure::paginate(10),
->>>>>>> Stashed changes
                 'positions' => Position::all(),
                 'villagers' => Villager::all(),
             ]);
@@ -151,9 +148,6 @@ class StructureController extends Controller
      */
     public function store(StoreStructureRequest $request)
     {
-<<<<<<< Updated upstream
-        //
-=======
         // dd('tes');
         // $this->validate($request, [
         //     'position_id' => 'required',
@@ -180,7 +174,6 @@ class StructureController extends Controller
                 return redirect('/data-perangkat');
         //     }
         // }
->>>>>>> Stashed changes
     }
 
     /**
@@ -202,16 +195,12 @@ class StructureController extends Controller
      */
     public function edit(Structure $structure)
     {
-<<<<<<< Updated upstream
-        //
-=======
         return view("ourlayouts.perangkat.updateperangkat", [
             'maintitle' => 'Ubah Perangkat',
             "structure"=>Structure::findOrFail($id),
             'positions' => Position::all(),
             'villagers' => Villager::all()
         ]);
->>>>>>> Stashed changes
     }
 
     /**
@@ -234,14 +223,10 @@ class StructureController extends Controller
      */
     public function destroy(Structure $structure)
     {
-<<<<<<< Updated upstream
-        //
-=======
         // dd("tes");
         $structure = Structure::findOrFail($id);
         $structure->delete();
         unlink('storage/'.$structure->image);
         return redirect('/data-perangkat');
->>>>>>> Stashed changes
     }
 }

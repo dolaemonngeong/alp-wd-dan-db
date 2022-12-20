@@ -15,9 +15,6 @@ class AchievementController extends Controller
      */
     public function index()
     {
-<<<<<<< Updated upstream
-        //
-=======
         if($request->has('search')){
             return view('ourlayouts.prestasi.',[
                 'title' =>'Prestasi',
@@ -34,7 +31,6 @@ class AchievementController extends Controller
                 // 'books' => Book::all()
             ]);
         }
->>>>>>> Stashed changes
     }
 
     /**

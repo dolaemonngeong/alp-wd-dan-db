@@ -16,9 +16,6 @@ class FinanceController extends Controller
      */
     public function index(Request $request)
     {
-<<<<<<< Updated upstream
-        //
-=======
         if($request->has('search')){
             return view('ourlayouts.keuangan.data-keuangan',[
                 'title' =>'Keuangan',
@@ -30,7 +27,6 @@ class FinanceController extends Controller
                 'finances' => Finance::paginate(10),
             ]);
         }
->>>>>>> Stashed changes
     }
 
     /**

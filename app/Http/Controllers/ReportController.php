@@ -15,9 +15,6 @@ class ReportController extends Controller
      */
     public function index()
     {
-<<<<<<< Updated upstream
-        //
-=======
         // if($request->has('search')){
         //     return view('ourlayouts.pelaporan.data-pelaporan',[
         //         'title' =>'pelaporan',
@@ -59,7 +56,6 @@ class ReportController extends Controller
             })
             ->paginate()
         ]);
->>>>>>> Stashed changes
     }
 
     /**
@@ -69,14 +65,10 @@ class ReportController extends Controller
      */
     public function create()
     {
-<<<<<<< Updated upstream
-        //
-=======
         return view('ourlayouts.pelaporan.add-pelaporan', [
             'title' =>'pelaporan',
             'reports' => Report::all(),
         ]);
->>>>>>> Stashed changes
     }
 
     /**
@@ -87,9 +79,6 @@ class ReportController extends Controller
      */
     public function store(StoreReportRequest $request)
     {
-<<<<<<< Updated upstream
-        //
-=======
         // dd('tes');
         $validatedData = $this->validate($request, [
             'name' => 'required|string|max:60',
@@ -123,8 +112,8 @@ class ReportController extends Controller
                 'image' => $request->file('image')->store('report', 'public')
             ]);
         }
-        
-        
+
+
         if(auth()->user()->status == 'admin'){
             // dd('admin');
             return redirect('/data-pelaporan');
@@ -133,8 +122,6 @@ class ReportController extends Controller
             //cari cara biar ini langsung ada tulisan berhasil
             return redirect('/');
         }
-
->>>>>>> Stashed changes
     }
 
     /**
@@ -156,15 +143,11 @@ class ReportController extends Controller
      */
     public function edit(Report $report)
     {
-<<<<<<< Updated upstream
-        //
-=======
         // dd('t');
         return view("ourlayouts.pelaporan.updatepelaporan",[
             'report' => Report::findOrFail($id),
             'user' => User::all(),
         ]);
->>>>>>> Stashed changes
     }
 
     /**
@@ -176,9 +159,6 @@ class ReportController extends Controller
      */
     public function update(UpdateReportRequest $request, Report $report)
     {
-<<<<<<< Updated upstream
-        //
-=======
         // dd('a');
         $report = Report::findOrFail($id);
         // dd('1');
@@ -205,7 +185,6 @@ class ReportController extends Controller
         }
 // dd('b');
         return redirect('/data-pelaporan');
->>>>>>> Stashed changes
     }
 
     /**
@@ -216,13 +195,9 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-<<<<<<< Updated upstream
-        //
-=======
         $report = Report::findOrFail($id);
         $report->delete();
         unlink('storage/'.$report->image);
         return redirect('/data-pelaporan');
->>>>>>> Stashed changes
     }
 }

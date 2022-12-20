@@ -17,7 +17,6 @@ class VillagerController extends Controller
      */
     public function index(Request $request)
     {
-<<<<<<< Updated upstream
         if($request->has('search')){
             return view('ourlayouts.penduduk.data-penduduk',[
                 'title' =>'Penduduk',
@@ -38,9 +37,8 @@ class VillagerController extends Controller
                 'title' =>'Penduduk',
                 'villagers' => Villager::paginate(20),
                 // 'books' => Book::all()
-=======
         // if($request->has('query')){
-        //    
+        //
         //     return view('ourlayouts.penduduk.data-penduduk',[
         //         'pagetitle' =>'Penduduk',
         //         'maintitle' =>'Penduduk',
@@ -61,7 +59,6 @@ class VillagerController extends Controller
                 'villagers' => Villager::paginate(100),
                 'search' => '',
                 'status' => '',
->>>>>>> Stashed changes
             ]);
         // }
     }
@@ -69,7 +66,7 @@ class VillagerController extends Controller
     public function filterstatus(Request $request){
         // dd('tes');
 
-        // ambil dari form 
+        // ambil dari form
         $search = $request->input('search');
         $status = $request->input('status');
 
@@ -143,15 +140,11 @@ class VillagerController extends Controller
      */
     public function create()
     {
-<<<<<<< Updated upstream
-        //
-=======
         return view('ourlayouts.penduduk.reg-penduduk', [
             'pagetitle' =>'Rgistrasi Penduduk',
             'maintitle' =>'Rgistrasi Penduduk',
             "villagers" => Villager::all()
         ]);
->>>>>>> Stashed changes
     }
 
     /**
@@ -162,9 +155,6 @@ class VillagerController extends Controller
      */
     public function store(StoreVillagerRequest $request)
     {
-<<<<<<< Updated upstream
-        //
-=======
         $this->validate($request, [
             'name' => 'required|string|max:60',
             'birth_place' => 'required',
@@ -185,7 +175,6 @@ class VillagerController extends Controller
             'gender' => $request->gender,
         ]);
         return redirect('/data-penduduk');
->>>>>>> Stashed changes
     }
 
     /**
@@ -207,15 +196,11 @@ class VillagerController extends Controller
      */
     public function edit(Villager $villager)
     {
-<<<<<<< Updated upstream
-        //
-=======
         return view("ourlayouts.penduduk.update-penduduk", [
             "maintitle" => "Perbarui Penduduk",
             "pagetitle" => "Perbarui Penduduk",
             "villager"=>Villager::findOrFail($id)
         ]);
->>>>>>> Stashed changes
     }
 
     /**
@@ -238,9 +223,6 @@ class VillagerController extends Controller
      */
     public function destroy(Villager $villager)
     {
-<<<<<<< Updated upstream
-        //
-=======
         //dd("tes");
         // dd($villager->status);
         // $villager = Villager::where('id', $id)->update([
@@ -256,6 +238,5 @@ class VillagerController extends Controller
     //    dd("tes2");
     //     //dd($cek);
     //     return redirect('/data-penduduk');
->>>>>>> Stashed changes
     }
 }
