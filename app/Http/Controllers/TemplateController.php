@@ -22,7 +22,6 @@ class TemplateController extends Controller
                     'name','like','%'.$request->search.'%')
                     ->orWhere('description', 'like', '%'.$request->search.'%')
                     ->orWhere('file', 'like', '%'.$request->search.'%')
-                    ->orWhere('screenshoot', 'like', '%'.$request->search.'%')
                     ->get(),
                 // 'books' => Book::whereRelation('Template', 'name', 'like','%'.$request->search.'%')->get()
             ]);
@@ -42,7 +41,10 @@ class TemplateController extends Controller
      */
     public function create()
     {
-        //
+        return view('ourlayouts.jenissurat.add-jenissurat', [
+            'title' =>'jenis surat',
+            'templates' => Template::all(),
+        ]);
     }
 
     /**
@@ -53,7 +55,19 @@ class TemplateController extends Controller
      */
     public function store(StoreTemplateRequest $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:60',
+            'description' => 'required|string|max:100',
+            'file' => 'required',
+            'screenshoot' => 'required|image',
+        ]);
+
+        Report::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'file' => $request->file('file')->store('report', 'public'),
+            'screenshoot' => $request->file('screenshoot')->store('report', 'public'),
+        ]);
     }
 
     /**
@@ -73,9 +87,11 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function edit(Template $template)
+    public function edit($id)
     {
-        //
+        return view("ourlayouts.jenissurat.updatejenissurat",[
+            'template' => Template::findOrFail($id)
+        ]);
     }
 
     /**
@@ -85,9 +101,42 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTemplateRequest $request, Template $template)
+    public function update(UpdateTemplateRequest $request, $id)
     {
-        //
+        $template = Template::findOrFail($id);
+        // dd('1');
+        if($request->file('screenshoot') && $request->file('file')){
+            // dd('b');
+            unlink('storage/'.$template->screenshoot);
+            unlink('storage/'.$template->file);
+            $template->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'file' => $request->file('file')->store('report', 'public'),
+                'screenshoot' => $request->file('screenshoot')->store('report', 'public'),
+        
+            ]);
+        }else{
+            if($request->file('screenshoot'){
+                // unlink('storage/'.$template->screenshoot);
+                $template->update([
+                    'name' => $request->name,
+                    'description' => $request->description,
+                    'screenshoot' => $request->file('screenshoot')->store('report', 'public'),
+                ]);
+            }else{
+                unlink('storage/'.$template->file);
+                $template->update([
+                    'name' => $request->name,
+                    'description' => $request->description,
+                    'file' => $request->file('file')->store('report', 'public'),
+                ]);
+            }
+            
+        
+        }
+// dd('b');
+        return redirect('/data-jenissurat');
     }
 
     /**
@@ -96,7 +145,7 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Template $template)
+    public function destroy($id)
     {
         //
     }

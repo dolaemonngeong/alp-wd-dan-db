@@ -17,7 +17,7 @@ class TemplateFactory extends Factory
     public function definition()
     {
         return [
-            'screenshoot' => 'screenshot.png'
+            'screenshoot' => 'template/screenshot.png'
         ];
     }
 }

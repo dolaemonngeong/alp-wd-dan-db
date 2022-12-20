@@ -17,26 +17,51 @@ class LetterController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('search')){
-            // dd('tes');
+        // if($request->has('search')){
+        //     // dd('tes');
+        //     return view('ourlayouts.surat.data-surat',[
+        //         'title' =>'Surat',
+        //         'letters' => Letter::where(
+        //             'name','like','%'.$request->search.'%')
+        //             ->orWhere('email', 'like', '%'.$request->search.'%')
+        //             ->orWhere('phone', 'like', '%'.$request->search.'%')
+        //             ->orWhere('file', 'like', '%'.$request->search.'%')
+        //             ->orWhere('message', 'like', '%'.$request->search.'%')
+        //             ->paginate(),
+        //         // 'templates' => Template::whereRelation('template', 'name', 'like','%'.$request->search.'%')->get(),
+        //     ]);
+        // }else{
             return view('ourlayouts.surat.data-surat',[
                 'title' =>'Surat',
-                'letters' => Letters::where(
-                    'name','like','%'.$request->search.'%')
-                    ->orWhere('email', 'like', '%'.$request->search.'%')
-                    ->orWhere('phone', 'like', '%'.$request->search.'%')
-                    ->orWhere('file', 'like', '%'.$request->search.'%')
-                    ->orWhere('message', 'like', '%'.$request->search.'%')
-                    ->paginate(),
-                'templates' => Template::whereRelation('template', 'name', 'like','%'.$request->search.'%')->get()
+                'proses' =>'',
+                'search' =>'',
+                'letters' => Letter::paginate(10)
             ]);
-        }else{
-            return view('ourlayouts.surat.data-surat',[
-                'title' =>'Surat',
-                'letters' => Letter::paginate(10),
-                'templetes' => Template::all(),
-            ]);
-        }
+        //}
+    }
+
+    public function filterstatus(Request $request){
+        // dd('tes');
+
+        // Get filter criteria from the form submission
+        $search = $request->input('search');
+        $proses = $request->input('proses');
+
+        return view('ourlayouts.surat.data-surat', [
+            'pagetitle' =>'surat',
+            'search' => $search,
+            'proses' => $proses,
+            'maintitle' =>'surat',
+            'letters' => Letter::where(function($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%')
+                      ->orWhere('phone', 'like', '%'.$search.'%')
+                      ->orWhere('email', 'like', '%'.$search.'%');
+            })
+            ->when($proses != '#', function($query) use ($proses) {
+                $query->where('proses', $proses);
+            })
+            ->paginate()
+        ]);
     }
 
     /**
@@ -46,7 +71,11 @@ class LetterController extends Controller
      */
     public function create()
     {
-        //
+        return view('ourlayouts.surat.add-surat', [
+            'maintitle' =>'Pelayanan Surat Online',
+            'letters' => Letter::all(),
+            'templates' => Template::all(),
+        ]);
     }
 
     /**
@@ -57,7 +86,43 @@ class LetterController extends Controller
      */
     public function store(StoreLetterRequest $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:60',
+            'email' => 'required|email',
+            'phone' => 'required|numeric|digits:10',
+            'template_id' => 'required',
+            'file' => 'required'
+        ]);
+
+        if($request->message=""){
+            Letter::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'template_id' => $request->template_id,
+                    'file'=>$request->file('file')->store('letter', 'public'),
+                    'user_id' => auth()->user()->id,
+            ]);
+        }else{
+            Letter::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'template_id' => $request->template_id,
+                'file'=>$request->file('file')->store('letter', 'public'),
+                'user_id' => auth()->user()->id,
+                'message' => $request->message
+            ]);
+        }
+
+        if(auth()->user()->status == 'admin'){
+            // dd('admin');
+            return redirect('/data-surat');
+        }else{
+            // dd('member');
+            //cari cara biar ini langsung ada tulisan berhasil
+            return redirect('/');
+        }
     }
 
     /**
@@ -77,9 +142,13 @@ class LetterController extends Controller
      * @param  \App\Models\Letter  $letter
      * @return \Illuminate\Http\Response
      */
-    public function edit(Letter $letter)
+    public function edit($id)
     {
-        //
+        return view("ourlayouts.surat.update-suratonline",[
+            'letter' => Letter::findOrFail($id),
+            'templates' => Template::all(),
+            'maintitle' => 'Perbarui Surat Online'
+        ]);
     }
 
     /**
@@ -89,9 +158,35 @@ class LetterController extends Controller
      * @param  \App\Models\Letter  $letter
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLetterRequest $request, Letter $letter)
+    public function update(UpdateLetterRequest $request, $id)
     {
-        //
+        // dd('a');
+        $letter = Letter::findOrFail($id);
+
+        if($request->file('file')){
+            // dd('t');
+            unlink('storeage/'.$request->file);
+            $letter->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'template_id' => $request->template_id,
+                'file'=>$request->file('file')->store('letter', 'public'),
+                'message' => $request->message,
+                'proses' => $request->proses,
+            ]);
+        }else{
+            // dd('a');
+            $letter->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'template_id' => $request->template_id,
+                'message' => $request->message,
+                'proses' => $request->proses,
+            ]);
+        }
+        return redirect('/data-surat');
     }
 
     /**
@@ -102,6 +197,9 @@ class LetterController extends Controller
      */
     public function destroy(Letter $letter)
     {
-        //
+        $letter = Letter::findOrFail($id);
+        $letter->delete();
+        unlink('storage/'.$letter->file);
+        return redirect('/data-surat');
     }
 }

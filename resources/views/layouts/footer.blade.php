@@ -1,4 +1,3 @@
-<!-- Footer -->
 <footer class="text-center mt-4 pt-2 text-lg-start text-muted" style="background-color: white">
   <!-- Section: Links  -->
   <section class="">
@@ -27,19 +26,16 @@
             Profil
           </h6>
           <p>
-            <a href="#!" class="text-reset">Visi Misi</a>
+            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Visi Misi</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Prestasi Desa</a>
+            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Prestasi Desa</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Peta Desa</a>
+            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Peta Desa</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Perangkat Desa</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Galeri</a>
+            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Perangkat Desa</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -51,10 +47,10 @@
             Layanan
           </h6>
           <p>
-            <a href="#!" class="text-reset">Pelaporan</a>
+            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Pelaporan</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Pelayanan Surat Online</a>
+            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Pelayanan Surat Online</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -64,9 +60,9 @@
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4  text-dark">Media Sosial</h6>
           {{-- Icons --}}
-          <a href="#"><p><i class="fa-brands fa-square-facebook me-3"></i>Facebook</p></a>
-          <a href="#"><p><i class="fa-brands fa-square-instagram me-3"></i>Instagram</p></a>
-          <a href="#"><p><i class="fa-brands fa-square-twitter me-3"></i>Twitter</p></a>
+          <a href="#" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-facebook me-3"></i>Facebook</p></a>
+          <a href="#" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-instagram me-3"></i>Instagram</p></a>
+          <a href="#" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-twitter me-3"></i>Twitter</p></a>
         </div>
         <!-- Grid column -->
       </div>

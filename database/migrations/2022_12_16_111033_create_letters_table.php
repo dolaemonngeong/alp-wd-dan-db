@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string("phone");
             $table->foreignIdFor(Template::class);
             $table->string("file");
-            $table->string("message");
-            $table->enum('proses', ['menunggu', 'dalam proses','selesai'])->default('menunggu');
+            $table->string("message")->nullable();
+            $table->enum('proses', ['menunggu', 'selesai'])->default('menunggu');
             $table->foreignIdFor(User::class);
             $table->timestamps();
         });

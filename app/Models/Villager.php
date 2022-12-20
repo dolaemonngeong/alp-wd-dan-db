@@ -19,14 +19,15 @@ class Villager extends Model
         "phone",
         "role",
         "gender",
-        "status",
+        "gender",
+        "status"
     ];
 
-    // public function structures(){
-    //     return $this->hasMany(Structure::class);
-    // }
+    public function structures(){
+        return $this->hasMany(Structure::class);
+    }
 
-    // public function comers(){
-    //     return $this->hasMany(Comer::class);
-    // }
+    public function comers(){
+        return $this->hasMany(Comer::class);
+    }
 }

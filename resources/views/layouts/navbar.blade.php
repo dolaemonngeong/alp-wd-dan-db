@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm text-dark">
+<nav class="sticky-top navbar navbar-expand-lg navbar-light shadow-sm text-dark">
     <div class="container-fluid">
       <img src="https://kedirikab.go.id/uploads/filex/logo_pemkab_official_1660871333.png" alt="Bootstrap" width="30" height="24">
       <a class="navbar-brand mx-2" href="/">
@@ -35,13 +35,13 @@
               <li><a class="dropdown-item" href="#">Pelayanan Surat Online</a></li>
             </ul>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             @auth
                 @if(auth()->user()->status == 'admin')
                     <a class="nav-link" href="/admin">Admin</a>
                 @endif
             @endauth
-          </li>
+          </li> --}}
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Admin

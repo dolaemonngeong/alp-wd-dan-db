@@ -13,11 +13,15 @@ class Report extends Model
     protected $fillable = [
         "name",
         "image",
-        "description",
         "phone",
+        "description",
+        "proses",
+        "user_id",
     ];
 
+    // protected $guarded=[];
+
     public function user(){
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

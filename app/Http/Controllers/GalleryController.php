@@ -25,7 +25,11 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        //bikin view
+        return view('ourlayouts.galleri.add-gallery', [
+            'title' =>'Gallery',
+            'galleries' => Gallery::all(),
+        ]);
     }
 
     /**
@@ -36,7 +40,14 @@ class GalleryController extends Controller
      */
     public function store(StoreGalleryRequest $request)
     {
-        //
+        $this->validate($request, [
+            'image' => 'required|image',
+        ]);
+
+        Gallery::create([
+            'image' => $request->file('image')->store('galerry', 'public'),
+        ]);
+        
     }
 
     /**
@@ -81,6 +92,9 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        //
+        $gallety = Gallery::findOrFail($id);
+        $gallety->delete();
+        unlink('storage/'.$gallety->image);
+        return redirect('/data-pelaporan');
     }
 }

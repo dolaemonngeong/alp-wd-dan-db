@@ -42,7 +42,7 @@ class LetterSeeder extends Seeder
                     'template_id' => $t->id,
                     'file' => 'file2.pdf',
                     'message' => 'message 2',
-                    'proses' => 'dalam proses',
+                    'proses' => 'menunggu',
                     'user_id' => $u->id,
                 ]);
             }else if($index==2){
@@ -53,7 +53,7 @@ class LetterSeeder extends Seeder
                     'template_id' => $t->id,
                     'file' => 'file3.pdf',
                     'message' => 'message 3',
-                    'proses' => 'dalam proses',
+                    'proses' => 'selesai',
                     'user_id' => $u->id,
                 ]);
             }else if($index==3){

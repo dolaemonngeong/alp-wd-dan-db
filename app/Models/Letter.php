@@ -18,9 +18,14 @@ class Letter extends Model
         "file",
         "message",
         "proses",
+        "user_id",
     ];
 
     public function template(){
-        return $this->hasMany(Template::class);
+        return $this->belongsTo(Template::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

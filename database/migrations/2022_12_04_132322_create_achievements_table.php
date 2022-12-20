@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Achievementcategory;
+use App\Models\Category;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("image");
-            $table->foreignIdFor(Achievementcategory::class);
+            $table->foreignIdFor(Category::class);
             $table->string("description");
             $table->date("date_achievement");
             $table->timestamps();

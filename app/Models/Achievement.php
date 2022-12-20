@@ -18,7 +18,7 @@ class Achievement extends Model
         "date_achievement"
     ];
 
-    public function achievementcategory(){
-        return $this->hasMany(Achievementcategory::class);
+    public function category(){
+        return $this->hasMany(Category::class);
     }   
 }

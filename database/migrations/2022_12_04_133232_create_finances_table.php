@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('finances', function (Blueprint $table) {
             $table->id();
             $table->string("description");
-            $table->integer("budget");
-            $table->string("note");
+            $table->integer("volume");
+            $table->string("unit");
+            $table->date("date");
+            $table->integer("price");
+            $table->integer("total");
             $table->timestamps();
         });
     }

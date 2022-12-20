@@ -19,37 +19,41 @@ class FinanceSeeder extends Seeder
         
         $faker=Factory::create();
         
-            Finance::factory()->create([
-                'description' => 'ket 1',
-                // 'budget' => '572700000',
-                // 'percentage' => 47.32,
-                'budget' => $faker->randomNumber(9, true),
-                'note' => 'note 1'
-            ]);
+        Finance::factory()->create([
+            'description' => 'ket 1',
+            'volume' => $faker->randomNumber(3, true),
+            'unit' => 'kg',
+            'date' => date('Y_m_d'),
+            'price' => $faker->randomNumber(9, true),
+            'total' => $faker->randomNumber(9, true)
+        ]);
 
-            Finance::factory()->create([
-                'description' => 'ket 2',
-                // 'budget' => '472000000',
-                // 'percentage' => 39.00,
-                'budget' => $faker->randomNumber(9, true),
-                'note' => 'note 2'
-            ]);
-            
-            Finance::factory()->create([
-                'description' => 'ket 3',
-                // 'budget' => '81600',
-                // 'percentage' => 6.74,
-                'budget' => $faker->randomNumber(9, true),
-                'note' => 'note 3'
-            ]);
-            
-            Finance::factory()->create([
-                'description' => 'ket 4',
-                // 'budget' => '82000',
-                // 'percentage' => 6.78,
-                'budget' => $faker->randomNumber(9, true),
-                'note' => 'note 4'
-            ]);
+        Finance::factory()->create([
+            'description' => 'ket 2',
+            'unit' => 'pcs',
+            'volume' => $faker->randomNumber(3, true),
+            'date' => date('Y_m_d'),
+            'price' => $faker->randomNumber(9, true),
+            'total' => $faker->randomNumber(9, true)
+        ]);
+        
+        Finance::factory()->create([
+            'description' => 'ket 3',
+            'volume' => $faker->randomNumber(3, true),
+            'unit' => 'kg',
+            'date' => date('Y_m_d'),
+            'price' => $faker->randomNumber(9, true),
+            'total' => $faker->randomNumber(9, true)
+        ]);
+        
+        Finance::factory()->create([
+            'description' => 'ket 4',
+            'volume' => $faker->randomNumber(3, true),
+            'unit' => 'liter',
+            'date' => date('Y_m_d'),
+            'price' => $faker->randomNumber(9, true),
+            'total' => $faker->randomNumber(9, true)
+        ]);
             
         
     }

@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             PositionSeeder::class,
             TemplateSeeder::class,
             LetterSeeder::class,
-            AchievementCategorySeeder::class,
+            CategorySeeder::class,
             AchievementSeeder::class,
             FinanceSeeder::class,
             VillagerSeeder::class,

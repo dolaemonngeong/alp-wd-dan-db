@@ -11,7 +11,10 @@ class Finance extends Model
 
     protected $fillable = [
         "description",
-        "budget",
-        "note",
+        "volume",
+        "unit",
+        "date",
+        "price",
+        "total"
     ];
 }

@@ -18,19 +18,19 @@ class TemplateSeeder extends Seeder
         Template::factory()->create([
             'name' => 'template pertama',
             'description' => 'desc pertama',
-            'file' => 'template1.pdf',
+            'file' => 'template/template1.pdf',
         ]);
         
         Template::factory()->create([
            'name' => 'template kedua',
            'description' => 'desc kedua',
-           'file' => 'template2.pdf',
+           'file' => 'template/template2.pdf',
         ]);
         
         Template::factory()->create([
             'name' => 'template ketiga',
             'description' => 'desc ketiga',
-            'file' => 'template3.pdf',
+            'file' => 'template/template3.pdf',
         ]);
     }
 }

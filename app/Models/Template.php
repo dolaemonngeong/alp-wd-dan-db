@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Template extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         "name",
-        "image",
-        "achievementcategory_id",
         "description",
-        "date_achievement"
+        "file",
+        "screenshoot"
     ];
 
     public function letter(){
