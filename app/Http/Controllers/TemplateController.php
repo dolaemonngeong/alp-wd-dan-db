@@ -105,37 +105,31 @@ class TemplateController extends Controller
     {
         $template = Template::findOrFail($id);
         // dd('1');
-        if($request->file('screenshoot') && $request->file('file')){
+        if($request->file('screenshoot')){
             // dd('b');
             unlink('storage/'.$template->screenshoot);
-            unlink('storage/'.$template->file);
-            $template->update([
+            $report->update([
                 'name' => $request->name,
+                'image' => $request->file('image')->store('report', 'public'),
                 'description' => $request->description,
-                'file' => $request->file('file')->store('report', 'public'),
-                'screenshoot' => $request->file('screenshoot')->store('report', 'public'),
-        
+                'phone' => $request->phone,
+                'proses' => $request->proses,
+                // 'user_id' => auth()->user()->id
             ]);
-        }else{
-            if($request->file('screenshoot'){
-                // unlink('storage/'.$template->screenshoot);
-                $template->update([
-                    'name' => $request->name,
-                    'description' => $request->description,
-                    'screenshoot' => $request->file('screenshoot')->store('report', 'public'),
-                ]);
-            }else{
-                unlink('storage/'.$template->file);
-                $template->update([
-                    'name' => $request->name,
-                    'description' => $request->description,
-                    'file' => $request->file('file')->store('report', 'public'),
-                ]);
-            }
-            
-        
         }
-// dd('b');
+        if($request->file('file')){
+            // dd('b');
+            unlink('storage/'.$template->file);
+            $report->update([
+                'name' => $request->name,
+                'file' => $request->file('file')->store('report', 'public'),
+                'description' => $request->description,
+                'phone' => $request->phone,
+                'proses' => $request->proses,
+                // 'user_id' => auth()->user()->id
+            ]);
+        }
+            
         return redirect('/data-jenissurat');
     }
 
