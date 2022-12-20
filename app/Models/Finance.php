@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Finance extends Model
 {
     use HasFactory;
-<<<<<<< Updated upstream
-=======
 
     protected $fillable = [
         "description",
@@ -19,5 +17,4 @@ class Finance extends Model
         "price",
         "total"
     ];
->>>>>>> Stashed changes
 }
