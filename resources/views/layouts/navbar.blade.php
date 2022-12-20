@@ -86,7 +86,7 @@
             </form>
             @endauth
             @guest
-            <a class="btn login-btn mx-2" href="/login" role="button">Masuk</a>
+            <a class="btn login-btn mx-2"  href="/login" role="button">Masuk</a>
             @endguest
           </li>
           <li>
