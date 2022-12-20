@@ -21,9 +21,15 @@ return new class extends Migration
             $table->string("email");
             $table->string("phone");
             $table->foreignIdFor(Template::class);
+<<<<<<< Updated upstream:database/migrations/2022_12_04_132804_create_online_letters_table.php
             $table->string("file_letter");
             $table->string("message");
             $table->enum('proses', ['menunggu', 'dalam proses','selesai']);
+=======
+            $table->string("file");
+            $table->string("message")->nullable();
+            $table->enum('proses', ['menunggu', 'selesai'])->default('menunggu');
+>>>>>>> Stashed changes:database/migrations/2022_12_16_111033_create_letters_table.php
             $table->foreignIdFor(User::class);
             $table->timestamps();
         });

@@ -37,8 +37,13 @@ class PositionController extends Controller
     public function create()
     {
         return view('ourlayouts.jabatan.createposition', [
+<<<<<<< Updated upstream
             'title' =>'Jabatan',
             "positions" => Position::all()
+=======
+            'title' =>'Tambah Jabatan',
+            'positions' => Position::all()
+>>>>>>> Stashed changes
         ]);
     }
 
@@ -51,7 +56,12 @@ class PositionController extends Controller
     public function store(StorePositionRequest $request)
     {
         $this->validate($request, [
+<<<<<<< Updated upstream
             'name' => 'required'
+=======
+            'name' => 'required|string|max:60',
+            'description' => 'required'
+>>>>>>> Stashed changes
         ]);
 
         Position::create([
@@ -80,7 +90,11 @@ class PositionController extends Controller
     public function edit($id)
     {
         return view("ourlayouts.jabatan.updateposition", [
+<<<<<<< Updated upstream
             "theTitle" => "Membuat Jabatan Baru",
+=======
+            "maintitle" => "Perbarui Jabatan",
+>>>>>>> Stashed changes
             "position"=>Position::findOrFail($id)
         ]);
     }

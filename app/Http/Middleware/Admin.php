@@ -23,7 +23,7 @@ class Admin
             return $next($request);
         }else{
             return response()->view('error',[
-                'theTitle' => 'Error'
+                'maintitle' => 'Error'
             ]);
         }
     }

@@ -19,8 +19,9 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->string("name");
             $table->string("image");
-            $table->string("description");
+            $table->string("description")->nullable();
             $table->string("phone");
+            $table->enum('proses', ['menunggu', 'selesai'])->default('menunggu');
             $table->timestamps();
         });
     }

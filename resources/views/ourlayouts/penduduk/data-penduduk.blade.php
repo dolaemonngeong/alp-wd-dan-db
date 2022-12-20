@@ -8,6 +8,7 @@
         <input type="button" class="btn btn-dark text-white text-sm rounded-md" href="{{ route('login') }}" value="Tambah Data"/>
     </div>
 </div>
+<<<<<<< Updated upstream
 <div class="container-fluid mt-8">
     <form class="d-flex" role="search">
       <input class="block me-2 w-20% rounded-md " type="search" placeholder="Cari data berdasarkan nama atau NIK" aria-label="Search">
@@ -24,6 +25,76 @@
       </div>
     </form>  
 </div>
+=======
+<div class="container-fluid my-4">
+    <form id="form" action="/data-penduduk" method="POST" class="form d-flex" role="search">
+        @csrf
+        <input id="searchInput" type="search" class="form-control outline-secondary rounded-md me-3" placeholder="Cari berdasarkan nama atau NIK..." name="search" value="{{ $search }}">
+        {{-- <input class="block bg-white outline-gray shadow-sm me-2 w-20% rounded-md " type="search" placeholder="Cari data berdasarkan nama atau NIK" aria-label="Search"> --}}
+        {{-- <input type="search" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black-500 focus:border-black-500 block w-full p-2.5 mr-2 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari data berdasarkan nama atau NIK"> --}}
+
+        {{-- <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Cari</button> --}}
+        {{-- </form>
+    <form action="/data-penduduk" method="POST" id="filter-form">
+     --}}
+        {{-- <div class="dropdown">
+  <button class="btn btn-outline-secondary dropdown-toggle ml-4" type="button" data-bs-toggle="dropdown" aria-expanded="false" name="" value="status">
+          
+      </button>
+      <ul class="dropdown-menu" name="status">
+         <li><a class="dropdown-item" href="#" value="">Semua</a></li>
+        <li><a class="dropdown-item" href="#" value="hidup">Hidup</a></li>
+        <li><a class="dropdown-item" href="#" value="pindah">Pindah</a></li>
+        <li><a class="dropdown-item" href="#" value="meninggal">Meninggal</a></li>
+    </ul>
+</div> --}}
+        <select name="status" id="searchSelect" class="form-select" style="width: auto" aria-label="Default select example">
+            {{-- <select class=""  name="status"> --}}
+            <option value="#">Semua</option>
+            <option value="hidup" {{ ($status == "hidup") ? 'selected' : '' }}>Hidup</option>
+            <option value="pindah" {{ ($status == "pindah") ? 'selected' : '' }}>Pindah</option>
+            <option value="meninggal" {{ ($status == "meninggal") ? 'selected' : '' }}>Meninggal</option>
+        </select>
+        <button class="btn btn-outline-secondary ml-4" type="submit" onclick="filterData()">Cari</button>
+
+    </form>
+    {{-- <script>
+    $('.dropdown-item').click(function() {
+        $('#filter-form').submit();
+    });
+</script> --}}
+
+    {{-- <script>
+        $(document).ready(function() {
+    $('#form').submit(function() {
+        $('input[name=search]').val($('#searchInput').val());
+        $('select[name=status]').val($('#statusSelect').val());
+    });
+});
+    </script> --}}
+
+</div>
+{{-- <form action="/data-penduduk" method="POST">  --}}
+{{-- chat open ai
+        <label for="status">Status:</label> --}}
+{{-- <select name="status">
+            <option value="hidup">Hidup</option>
+            <option value="pindah">Pindah</option>
+            <option value="meninggal">Meninggal</option>
+         </select> --}}
+{{-- <button type="submit">Filter</button>   --}}
+{{-- <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle ml-4" type="submit" data-bs-toggle="dropdown" aria-expanded="false">
+                Saring
+            </button>
+            <ul class="dropdown-menu" name="status">
+                <li><a class="dropdown-item" href="#" value="hidup">Hidup</a></li>
+                <li><a class="dropdown-item" href="#" value="pindah">Pindah</a></li>
+                <li><a class="dropdown-item" href="#" value="meninggal">Meninggal</a></li>
+            </ul>
+        </div> --}}
+{{-- </form> --}}
+>>>>>>> Stashed changes
 
 
 <div class="my-4 flex justify-start">
@@ -76,6 +147,47 @@
                     <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button>
                 </td>
             </tr>
+<<<<<<< Updated upstream
+=======
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal{{$villager->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Hapus</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            {{-- <form action="/villagertest"> --}}
+                            <form action="{{ route("villagers.updatestatus") }}">
+                                {{-- @csrf --}}
+                                <input type='hidden' name="id" value="{{ $villager->id}}">
+                                <p>Pilihlah status untuk {{ $villager['name'] }} dari penduduk?<p>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="status" value="meninggal" id="flexRadioDefault2" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Meninggal
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="status" value="pindah" id="flexRadioDefault2" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Pindah
+                                            </label>
+
+                                        </div>
+                                        <button type="btn" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        <button type="btn submit" class="btn btn-primary">Simpan</button>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            @endforeach
+>>>>>>> Stashed changes
         </tbody>
     </table>
 </div>

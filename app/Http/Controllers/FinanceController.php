@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Finance;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreFinanceRequest;
 use App\Http\Requests\UpdateFinanceRequest;
 
@@ -13,9 +14,23 @@ class FinanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+<<<<<<< Updated upstream
         //
+=======
+        if($request->has('search')){
+            return view('ourlayouts.keuangan.data-keuangan',[
+                'title' =>'Keuangan',
+                'finances' => Finance::where('description','like','%'.$request->search.'%')->orWhere('volume', 'like', '%'.$request->search.'%')->orWhere('unit', 'like', '%'.$request->search.'%')->orWhere('date', 'like', '%'.$request->search.'%')->orWhere('price', 'like', '%'.$request->search.'%')->orWhere('total', 'like', '%'.$request->search.'%')->paginate()
+            ]);
+        }else{
+            return view('ourlayouts.keuangan.data-keuangan',[
+                'title' =>'Keuangan',
+                'finances' => Finance::paginate(10),
+            ]);
+        }
+>>>>>>> Stashed changes
     }
 
     /**
@@ -25,7 +40,10 @@ class FinanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('ourlayouts.keuangan.add-keuangan', [
+            'title' =>'Keuangan',
+            "finances" => Finance::all()
+        ]);
     }
 
     /**
@@ -36,7 +54,24 @@ class FinanceController extends Controller
      */
     public function store(StoreFinanceRequest $request)
     {
-        //
+        $this->validate($request, [
+            'description' => 'required',
+            'volume' => 'required',
+            'unit' => 'required',
+            'date' => 'required',
+            'price' => 'required',
+            'total' => 'required'
+        ]);
+
+        Finance::create([
+            'description' => $request->description,
+            'volume' => $request->volume,
+            'unit' => $request->unit,
+            'date' => $request->date,
+            'price' => $request->price,
+            'total' => $request->total
+        ]);
+        return redirect('/data-keuangan');
     }
 
     /**
@@ -58,7 +93,10 @@ class FinanceController extends Controller
      */
     public function edit(Finance $finance)
     {
-        //
+        return view("ourlayouts.keuangan.updatekeuangan", [
+            "theTitle" => "Ubah Keuangan",
+            "finance"=>Finance::findOrFail($id)
+        ]);
     }
 
     /**
@@ -70,7 +108,18 @@ class FinanceController extends Controller
      */
     public function update(UpdateFinanceRequest $request, Finance $finance)
     {
-        //
+        $finance = Finance::findOrFail($id);
+
+        $finance->update([
+            "description" => $request->description,
+            "volume" => $request->volume,
+            "unit" => $request->unit,
+            "date" => $request->date,
+            "price" => $request->price,
+            "total" => $request->total
+        ]);
+
+        return redirect('/data-keuangan');
     }
 
     /**
@@ -79,8 +128,12 @@ class FinanceController extends Controller
      * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Finance $finance)
+    public function destroy($id)
     {
-        //
+        $finance = Finance::findOrFail($id);
+
+        $finance->delete();
+
+        return redirect('/data-keuangan');
     }
 }

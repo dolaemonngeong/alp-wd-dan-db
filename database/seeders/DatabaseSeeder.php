@@ -20,8 +20,13 @@ class DatabaseSeeder extends Seeder
             ReportSeeder::class,
             PositionSeeder::class,
             TemplateSeeder::class,
+<<<<<<< Updated upstream
             OnlineLetterSeeder::class,
             AchievementCategorySeeder::class,
+=======
+            LetterSeeder::class,
+            CategorySeeder::class,
+>>>>>>> Stashed changes
             AchievementSeeder::class,
             FinanceSeeder::class,
             VillagerSeeder::class,

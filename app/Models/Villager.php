@@ -24,8 +24,16 @@ class Villager extends Model
     public function structures(){
         return $this->hasMany(Structure::class);
     }
+<<<<<<< Updated upstream
 
     public function comers(){
         return $this->hasMany(Structure::class);
     }
+=======
+
+    public function comers(){
+        return $this->hasMany(Comer::class);
+    }
+
+>>>>>>> Stashed changes
 }

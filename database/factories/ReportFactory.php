@@ -17,7 +17,7 @@ class ReportFactory extends Factory
     public function definition()
     {
         return [
-            'image' => 'laporan.jpg'
+            'image' => 'report/laporan.jpg'
         ];
     }
 }

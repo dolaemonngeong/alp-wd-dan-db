@@ -11,17 +11,14 @@
 <div class="container-fluid mt-8">
     <form class="d-flex" role="search">
       <input class="block me-2 w-20% rounded-md " type="search" placeholder="Cari data berdasarkan nama atau NIK" aria-label="Search">
-      <button class="btn btn-outline-dark" type="submit">Cari</button>
-      <div class="dropdown">
-        <button class="btn btn-outline-dark dropdown-toggle ml-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Saring
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
+      {{-- <button class="btn btn-outline-dark" type="submit">Cari</button> --}}
+      <select class="form-select" style="width: auto" aria-label="Default select example">
+        <option selected>Saring</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <button class="btn btn-outline-secondary ml-4" type="submit">Cari</button>
     </form>  
 </div>
 

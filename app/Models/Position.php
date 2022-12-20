@@ -15,6 +15,6 @@ class Position extends Model
     ];
 
     public function position(){
-        return $this->belongsTo(Structure::class);
+        return $this->hasMany(Structure::class);
     }
 }

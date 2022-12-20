@@ -29,7 +29,11 @@ class OnlineLetterSeeder extends Seeder
                     'email' => $fakerID->email,
                     'phone' => $fakerID->phoneNumber,
                     'template_id' => $t->id,
+<<<<<<< Updated upstream:database/seeders/OnlineLetterSeeder.php
                     'file_letter' => 'file1.pdf',
+=======
+                    'file' => 'letter/file1.pdf',
+>>>>>>> Stashed changes:database/seeders/LetterSeeder.php
                     'message' => 'message 1',
                     'proses' => 'selesai',
                     'user_id' => $u->id,
@@ -40,9 +44,13 @@ class OnlineLetterSeeder extends Seeder
                     'email' => $fakerID->email,
                     'phone' => $fakerID->phoneNumber,
                     'template_id' => $t->id,
+<<<<<<< Updated upstream:database/seeders/OnlineLetterSeeder.php
                     'file_letter' => 'file2.pdf',
+=======
+                    'file' => 'letter/file2.pdf',
+>>>>>>> Stashed changes:database/seeders/LetterSeeder.php
                     'message' => 'message 2',
-                    'proses' => 'dalam proses',
+                    'proses' => 'selesai',
                     'user_id' => $u->id,
                 ]);
             }else if($index==2){
@@ -51,9 +59,13 @@ class OnlineLetterSeeder extends Seeder
                     'email' => $fakerID->email,
                     'phone' => $fakerID->phoneNumber,
                     'template_id' => $t->id,
+<<<<<<< Updated upstream:database/seeders/OnlineLetterSeeder.php
                     'file_letter' => 'file3.pdf',
+=======
+                    'file' => 'letter/file3.pdf',
+>>>>>>> Stashed changes:database/seeders/LetterSeeder.php
                     'message' => 'message 3',
-                    'proses' => 'dalam proses',
+                    'proses' => 'menunggu',
                     'user_id' => $u->id,
                 ]);
             }else if($index==3){
@@ -62,7 +74,11 @@ class OnlineLetterSeeder extends Seeder
                     'email' => $fakerID->email,
                     'phone' => $fakerID->phoneNumber,
                     'template_id' => $t->id,
+<<<<<<< Updated upstream:database/seeders/OnlineLetterSeeder.php
                     'file_letter' => 'file4.pdf',
+=======
+                    'file' => 'letter/file4.pdf',
+>>>>>>> Stashed changes:database/seeders/LetterSeeder.php
                     'message' => 'message 4',
                     'proses' => 'menunggu',
                     'user_id' => $u->id,
