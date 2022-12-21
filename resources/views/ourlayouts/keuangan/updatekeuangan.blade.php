@@ -67,6 +67,7 @@
             </script>
 
             <!-- Jumlah -->
+            <p name="total">Total Sebelumnya: {{ $finance->total}}</p>
             <p name="total">Total: <span id="total" name="total"></span></p>
             
             {{-- <div>

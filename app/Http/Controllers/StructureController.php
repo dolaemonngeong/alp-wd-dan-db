@@ -50,25 +50,57 @@ class StructureController extends Controller
         // Get filter criteria from the form submission
         $search = $request->input('search');
         $status_jabat = $request->input('status_jabat');
+        // $structure = Structure::select("*")
+        //     ->with('position','villager')
+        //     ->whereHas('villager',function($query) use ($search) {
+        //         $query->where('name', 'like', '%'.$search.'%');
+        //     })
+        //     ->whereHas('position',function($query) use ($search) {
+        //         $query->where('name', 'like', '%'.$search.'%');
+        //     })
+        //     ->orWhere('status_jabat', $status_jabat)
+        //     ->paginate(10);
+        // if($search!=''){
+            // dd('t');
+
+                // $stucture = Structure::where(function($query) use ($search){
+                //     $query->where('appointed_date','like','%'.$search.'%')
+                //     ->orWhere('resign_date', 'like', '%'.$search.'%');
+                // })->orWhereHas('villager', function($query) use ($search){
+                //     $query->where('name','like','%'.$search.'%');
+                // })->orWhereHas('position', function($query) use ($search){
+                //     $query->where('name','like','%'.$search.'%');
+                // })->when($status_jabat != '#', function($query) use ($status_jabat) {
+                //     $query->where('status_jabat', $status_jabat);
+                // })
+                // ->paginate();
+            
+        //}
+        // if($status_jabat!='#'){
+        //     // dd('a');
+        //     $structure = Structure::where('status_jabat', $status_jabat)->paginate();
+        // }
+
 
         return view('ourlayouts.perangkat.data-perangkat', [
             'pagetitle' =>'perangkat',
             'search' => $search,
             'status_jabat' => $status_jabat,
             'maintitle' =>'perangkat',
-            'structures' => Structure::select("*")
-            ->with('position','villager')
-            ->when($search !='', function($query) use ($search) {
-                $query->whereHas('villager', function($query) use ($search) {
-                    $query->where('name', 'like', '%'.$search.'%');
-                })
-                ->orWhere('appointed_date', 'like', '%'.$search.'%')
-                ->orWhere('resign_date', 'like', '%'.$search.'%');
-            })
-            ->when($status_jabat != '#', function($query) use ($status_jabat) {
+            'structures' =>  Structure::where(function($query) use ($search){
+                $query->with('villager','position')
+                ->when($search != '', function($query) use ($search) {
+                    $query->where('appointed_date','like','%'.$search.'%')
+                    ->orWhere('resign_date', 'like', '%'.$search.'%');
+                })->orWhereHas('villager', function($query) use ($search){
+                    $query->where('name','like','%'.$search.'%');
+                })->orWhereHas('position', function($query) use ($search){
+                    $query->where('name','like','%'.$search.'%');
+                });
+            })->when($status_jabat != '#', function($query) use ($status_jabat) {
                 $query->where('status_jabat', $status_jabat);
             })
-            ->paginate(10)
+            ->paginate()
         ]);
     }
 
