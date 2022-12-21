@@ -38,7 +38,6 @@ class PositionController extends Controller
     {
         return view('ourlayouts.jabatan.createposition', [
             'title' =>'Tambah Jabatan',
-            "positions" => Position::all()
         ]);
     }
 

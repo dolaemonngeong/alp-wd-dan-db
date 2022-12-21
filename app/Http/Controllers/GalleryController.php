@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
 
@@ -13,9 +14,18 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('ourlayouts.gallery', [
+            'galleries' =>Gallery::all(),
+        ]);
+    }
+
+    public function adminpage(Request $request)
+    {
+        return view('ourlayouts.galleri.data-gallery', [
+            'galleries' =>Gallery::all(),
+        ]);
     }
 
     /**
@@ -27,8 +37,7 @@ class GalleryController extends Controller
     {
         //bikin view
         return view('ourlayouts.galleri.add-gallery', [
-            'title' =>'Gallery',
-            'galleries' => Gallery::all(),
+            'maintitle' =>'Unggah Foto Galeri',
         ]);
     }
 
@@ -47,6 +56,8 @@ class GalleryController extends Controller
         Gallery::create([
             'image' => $request->file('image')->store('galerry', 'public'),
         ]);
+
+        return redirect('/galeri');
         
     }
 
@@ -90,11 +101,11 @@ class GalleryController extends Controller
      * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery)
+    public function destroy($id)
     {
-        $gallety = Gallery::findOrFail($id);
-        $gallety->delete();
-        unlink('storage/'.$gallety->image);
-        return redirect('/data-pelaporan');
+        $gallery = Gallery::findOrFail($id);
+        $gallery->delete();
+        unlink('storage/'.$gallery->image);
+        return redirect('/data-gallery');
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('container')
-{{-- <x-guest-layout>
+<x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <h1 style="font-size: 2rem; font-weight: bolder; padding-top: 2rem;">
@@ -64,13 +64,15 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout> --}}
-<div class="mb-3">
+</x-guest-layout>
+
+{{-- <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
+</div> --}}
+
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 
@@ -37,7 +38,6 @@ class CategoryController extends Controller
     {
         return view('ourlayouts.kategori.add-kategori', [
             'title' =>'Kategori',
-            "categories" => Category::all()
         ]);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Finance;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreFinanceRequest;
 use App\Http\Requests\UpdateFinanceRequest;
 
@@ -37,7 +38,6 @@ class FinanceController extends Controller
     {
         return view('ourlayouts.keuangan.add-keuangan', [
             'title' =>'Keuangan',
-            "finances" => Finance::all()
         ]);
     }
 
@@ -49,14 +49,13 @@ class FinanceController extends Controller
      */
     public function store(StoreFinanceRequest $request)
     {
-        $this->validate($request, [
-            'description' => 'required',
-            'volume' => 'required',
-            'unit' => 'required',
-            'date' => 'required',
-            'price' => 'required',
-            'total' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'description' => 'required',
+        //     'volume' => 'required',
+        //     'unit' => 'required',
+        //     'date' => 'required',
+        //     'price' => 'required'
+        // ]);
 
         Finance::create([
             'description' => $request->description,
@@ -64,7 +63,7 @@ class FinanceController extends Controller
             'unit' => $request->unit,
             'date' => $request->date,
             'price' => $request->price,
-            'total' => $request->total
+            'total' => $request->volume * $request->price
         ]);
         return redirect('/data-keuangan');
     }
@@ -86,7 +85,7 @@ class FinanceController extends Controller
      * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Finance $finance)
+    public function edit($id)
     {
         return view("ourlayouts.keuangan.updatekeuangan", [
             "theTitle" => "Ubah Keuangan",
@@ -101,7 +100,7 @@ class FinanceController extends Controller
      * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFinanceRequest $request, Finance $finance)
+    public function update(UpdateFinanceRequest $request, $id)
     {
         $finance = Finance::findOrFail($id);
 
@@ -111,7 +110,7 @@ class FinanceController extends Controller
             "unit" => $request->unit,
             "date" => $request->date,
             "price" => $request->price,
-            "total" => $request->total
+            "total" => $request->volume * $request->price
         ]);
 
         return redirect('/data-keuangan');

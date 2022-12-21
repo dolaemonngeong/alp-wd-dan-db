@@ -5,56 +5,51 @@
     <x-auth-card>
         <x-slot name="logo">
             <h1 style="font-size: 2rem; font-weight: bolder;">
-                Tambah Prestasi Desa
+                {{ $maintitle}}
             </h1>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('achievements.store') }}">
             @csrf
 
             <!-- Name -->
             <div>
                 <x-input-label for="name" :value="__('Nama')" />
-                <select name="name" id="name" class="js-example-basic-single block text-gray-700 mt-1 w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" required>
-                    <option value="a">alabama</option>
-                    <option value="a">belgia</option>
-                    <option value="a">coalacomma</option>
-                    <option value="a">denmark</option>
-                </select>
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
             <!-- Photo -->
             <div class="mt-4">
-                <x-input-label for="photo" class="form-label" :value="__('Unggah Foto')" />
-                <input id="photo" class="form-control mt-1 w-full" type="file" name="photo" :value="old('photo')" required />
-                <x-input-error :messages="$errors->get('photo')" class="mt-2" />
+                <x-input-label for="image" class="form-label" :value="__('Unggah Foto')" />
+                <input id="image" class="form-control mt-1 w-full" type="file" name="image" accept="image/*" 
+                required />
+                <x-input-error :messages="$errors->get('image')" class="mt-2" />
             </div>
 
             <!-- Category -->
             <div>
                 <x-input-label for="category" :value="__('Kategori')" />
-                <select name="category" id="category" class="js-example-basic-single block text-gray-700 mt-1 w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" required>
-                    <option value="a">alabama</option>
-                    <option value="a">belgia</option>
-                    <option value="a">coalacomma</option>
-                    <option value="a">denmark</option>
+                <select name="category_id" id="category_id" class="js-example-basic-single block text-gray-700 mt-1 w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" required>
+                    @foreach($categories as $category)
+                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                    @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('category')" class="mt-2" />
             </div>
 
             <!-- Date -->
             <div class="mt-4">
-                <x-input-label for="date" :value="__('Tanggal')" />
-                <x-text-input id="date" class="block mt-1 w-full" type="date" name="date" :value="old('date')" required />
-                <x-input-error :messages="$errors->get('date')" class="mt-2" />
+                <x-input-label for="date_achievement" :value="__('Tanggal')" />
+                <x-text-input id="date_achievement" class="block mt-1 w-full" type="date" name="date_achievement" :value="old('date')" required />
+                <x-input-error :messages="$errors->get('date_achievement')" class="mt-2" />
             </div>
 
             <!-- Description -->
             <div class="mt-4">
-                <x-input-label for="desc" :value="__('Deskripsi')" />
-                <x-text-input id="desc" class="block mt-1 w-full" type="text" name="desc" :value="old('desc')" required />
-                <x-input-error :messages="$errors->get('desc')" class="mt-2" />
+                <x-input-label for="description" :value="__('Deskripsi')" />
+                <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required />
+                <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
 
             <div class="flex items-center justify-center mt-4">

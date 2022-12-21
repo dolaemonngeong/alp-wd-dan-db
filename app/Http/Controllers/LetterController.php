@@ -73,7 +73,6 @@ class LetterController extends Controller
     {
         return view('ourlayouts.surat.add-surat', [
             'maintitle' =>'Pelayanan Surat Online',
-            'letters' => Letter::all(),
             'templates' => Template::all(),
         ]);
     }
@@ -89,21 +88,22 @@ class LetterController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:60',
             'email' => 'required|email',
-            'phone' => 'required|numeric|digits:10',
+            'phone' => 'required|numeric|min:10',
             'template_id' => 'required',
             'file' => 'required'
         ]);
 
-        if($request->message=""){
-            Letter::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'phone' => $request->phone,
-                    'template_id' => $request->template_id,
-                    'file'=>$request->file('file')->store('letter', 'public'),
-                    'user_id' => auth()->user()->id,
-            ]);
-        }else{
+        // if($request->message=""){
+            // dd('ga masuk');
+            // Letter::create([
+            //         'name' => $request->name,
+            //         'email' => $request->email,
+            //         'phone' => $request->phone,
+            //         'template_id' => $request->template_id,
+            //         'file'=>$request->file('file')->store('letter', 'public'),
+            //         'user_id' => auth()->user()->id,
+            // ]);
+        // }else{
             Letter::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -113,7 +113,7 @@ class LetterController extends Controller
                 'user_id' => auth()->user()->id,
                 'message' => $request->message
             ]);
-        }
+        //}
 
         if(auth()->user()->status == 'admin'){
             // dd('admin');
@@ -165,7 +165,7 @@ class LetterController extends Controller
 
         if($request->file('file')){
             // dd('t');
-            unlink('storeage/'.$request->file);
+            unlink('storage/'.$request->file);
             $letter->update([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -195,7 +195,7 @@ class LetterController extends Controller
      * @param  \App\Models\Letter  $letter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Letter $letter)
+    public function destroy($id)
     {
         $letter = Letter::findOrFail($id);
         $letter->delete();

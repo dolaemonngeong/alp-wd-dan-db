@@ -15,7 +15,7 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // if($request->has('search')){
         //     return view('ourlayouts.pelaporan.data-pelaporan',[
@@ -69,7 +69,6 @@ class ReportController extends Controller
     {
         return view('ourlayouts.pelaporan.add-pelaporan', [
             'title' =>'pelaporan',
-            'reports' => Report::all(),
         ]);
     }
 
@@ -85,7 +84,7 @@ class ReportController extends Controller
         $validatedData = $this->validate($request, [
             'name' => 'required|string|max:60',
             'image' => 'required|image',
-            'phone' => 'required|numeric|digits:10',
+            'phone' => 'required|numeric|min:10',
         ]);
 
         //kl eror pk ini
@@ -98,14 +97,14 @@ class ReportController extends Controller
 
         // $validatedData['user_id'] = auth()->user()->id;
 
-        if($request->description=""){
-            Report::create([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'user_id' => auth()->user()->id,
-            'image' => $request->file('image')->store('report', 'public'),
-        ]);
-        }else{
+        // if($request->description=""){
+        //     Report::create([
+        //     'name' => $request->name,
+        //     'phone' => $request->phone,
+        //     'user_id' => auth()->user()->id,
+        //     'image' => $request->file('image')->store('report', 'public'),
+        // ]);
+        // }else{
             Report::create([
                 'name' => $request->name,
                 'description' => $request->description,
@@ -113,7 +112,7 @@ class ReportController extends Controller
                 'user_id' => auth()->user()->id,
                 'image' => $request->file('image')->store('report', 'public')
             ]);
-        }
+        //}
 
 
         if(auth()->user()->status == 'admin'){

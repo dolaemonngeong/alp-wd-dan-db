@@ -2,7 +2,7 @@
 @section('container')
 <div class="flex items-center w-100% container-fluid">
     <h1 class="justify-start" style="font-weight: bold; font-size: 35px;">
-        {{ __('Daftar Kategori Prestasi') }}
+        {{ $maintitle }}
     </h1>
     <a class="btn text-light ms-auto" href="{{ route("templates.create") }}" role="button" style="background-color: #124A49">Tambah Data</a>
 </div>
@@ -24,7 +24,9 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nama Jenis Surat</th>
-                <th scope="col"></th>
+                <th scope="col">Deskripsi</th>
+                <th scope="col">File</th>
+                <th scope="col">Screenshoot</th>
                 <th scope="col">Ubah</th>
                 {{-- <th scope="col">Hapus</th> --}}
             </tr>
@@ -33,9 +35,12 @@
             @foreach($templates as $template)
             <tr>
                 <th scope="row">{{ $loop->iteration }}</th>
-                <td colspan="2">{{ $template['name'] }}</td>
+                <td>{{ $template['name'] }}</td>
+                <td>{{ $template['description'] }}</td>
+                <td><a href="{{ asset('storage/'.$template->file)}}">{{ $template['file'] }}</a></td>
+                <td><img width="200" height="200" src="{{ asset('storage/'.$template->screenshoot ) }}" href="{{ asset('storage/'.$template->screenshoot)}}"></td>
                 <td>
-                    <a class="btn text-light" href="{{ route("templates.edit", $category->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
+                    <a class="btn text-light" href="{{ route("templates.edit", $template->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
                 </td>
                 {{-- <td>
                     <form action="{{ route("categories.destroy", $category->id) }}" method="POST">

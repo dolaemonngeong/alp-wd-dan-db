@@ -123,7 +123,6 @@ class VillagerController extends Controller
         return view('ourlayouts.penduduk.reg-penduduk', [
             'pagetitle' =>'Rgistrasi Penduduk',
             'maintitle' =>'Rgistrasi Penduduk',
-            "villagers" => Villager::all()
         ]);
     }
 
@@ -140,7 +139,7 @@ class VillagerController extends Controller
             'birth_place' => 'required',
             'birth_date' => 'required',
             'nik' => 'required|numeric|digits:16',
-            'phone' => 'required|numeric|digits:12',
+            'phone' => 'required|numeric|min:10',
             'role' => 'required',
             'gender' => 'required',
         ]);

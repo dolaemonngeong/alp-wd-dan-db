@@ -44,9 +44,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/galeri', function(){
-    return view('ourlayouts.gallery');
-});
+Route::get('/galeri',  [GalleryController::class, 'index']);
 
 Route::get('/perangkat', function(){
     return view('ourlayouts.perangkat');
@@ -66,11 +64,13 @@ Route::resource('categories', CategoryController::class)->middleware(['admin']);
 
 Route::resource('galleries', GalleryController::class);
 
-Route::resource('templates', TemplateController::class)->Withoutmiddleware(['guest']);
+Route::resource('templates', TemplateController::class)->middleware(['admin']);
 
 Route::resource('structures', StructureController::class)->middleware(['admin']);
 
 Route::resource('letters', LetterController::class)->middleware(['auth']);
+
+Route::resource('templates', TemplateController::class)->middleware(['auth']);
 
 Route::resource('reports', ReportController::class)->middleware(['auth']);
 
@@ -116,14 +116,20 @@ Route::get('/data-pelaporan', [ReportController::class, 'index'])->middleware(['
 
 Route::get('/data-kategori', [CategoryController::class,'index'])->middleware(['admin']);
 
+Route::get('/data-jenissurat', [TemplateController::class,'index'])->middleware(['admin']);
+
+Route::get('/data-prestasi', [AchievementController::class,'index'])->middleware(['admin']);
+
+Route::get('/data-gallery', [GalleryController::class,'adminpage'])->middleware(['admin']);
+
 Route::get('/add-pelaporan', [ReportController::class,'create'])->middleware(['auth']);
 
 Route::get('/add-jenissurat', [TemplateController::class,'create'])->middleware(['admin']);
 
 Route::get('/add-suratonline', [LetterController::class.'create'])->middleware(['auth']);
 
-Route::get('/add-gallery', [GalleryControler::class,'create'])->middleware(['admin']);
+Route::get('/add-gallery', [GalleryController::class,'create'])->middleware(['admin']);
 
-Route::get('/add-kategoriprestasi', [AchievemtCategoryController::class,'create'])->middleware(['admin']);
+Route::get('/add-kategoriprestasi', [CategoryController::class,'create'])->middleware(['admin']);
 
 Route::get('/add-prestasi', [AchievementController::class,'create'])->middleware(['admin']);

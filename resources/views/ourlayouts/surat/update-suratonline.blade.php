@@ -65,11 +65,11 @@
             <div class="mt-4">
                 <x-input-label class="form-check-label" for="proses" :value="__('Proses')" />
                 <div class="form-check">
-                    <input type="radio" class="form-check-input mr-1" type="radio" name="proses" id="proses1" value="Berjalan" id="flexRadioDefault2" {{ ($letter->proses === "menunggu") ? 'checked' : '' }}>
+                    <input type="radio" class="form-check-input mr-1" type="radio" name="proses" id="proses1" value="menunggu" id="flexRadioDefault2" {{ ($letter->proses === "menunggu") ? 'checked' : '' }}>
                     <label class="form-check-label text-gray-700" for="proses1" required>Berjalan</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input mr-1" type="radio" name="proses" id="proses2" value="Selesai" id="flexRadioDefault2" {{ ($letter->proses === "selesai") ? 'checked' : '' }}>
+                    <input type="radio" class="form-check-input mr-1" type="radio" name="proses" id="proses2" value="selesai" id="flexRadioDefault2" {{ ($letter->proses === "selesai") ? 'checked' : '' }}>
                     <label class="form-check-label text-gray-700" for="proses2" required>Selesai</label>
                 </div>
                 <x-input-error :messages="$errors->get('proses')" class="mt-2" />

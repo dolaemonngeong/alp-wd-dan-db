@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Template;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreTemplateRequest;
 use App\Http\Requests\UpdateTemplateRequest;
 
@@ -13,11 +14,11 @@ class TemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if($request->has('search')){
-            return view('ourlayouts.jenisSurat.data-jenisSurat',[
-                'title' =>'Jenis Surat',
+            return view('ourlayouts.jenissurat.data-jenissurat',[
+                'maintitle' =>'Daftar Jenis Surat',
                 'templates' => Template::where(
                     'name','like','%'.$request->search.'%')
                     ->orWhere('description', 'like', '%'.$request->search.'%')
@@ -26,9 +27,9 @@ class TemplateController extends Controller
                 // 'books' => Book::whereRelation('Template', 'name', 'like','%'.$request->search.'%')->get()
             ]);
         }else{
-            return view('ourlayouts.jenisSurat.data-jenisSurat',[
-                'title' =>'Jenis Surat',
-                // 'templates' => Template::paginate(20),
+            return view('ourlayouts.jenissurat.data-jenissurat',[
+                'maintitle' =>'Daftar Jenis Surat',
+                'templates' => Template::paginate(20),
                 // 'books' => Book::all()
             ]);
         }
@@ -41,9 +42,9 @@ class TemplateController extends Controller
      */
     public function create()
     {
+        // dd('ini template create');
         return view('ourlayouts.jenissurat.add-jenissurat', [
-            'title' =>'jenis surat',
-            'templates' => Template::all(),
+            'maintitle' =>'Tambah Jenis Surat',
         ]);
     }
 
@@ -62,12 +63,13 @@ class TemplateController extends Controller
             'screenshoot' => 'required|image',
         ]);
 
-        Report::create([
+        Template::create([
             'name' => $request->name,
             'description' => $request->description,
-            'file' => $request->file('file')->store('report', 'public'),
-            'screenshoot' => $request->file('screenshoot')->store('report', 'public'),
+            'file' => $request->file('file')->store('template', 'public'),
+            'screenshoot' => $request->file('screenshoot')->store('template', 'public'),
         ]);
+        return redirect('/data-jenissurat');
     }
 
     /**
@@ -89,8 +91,9 @@ class TemplateController extends Controller
      */
     public function edit($id)
     {
-        return view("ourlayouts.jenissurat.updatejenissurat",[
-            'template' => Template::findOrFail($id)
+        return view("ourlayouts.jenissurat.update-jenissurat",[
+            'template' => Template::findOrFail($id),
+            'maintitle' => 'Ubah Jenis Surat'
         ]);
     }
 
@@ -108,25 +111,36 @@ class TemplateController extends Controller
         if($request->file('screenshoot')){
             // dd('b');
             unlink('storage/'.$template->screenshoot);
-            $report->update([
+            $template->update([
                 'name' => $request->name,
-                'image' => $request->file('image')->store('report', 'public'),
+                'screenshoot' => $request->file('screenshoot')->store('template', 'public'),
                 'description' => $request->description,
-                'phone' => $request->phone,
-                'proses' => $request->proses,
                 // 'user_id' => auth()->user()->id
             ]);
         }
-        if($request->file('file')){
+        else if($request->file('file')){
             // dd('b');
             unlink('storage/'.$template->file);
-            $report->update([
+            $template->update([
                 'name' => $request->name,
-                'file' => $request->file('file')->store('report', 'public'),
+                'file' => $request->file('file')->store('template', 'public'),
                 'description' => $request->description,
-                'phone' => $request->phone,
-                'proses' => $request->proses,
                 // 'user_id' => auth()->user()->id
+            ]);
+        }
+        else if($request->file('file') && $request->file('screenshoot')){
+            // dd('b');
+            unlink('storage/'.$template->file);
+            $template->update([
+                'name' => $request->name,
+                'file' => $request->file('file')->store('template', 'public'),
+                'description' => $request->description,
+                // 'user_id' => auth()->user()->id
+            ]);
+        }else{
+            $template->update([
+                'name' => $request->name,
+                'description' => $request->description,
             ]);
         }
             

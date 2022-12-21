@@ -198,8 +198,8 @@
                 <x-input-label for="photo" class="form-label" :value="__('Unggah Foto')" />
                 <input id="photo" class="form-control mt-1 w-full" type="file" name="image" :value="old('image')" accept="image/*" required />
                 {{-- //accept="image/*" required --}}
-                @if($errors->has('position_id'))
-                <p class="text-danger">{{ $errors->first('position_id')}}</p>
+                @if($errors->has('image'))
+                <p class="text-danger">{{ $errors->first('image')}}</p>
                 @endif
             </div>
 

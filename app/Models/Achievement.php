@@ -13,12 +13,12 @@ class Achievement extends Model
     protected $fillable = [
         "name",
         "image",
-        "achievementcategory_id",
+        "category_id",
         "description",
         "date_achievement"
     ];
 
     public function category(){
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }   
 }

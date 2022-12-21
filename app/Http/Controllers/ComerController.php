@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comer;
+use App\Models\Villager;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreComerRequest;
 use App\Http\Requests\UpdateComerRequest;
 
@@ -15,28 +17,30 @@ class ComerController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('search')){
-            return view('ourlayouts.pendatang.data-pendatang',[
-                'title' =>'Pendatang',
-                'comers' => Comer::where(
-                    'name','like','%'.$request->search.'%')
-                    ->orWhere('birth_place', 'like', '%'.$request->search.'%')
-                    ->orWhere('birth_date', 'like', '%'.$request->search.'%')
-                    ->orWhere('nik', 'like', '%'.$request->search.'%')
-                    ->orWhere('phone', 'like', '%'.$request->search.'%')
-                    ->orWhere('role', 'like', '%'.$request->search.'%')
-                    ->orWhere('gender', 'like', '%'.$request->search.'%')
-                    ->orWhere('status', 'like', '%'.$request->search.'%')
-                    ->paginate(),
-                'villagers' => Villager::whereRelation('villager', 'name', 'like','%'.$request->search.'%')->get()
-            ]);
-        }else{
-            return view('ourlayouts.pendatang.data-pendatang',[
-                'title' =>'Pendatang',
-                'comers' => Comer::paginate(20),
-                'villagers' => Villager::all()
-            ]);
-        }
+        // if($request->has('search')){
+        //     return view('ourlayouts.pendatang.data-pendatang',[
+        //         'title' =>'Pendatang',
+        //         'comers' => Comer::where(
+        //             'name','like','%'.$request->search.'%')
+        //             ->orWhere('birth_place', 'like', '%'.$request->search.'%')
+        //             ->orWhere('birth_date', 'like', '%'.$request->search.'%')
+        //             ->orWhere('nik', 'like', '%'.$request->search.'%')
+        //             ->orWhere('phone', 'like', '%'.$request->search.'%')
+        //             ->orWhere('role', 'like', '%'.$request->search.'%')
+        //             ->orWhere('gender', 'like', '%'.$request->search.'%')
+        //             ->orWhere('status', 'like', '%'.$request->search.'%')
+        //             ->paginate(),
+        //         'villagers' => Villager::whereRelation('villager', 'name', 'like','%'.$request->search.'%')->get()
+        //     ]);
+        // }else{
+        //     return view('ourlayouts.pendatang.data-pendatang',[
+        //         'title' =>'Pendatang',
+        //         'search' =>'',
+        //         'search' =>'',
+        //         'comers' => Comer::paginate(20),
+        //         'villagers' => Villager::all()
+        //     ]);
+        // }
         $sort = $request->query('sort');
         $search = $request->query('search');
         $comers = Comer::select('*')
@@ -112,7 +116,6 @@ class ComerController extends Controller
     {
         return view('ourlayouts.pendatang.reg-pendatang', [
             'maintitle' =>'Registrasi Pendatang',
-            'comers' => Comer::all(),
             'villagers' => Villager::all(),
         ]);
     }
@@ -130,7 +133,7 @@ class ComerController extends Controller
             'birth_place' => 'required',
             'birth_date' => 'required',
             'nik' => 'required|numeric|digits:16',
-            'phone' => 'required|numeric|digits:13',
+            'phone' => 'required|numeric|min:10',
             'role' => 'required',
             'gender' => 'required',
             'villager_id' => 'required',

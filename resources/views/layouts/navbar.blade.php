@@ -31,6 +31,7 @@
               <i class="fa-solid fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/galeri">Galeri</a></li>
               <li><a class="dropdown-item" href="#">Pelaporan</a></li>
               <li><a class="dropdown-item" href="#">Pelayanan Surat Online</a></li>
             </ul>
@@ -52,11 +53,14 @@
               <li><a class="dropdown-item" href="/data-pendatang">Data Pendatang</a></li>
               <li><a class="dropdown-item" href="/data-keuangan">Tabel Keuangan</a></li>
               <li><a class="dropdown-item" href="/data-perangkat">Data Perangkat</a></li>
+              <li><a class="dropdown-item" href="/data-jenissurat">Data Jenis Surat</a></li>
               <li><a class="dropdown-item" href="/data-surat">Data Surat Online</a></li>
               <li><a class="dropdown-item" href="/data-user">Data User</a></li>
               <li><a class="dropdown-item" href="/data-jabatan">Data Jabatan</a></li>
               <li><a class="dropdown-item" href="/data-pelaporan">Data Pelaporan</a></li>
-              <li><a class="dropdown-item" href="/data-kategoriprestasi">Data Kategori Prestasi</a></li>
+              <li><a class="dropdown-item" href="/data-kategori">Data Kategori Prestasi</a></li>
+              <li><a class="dropdown-item" href="/data-prestasi">Data Prestasi</a></li>
+              <li><a class="dropdown-item" href="/data-gallery">Data Gallery</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">

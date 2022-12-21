@@ -14,6 +14,6 @@ class Category extends Model
     ];
 
     public function achievement(){
-        return $this->belongsTo(Achievement::class);
+        return $this->hasMany(Achievement::class);
     }
 }

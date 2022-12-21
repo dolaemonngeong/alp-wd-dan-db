@@ -10,23 +10,39 @@
     <a class="btn text-light ms-auto" href="{{route("villagers.create")}}" role="button" style="background-color: #124A49">Tambah Data</a>
 </div>
 <div class="container-fluid my-4">
-    <form action="/data-penduduk" method="GET" class="form d-flex" role="search">
-        <input type="search" class="form-control outline-secondary rounded-md me-3" placeholder="Cari berdasarkan nama atau NIK..." name="search" class="form-control" value="{{ old('search') }}">
+    <div class="container-fluid my-4">
+    <form id="form" action="/data-penduduk" method="POST" class="form d-flex" role="search">
+        @csrf
+        <input id="searchInput" type="search" class="form-control outline-secondary rounded-md me-3" placeholder="Cari berdasarkan nama atau NIK..." name="search" value="{{ $search }}">
         {{-- <input class="block bg-white outline-gray shadow-sm me-2 w-20% rounded-md " type="search" placeholder="Cari data berdasarkan nama atau NIK" aria-label="Search"> --}}
         {{-- <input type="search" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black-500 focus:border-black-500 block w-full p-2.5 mr-2 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari data berdasarkan nama atau NIK"> --}}
-        <button class="btn btn-outline-secondary" type="submit">Cari</button>
+
         {{-- <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Cari</button> --}}
-        <div class="dropdown">
-            <button class="btn btn-outline-secondary dropdown-toggle ml-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Saring
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-        </div>
+        {{-- </form>
+    <form action="/data-penduduk" method="POST" id="filter-form">
+     --}}
+        {{-- <div class="dropdown">
+  <button class="btn btn-outline-secondary dropdown-toggle ml-4" type="button" data-bs-toggle="dropdown" aria-expanded="false" name="" value="status">
+          
+      </button>
+      <ul class="dropdown-menu" name="status">
+         <li><a class="dropdown-item" href="#" value="">Semua</a></li>
+        <li><a class="dropdown-item" href="#" value="hidup">Hidup</a></li>
+        <li><a class="dropdown-item" href="#" value="pindah">Pindah</a></li>
+        <li><a class="dropdown-item" href="#" value="meninggal">Meninggal</a></li>
+    </ul>
+</div> --}}
+        <select name="status" id="searchSelect" class="form-select" style="width: auto" aria-label="Default select example">
+            {{-- <select class=""  name="status"> --}}
+            <option value="#">Semua</option>
+            <option value="hidup" {{ ($status == "hidup") ? 'selected' : '' }}>Hidup</option>
+            <option value="pindah" {{ ($status == "pindah") ? 'selected' : '' }}>Pindah</option>
+            <option value="meninggal" {{ ($status == "meninggal") ? 'selected' : '' }}>Meninggal</option>
+        </select>
+        <button class="btn btn-outline-secondary ml-4" type="submit" onclick="filterData()">Cari</button>
+
     </form>
+
 </div>
 
 <div class="overflow-x-auto my-4 shadow-md sm:rounded-lg">

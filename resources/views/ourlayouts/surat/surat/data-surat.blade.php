@@ -4,27 +4,6 @@
     <h1 class="justify-start" style="font-weight: bold">
         {{ __('Daftar Surat Online') }}
     </h1>
-<<<<<<< Updated upstream
-    <div class="ms-auto">
-        <input type="button" class="btn btn-dark text-white text-sm rounded-md" href="{{ route('login') }}" value="Tambah Data"/>
-    </div>
-</div>
-<div class="container-fluid mt-8">
-    <form class="d-flex" role="search">
-      <input class="block me-2 w-20% rounded-md " type="search" placeholder="Cari data berdasarkan nama atau NIK" aria-label="Search">
-      <button class="btn btn-outline-dark" type="submit">Cari</button>
-      <div class="dropdown">
-        <button class="btn btn-outline-dark dropdown-toggle ml-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Saring
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
-    </form>  
-=======
     {{-- <a href="#" class="text-decoration-none ms-auto inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-black bg-white border border-black rounded-lg hover:bg-black-400 hover:text-light-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
         Tambah Data
     </a>   --}}
@@ -46,20 +25,9 @@
         {{-- <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Cari</button> --}}
         
     </form>
->>>>>>> Stashed changes
 </div>
 
 
-<div class="my-4 flex justify-start">
-    <!-- Previous Button -->
-    <a href="#" class="text-decoration-none inline-flex items-center px-4 py-2 text-sm font-medium text-black bg-white border border-black rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        Previous
-    </a>
-    <!-- Next Button -->
-    <a href="#" class="text-decoration-none ms-auto inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-black bg-white border border-black rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        Next
-    </a>  
-</div>
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -82,24 +50,6 @@
             </tr>
         </thead>
         <tbody>
-<<<<<<< Updated upstream
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="py-4 px-6">
-                    Sliver
-                </td>
-                <td class="py-4 px-6">
-                    Laptop
-                </td>
-                <td class="py-4 px-6">
-                    $2999
-                </td>
-                <td class="py-4 pl-6 text-right">
-                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 mr-3 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Unduh</button>
-                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button>
-=======
             @foreach($letters as $letter)
             <tr>
                 <th scope="row">{{ $loop->iteration }}</th>

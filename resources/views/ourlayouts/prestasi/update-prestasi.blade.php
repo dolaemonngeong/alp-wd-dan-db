@@ -9,7 +9,7 @@
             </h1>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('achievements.update', $achievement->id) }}">
             @csrf
             <input type="hidden" name="_method" value="PATCH">
 
@@ -24,7 +24,7 @@
             <div class="mt-4">
                 <x-input-label for="image" class="form-label" :value="__('Unggah Foto')" />
                 <img src="{{ asset('storage/'.$achievement->image ) }}">
-                <input id="image" class="form-control mt-1 w-full" type="file" name="image" accept="image/*" required />
+                <input id="image" class="form-control mt-1 w-full" type="file" name="image" accept="image/*" />
                 <x-input-error :messages="$errors->get('image')" class="mt-2" />
             </div>
 
@@ -33,7 +33,11 @@
                 <x-input-label for="category" :value="__('Kategori')" />
                 <select name="category_id" id="category_id" class="js-example-basic-single block text-gray-700 mt-1 w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" required>
                     @foreach($categories as $category)
-                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                    @if($achievement->category->id == $category->id)
+                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                    @else
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endif
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('category_id')" class="mt-2" />

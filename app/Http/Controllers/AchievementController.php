@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Achievement;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreAchievementRequest;
 use App\Http\Requests\UpdateAchievementRequest;
 
@@ -13,20 +15,23 @@ class AchievementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if($request->has('search')){
             return view('ourlayouts.prestasi.data-prestasi',[
-                'title' =>'Prestasi',
+                'maintitle' =>'Data Prestasi',
                 'achievements' => Achievement::where(
                     'name','like','%'.$request->search.'%')
                     ->paginate(),
+                'categories' => Category::all(),
                 // 'books' => Book::whereRelation('Achievement', 'name', 'like','%'.$request->search.'%')->get()
             ]);
         }else{
-            return view('ourlayouts.prestasi.data-penduduk',[
-                'title' =>'Prestasi',
+            return view('ourlayouts.prestasi.data-prestasi',[
+                'maintitle' =>'Data Prestasi',
                 'achievements' => Achievement::paginate(20),
+                'categories' => Category::all(),
+                'search' => '',
                 // 'books' => Book::all()
             ]);
         }
@@ -53,21 +58,24 @@ class AchievementController extends Controller
      */
     public function store(StoreAchievementRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:60',
-            'image' => 'required|image',
-            'category_id' => 'required',
-            'description' => 'required|string|max:500',
-            'date_achievement' => 'required'
-        ]);
+        // 
+        // dd($this->validate);
 
         Achievement::create([
             'name' => $request->name,
-            'image'=>$request->file('image')->store('letter', 'public'),
+            'image'=>$request->file('image')->store('achievement', 'public'),
             'category_id' => $request->category_id,
             'description' => $request->description,
             'date_achievement' => $request->date_achievement,
         ]);
+        // $this->validate($request, [
+        //         'name' => 'required|string|max:60',
+        //         'image' => 'required|image',
+        //         'category_id' => 'required',
+        //         'description' => 'required|string|max:500',
+        //         'date_achievement' => 'required'
+        //     ]);
+        return redirect('/data-prestasi ');
 
     }
 
@@ -91,8 +99,9 @@ class AchievementController extends Controller
     public function edit($id)
     {
         return view("ourlayouts.prestasi.update-prestasi",[
+            'maintitle' => 'Ubah Prestasi',
             'achievement' => Achievement::findOrFail($id),
-            'category' => Category::all(),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -107,9 +116,9 @@ class AchievementController extends Controller
     {
         $achievement = Achievement::findOrFail($id);
 
-        if($request->file('file')){
+        if($request->file('image')){
             // dd('t');
-            unlink('storeage/'.$request->file);
+            unlink('storage/'.$achievement->image);
             $achievement->update([
                 'name' => $request->name,
                 'image'=>$request->file('image')->store('achievement', 'public'),
@@ -126,7 +135,7 @@ class AchievementController extends Controller
                 'date_achievement' => $request->date_achievement,
             ]);
         }
-        return redirect('/data-surat');
+        return redirect('/data-prestasi');
     }
 
     /**

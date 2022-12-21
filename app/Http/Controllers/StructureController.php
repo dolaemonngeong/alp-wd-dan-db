@@ -125,7 +125,11 @@ class StructureController extends Controller
      */
     public function create()
     {
-        //
+        return view('ourlayouts.perangkat.add-perangkat',[
+            'title' => 'perangkat desa',
+            "villagers"=> Villager::all(),
+            'positions' => Position::all(),
+        ]);
     }
 
     /**
@@ -210,6 +214,7 @@ class StructureController extends Controller
                 'villager_id' => $request->villager_id,
                 'appointed_date' => $request->appointed_date,
                 'resign_date' => $request->resign_date,
+                'status_jabat' => $request->status_jabat,
                 'image' => $request->file('image')->store('structure', 'public'),
             ]);
         }else{
@@ -219,10 +224,11 @@ class StructureController extends Controller
                 'villager_id' => $request->villager_id,
                 'appointed_date' => $request->appointed_date,
                 'resign_date' => $request->resign_date,
+                'status_jabat' => $request->status_jabat,
             ]);
         }
 // dd('b');
-        return redirect('/data-pelaporan');
+        return redirect('/data-perangkat');
     }
 
     /**
