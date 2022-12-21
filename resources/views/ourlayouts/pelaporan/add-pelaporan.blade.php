@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('container')
+@section('home')
 <x-guest-layout>
 <div class="ms-auto">
     <x-auth-card>
@@ -38,7 +38,7 @@
             <!-- Keterangan -->
             <div class="mt-4">
                 <x-input-label for="desc" :value="__('Keterangan')"/>
-                <x-text-input id="desc" class="block mt-1 w-full" type="text" name="description" :value="old('description')" />
+                <textarea id="desc" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="description" :value="old('description')"></textarea>
                 {{-- <x-input-error :messages="$errors->get('desc')" class="mt-2" /> --}}
             </div>
 

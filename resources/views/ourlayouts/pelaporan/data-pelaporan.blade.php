@@ -29,43 +29,47 @@
 <div class="overflow-x-auto my-4 shadow-md sm:rounded-lg">
     <table class="table table-hover">
         <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nama Pelapor</th>
-            <th scope="col">Nomor Telepon</th>
-            <th scope="col">Keterangan</th>
-            <th scope="col"></th>
-            <th scope="col">Bukti Foto</th>
-            <th scope="col">Selesai</th>
-            <th scope="col">Aksi</th>
-          </tr>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nama Pelapor</th>
+                <th scope="col">Nomor Telepon</th>
+                <th scope="col">Keterangan</th>
+                <th scope="col"></th>
+                <th scope="col">Bukti Foto</th>
+                <th scope="col">Selesai</th>
+                <th scope="col">Ubah</th>
+                <th scope="col">Hapus</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach($reports as $report)
-          <tr>
-            <th scope="row">{{ $loop->iteration }}</th>
-            <td>{{ $report['name'] }}</td>
-            <td>{{ $report['phone'] }}</td>
-            <td colspan="2">{{ $report['description'] }}</td>
-            <td><img width="200" height="200" src="{{ asset('storage/'.$report->image ) }}" href="{{ asset('storage/'.$report->image)}}"></td>
-            <td>
-            <input disabled style="color: #124A49;" type="checkbox" name="proses" value="{{ $report['proses'] }}" {{ ($report['proses'] === 'selesai') ? 'checked' : ''}}/>&nbsp;</td>
-            {{-- {{ ($report['proses'] === 'selesai') ? 'checked' : ''}} --}}
-            
-            <td>
-                <a class="btn text-light" href="{{ route("reports.edit", $report->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
+            @foreach($reports as $report)
+            <tr>
+                <th scope="row">{{ $loop->iteration }}</th>
+                <td>{{ $report['name'] }}</td>
+                <td>{{ $report['phone'] }}</td>
+                <td colspan="2">{{ $report['description'] }}</td>
+                <td><img width="200" height="200" src="{{ asset('storage/'.$report->image ) }}" href="{{ asset('storage/'.$report->image)}}"></td>
+                <td>
+                    <input disabled style="color: #124A49;" type="checkbox" name="proses" value="{{ $report['proses'] }}" {{ ($report['proses'] === 'selesai') ? 'checked' : ''}} />&nbsp;</td>
+                {{-- {{ ($report['proses'] === 'selesai') ? 'checked' : ''}} --}}
+
+                <td>
+                    <a class="btn text-light" href="{{ route("reports.edit", $report->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
                     {{-- <button type="button" href="{{ route("reports.edit", $report->id) }}" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 mr-3 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Ubah</button> --}}
                     {{-- <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button> --}}
+                </td>
+                <td>
                     <form action="{{ route("reports.destroy", $report->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn text-light" href="" role="button" style="background-color: #F04A49" onclick="return confirm('Yakin ingin menghapusnya?');"><i class="fa fa-trash"></i></a>
-                        {{-- <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button> --}}
+                            {{-- <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button> --}}
                     </form>
-            </td>
-          </tr>
-        @endforeach
+                </td>
+            </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
+{{$reports->links('ourlayouts.custompagination')}}
 @endsection

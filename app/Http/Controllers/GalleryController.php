@@ -106,6 +106,6 @@ class GalleryController extends Controller
         $gallery = Gallery::findOrFail($id);
         $gallery->delete();
         unlink('storage/'.$gallery->image);
-        return redirect('/data-gallery');
+        return redirect('/galeri');
     }
 }

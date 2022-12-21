@@ -1,4 +1,4 @@
-<nav class="sticky-top navbar navbar-expand-lg navbar-light shadow-sm text-dark">
+<nav class="sticky-top bg-white navbar navbar-expand-lg navbar-light shadow-sm text-dark">
     <div class="container-fluid">
       <img src="https://kedirikab.go.id/uploads/filex/logo_pemkab_official_1660871333.png" alt="Bootstrap" width="30" height="24">
       <a class="navbar-brand mx-2" href="/">
@@ -19,10 +19,12 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Sejarah</a></li>
-              <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
-              <li><a class="dropdown-item" href="#">Peta</a></li>
-              <li><a class="dropdown-item" href="#">Prestasi</a></li>
-              <li><a class="dropdown-item" href="#">Perangkat</a></li>
+              <li><a class="dropdown-item" href="/#visimisi">Visi dan Misi</a></li>
+              <li><a class="dropdown-item" href="/map">Peta</a></li>
+              <li><a class="dropdown-item" href="/prestasi-desa">Prestasi</a></li>
+              <li><a class="dropdown-item" href="/perangkat">Perangkat</a></li>
+              <li><a class="dropdown-item" href="/galeri">Galeri</a></li>
+              <li><a class="dropdown-item" href="/data-penduduk/grafik">Grafik Penduduk</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -31,19 +33,23 @@
               <i class="fa-solid fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/galeri">Galeri</a></li>
-              <li><a class="dropdown-item" href="#">Pelaporan</a></li>
-              <li><a class="dropdown-item" href="#">Pelayanan Surat Online</a></li>
+              <li><a class="dropdown-item" href="/add-pelaporan">Pelaporan</a></li>
+              <li><a class="dropdown-item" href="/add-suratonline">Pelayanan Surat Online</a></li>
             </ul>
           </li>
-          {{-- <li class="nav-item">
-            @auth
-                @if(auth()->user()->status == 'admin')
-                    <a class="nav-link" href="/admin">Admin</a>
-                @endif
-            @endauth
-          </li> --}}
           <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Statistik
+              <i class="fa-solid fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/data-penduduk/grafik">Statistik Penduduk</a></li>
+              <li><a class="dropdown-item" href="/data-pendatang/grafik">Statistik Pendatang</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+          @auth
+            @if(auth()->user()->status == 'admin')
             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Admin
               <i class="fa-solid fa-angle-down"></i>
@@ -62,6 +68,8 @@
               <li><a class="dropdown-item" href="/data-prestasi">Data Prestasi</a></li>
               <li><a class="dropdown-item" href="/data-gallery">Data Gallery</a></li>
             </ul>
+            @endif
+          @endauth
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -94,9 +102,9 @@
             @endguest
           </li>
           <li>
-            {{-- <a action="/register"> --}}
+              @guest
               <a class="btn logout-btn text-light" href="/register" role="button" style="background-color: #124A49">Daftar</a>
-            {{-- </a> --}}
+              @endguest
             </li>
         </ul>
       </div>

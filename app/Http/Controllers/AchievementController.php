@@ -37,6 +37,12 @@ class AchievementController extends Controller
         }
     }
 
+    public function theview(){
+        return view('ourlayouts.desaprestasi',[
+            'achievements' => Achievement::all()
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -148,7 +154,7 @@ class AchievementController extends Controller
     {
         $achievement = Achievement::findOrFail($id);
         $achievement->delete();
-        unlink('storage/'.$achievement->file);
+        unlink('storage/'.$achievement->image);
         return redirect('/data-prestasi');
     }
 }

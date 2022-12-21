@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('container')
+@section('home')
     <x-guest-layout>
         <x-auth-card>
             <x-slot name="logo">

@@ -54,7 +54,7 @@
               <form action="{{ route("finances.destroy", $finance->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="button" class="btn text-light" style="background-color: #F04A49"><i class="fa fa-trash"></i></button>
+                <button type="submit" class="btn text-light" style="background-color: #F04A49"><i class="fa fa-trash"></i></button>
               </form>
             </td>
           </tr>
@@ -62,4 +62,5 @@
         </tbody>
     </table>
 </div>
+{{$finances->links('ourlayouts.custompagination')}}
 @endsection

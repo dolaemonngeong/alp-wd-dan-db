@@ -73,4 +73,5 @@
         </tbody>
     </table>
 </div>
+{{$letters->links('ourlayouts.custompagination')}}
 @endsection

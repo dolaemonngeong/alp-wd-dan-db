@@ -1,18 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComerController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\VillagerController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\AchievementController;
-use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,11 @@ use App\Http\Controllers\CategoryController;
 // Route::get('/auth/callback', [LoginController::class, 'handleProviderCallback']);
 
 Route::get('/', function () {
-    return view('home');
+    return view('ourlayouts.home');
+});
+
+Route::get('/map', function () {
+    return view('ourlayouts.map');
 });
 
 Route::get('/dashboard', function () {
@@ -46,11 +51,13 @@ require __DIR__.'/auth.php';
 
 Route::get('/galeri',  [GalleryController::class, 'index']);
 
-Route::get('/perangkat', function(){
-    return view('ourlayouts.perangkat');
-});
+Route::get('/prestasi-desa',  [AchievementController::class, 'theview']);
 
-Route::resource('achievements', AchievementController::class);
+Route::get('/perangkat', [StructureController::class, 'theview']);
+
+Route::resource('achievements', AchievementController::class)->middleware(['auth']);
+
+Route::resource('users', UserController::class);
 
 Route::resource('positions', PositionController::class)->middleware(['admin']);
 
@@ -126,7 +133,7 @@ Route::get('/add-pelaporan', [ReportController::class,'create'])->middleware(['a
 
 Route::get('/add-jenissurat', [TemplateController::class,'create'])->middleware(['admin']);
 
-Route::get('/add-suratonline', [LetterController::class.'create'])->middleware(['auth']);
+Route::get('/add-suratonline', [LetterController::class, 'create'])->middleware(['auth']);
 
 Route::get('/add-gallery', [GalleryController::class,'create'])->middleware(['admin']);
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Penduduk')
 
-@section('container')
+@section('home')
 <x-auth-card>
     <x-slot name="logo">
         <h1 style="font-size: 2rem; font-weight: bolder; padding-top: 2rem;">

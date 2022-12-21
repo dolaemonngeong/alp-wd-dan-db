@@ -32,10 +32,13 @@
             <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Prestasi Desa</a>
           </p>
           <p>
-            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Peta Desa</a>
+            <a href="/map" style="text-decoration: none; color: #124A49" class="text-reset">Peta Desa</a>
           </p>
           <p>
             <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Perangkat Desa</a>
+          </p>
+          <p>
+            <a href="/galeri" style="text-decoration: none; color: #124A49" class="text-reset">Galeri</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -47,10 +50,10 @@
             Layanan
           </h6>
           <p>
-            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Pelaporan</a>
+            <a href="/add-pelaporan" style="text-decoration: none; color: #124A49" class="text-reset">Pelaporan</a>
           </p>
           <p>
-            <a href="#!" style="text-decoration: none; color: #124A49" class="text-reset">Pelayanan Surat Online</a>
+            <a href="/add-suratonline" style="text-decoration: none; color: #124A49" class="text-reset">Pelayanan Surat Online</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -74,7 +77,7 @@
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(255, 255, 255, 0.5);">
     © 2022 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Tulungrejo</a>
+    <a class="text-reset fw-bold" href="/">Tulungrejo</a>
   </div>
   <!-- Copyright -->
 </footer>

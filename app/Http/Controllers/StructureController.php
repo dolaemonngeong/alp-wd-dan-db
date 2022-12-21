@@ -45,6 +45,12 @@ class StructureController extends Controller
         //}
     }
 
+    public function theview(){
+        return view('ourlayouts.structure',[
+            'structures' => Structure::all(),
+        ]);
+    }
+
     public function filterstatus(Request $request){
 
         // Get filter criteria from the form submission

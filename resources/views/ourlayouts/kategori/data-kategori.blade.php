@@ -49,4 +49,5 @@
         </tbody>
     </table>
 </div>
+{{$categories->links('ourlayouts.custompagination')}}
 @endsection

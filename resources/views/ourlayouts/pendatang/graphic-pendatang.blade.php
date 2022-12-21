@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('container')
 
-<canvas id="pie-chart"></canvas>
-<canvas id="myPieChart"></canvas>
+
+
+{{-- <canvas id="pie-chart"></canvas> --}}
+<canvas class="w-full" id="myPieChart"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
@@ -17,7 +19,7 @@ var chart = new Chart(ctx2, {
         labels: ['Laki-laki', 'Perempuan'],
         datasets: [{
             data: [{{ $males }}, {{ $females }}],
-            backgroundColor: ['#3498db', '#e74c3c']
+            backgroundColor: ['#62B368', '#67AFD6']
         }]
     },
     options: {
@@ -43,15 +45,20 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Male", "Female"],
+    labels: ["Laki-laki", "Perempuan"],
     datasets: [{
       data: [{{ $males }}, {{ $females }}],
-      backgroundColor: ['#4e73df', '#1cc88a'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673'],
+      backgroundColor: ['#67AFD6', '#EC6688'],
+      hoverBackgroundColor: [ '#12AFD6', '#F04A49'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },
   options: {
+    title: {
+            display: true,
+            text: 'Jenis Kelamin Pendatang',
+            fontSize: 30
+        },
     maintainAspectRatio: false,
     tooltips: {
       backgroundColor: "rgb(255,255,255)",

@@ -19,7 +19,7 @@
         {{-- <input type="search" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black-500 focus:border-black-500 block w-full p-2.5 mr-2 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari data berdasarkan nama atau NIK"> --}}
 
         {{-- <select  > --}}
-        <select name="status_jabat" id="searchSelect"class="form-select" style="width: auto" aria-label="Default select example">
+        <select name="status_jabat" id="searchSelect" class="form-select" style="width: auto" aria-label="Default select example">
             <option value="#">Semua</option>
             <option value="berjalan" {{ ($status_jabat == "berjalan") ? 'selected' : '' }}>Berjalan</option>
             <option value="selesai" {{ ($status_jabat == "selesai") ? 'selected' : '' }}>Selesai</option>
@@ -39,7 +39,7 @@
             </ul>
         </div> --}}
     </form>
-    </div>
+</div>
 <div class="overflow-x-auto my-4 shadow-md sm:rounded-lg">
     <table class="table table-hover">
         <thead>
@@ -50,7 +50,8 @@
                 <th scope="col">Tanggal Menjabat</th>
                 <th scope="col">Selesai Jabat</th>
                 <th scope="col">Status</th>
-                <th scope="col">Aksi</th>
+                <th scope="col">Ubah</th>
+                <th scope="col">Hapus</th>
             </tr>
         </thead>
         <tbody>
@@ -66,11 +67,13 @@
                     <a class="btn text-light" href="{{ route("structures.edit", $structure->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
                     {{-- <button type="button" href="{{ route("structures.edit", $structure->id) }}" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 mr-3 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Ubah</button> --}}
                     {{-- <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button> --}}
+                </td>
+                <td>
                     <form action="{{ route("structures.destroy", $structure->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn text-light" href="" role="button" style="background-color: #F04A49"><i class="fa fa-trash"></i></a>
-                        {{-- <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button> --}}
+                            {{-- <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2 py-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Hapus</button> --}}
                     </form>
                 </td>
             </tr>
@@ -78,4 +81,5 @@
         </tbody>
     </table>
 </div>
+{{$structures->links('ourlayouts.custompagination')}}
 @endsection

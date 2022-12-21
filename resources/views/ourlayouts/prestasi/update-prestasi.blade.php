@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('container')
+@section('home')
 
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <h1 style="font-size: 2rem; font-weight: bolder;">
+            <h1 class="pt-4" style="font-size: 2rem; font-weight: bolder;">
                 Ubah Prestasi Desa
             </h1>
         </x-slot>
@@ -53,7 +53,7 @@
             <!-- Description -->
             <div class="mt-4">
                 <x-input-label for="description" :value="__('Deskripsi')" />
-                <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" value="{{ $achievement->description }}" required />
+                <textarea id="description" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="description" value="{{ $achievement->description }}" required>{{ $achievement->description }}</textarea>
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
 

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('container')
+@section('home')
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -21,7 +21,7 @@
             </div>
 
             <!-- Volume -->
-            <div>
+            <div class="mt-4">
                 <x-input-label for="volume" :value="__('Volume')" />
                 <input id="volume" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="volume" oninput="countInputs()" value="{{ $finance->volume }}" />
                 @if($errors->has('volume'))
@@ -30,7 +30,7 @@
             </div>
 
             <!-- Satuan -->
-            <div>
+            <div class="mt-4">
                 <x-input-label for="unit" :value="__('Satuan')" />
                 <input id="unit" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="unit" value="{{ $finance->unit }}" />
                 @if($errors->has('unit'))
@@ -39,7 +39,7 @@
             </div>
 
             <!-- Tanggal -->
-            <div>
+            <div class="mt-4">
                 <x-input-label for="date" :value="__('Tanggal')" />
                 <input id="date" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="date" name="date" value="{{ $finance->date }}" />
                 @if($errors->has('date'))
@@ -48,7 +48,7 @@
             </div>
 
             <!-- Harga Satuan -->
-            <div>
+            <div class="mt-4">
                 <x-input-label for="price" :value="__('Harga Satuan (Rp)')" />
                 <input id="price" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="price" oninput="countInputs()" value="{{ $finance->price }}" />
                 @if($errors->has('price'))
@@ -67,8 +67,8 @@
             </script>
 
             <!-- Jumlah -->
-            <p name="total">Total Sebelumnya: {{ $finance->total}}</p>
-            <p name="total">Total: <span id="total" name="total"></span></p>
+            <p class="mt-2" style="font-size: 14px" name="total">Total Sebelumnya: {{ $finance->total}}</p>
+            <p class="mt-2" style="font-size: 14px" name="total">Total: <span id="total" name="total"></span></p>
             
             {{-- <div>
                 <x-input-label for="total" :value="__('Jumlah (Rp)')" />

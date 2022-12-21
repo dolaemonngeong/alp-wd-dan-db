@@ -57,11 +57,40 @@
     <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
 
     <style>
-        .login-btn {
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            max-width: 540px;
+        }
+
+        .badge {
+            border-radius: 50px;
+        }
+
+        .card-text {
+            max-lines: 4;
+        }
+
+        .btn.active {
+            background-color: #124A49;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #124A49;
+            color: white;
+            box-shadow: 0 0 0 3px gray;
+        }
+
+        .login-btn,
+        .logout-btn {
             color: #124A49;
         }
 
-        .login-btn:hover {
+        .login-btn:hover,
+        .logout-btn:hover {
             outline: none;
             background: #124A49;
             color: white;
@@ -168,7 +197,11 @@
                 {{ $slot }}
     </main>
     </div> --}}
+
     <div class="">
+        @yield('home')
+    </div>
+    <div class="container mt-3">
         @yield('container')
     </div>
     @include('layouts.footer')

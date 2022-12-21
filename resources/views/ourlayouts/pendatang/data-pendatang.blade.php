@@ -49,7 +49,8 @@
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Pekerjaan</th>
                 <th scope="col">Penduduk</th>
-                <th scope="col">Aksi</th>
+                <th scope="col">Ubah</th>
+                <th scope="col">Hapus</th>
             </tr>
         </thead>
         <tbody>
@@ -65,6 +66,8 @@
                 <td>{{ $comer->villager->name }}</td>
                 <td>
                     <a class="btn text-light" href="{{ route("comers.edit", $comer->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
+                </td>
+                <td>
                     <form action="{{ route("comers.destroy", $comer->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -76,4 +79,5 @@
         </tbody>
     </table>
 </div>
+{{$comers->links('ourlayouts.custompagination')}}
 @endsection

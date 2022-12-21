@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('container')
 
-<p class="d-justify-content-center">Jumlah Penduduk saat ini {{ $sumVillagers }} orang dengan {{ $percentageBoys }} % laki-laki dan {{ $percentageGirls }} % perempuan<p>
+<p class="d-justify-content-center">Jumlah penduduk saat ini {{ $sumVillagers }} orang dengan {{ $percentageBoys }} % laki-laki dan {{ $percentageGirls }} % perempuan<p>
 
-<table class="table">
+<table class="table mt-4">
     <thead>
         <tr>
             <th scope="col">Kategori usia</th>
@@ -24,9 +24,9 @@
     </tbody>
 </table>
 
-<canvas id="barChart1"></canvas>
+<canvas class="w-50%" id="barChart1"></canvas>
 
-<canvas id="barChart2"></canvas>
+<canvas class="w-50%" id="barChart2"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
@@ -57,7 +57,7 @@ var barChart = new Chart(ctx1, {
         title: {
             display: true,
             text: 'Status penduduk',
-            fontSize: 40,
+            fontSize: 36,
         },
         legend: {
             labels: {

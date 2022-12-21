@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('container')
+@section('home')
 <x-guest-layout>
         <x-auth-card>
             <x-slot name="logo">
@@ -43,7 +43,7 @@
                 <!-- Birthdate -->
                 <div class="mt-4">
                     <x-input-label for="birth_date" :value="__('Tanggal Lahir')" />
-                    <input id="birth_date" value="{{ $comer->birth_date }}" class="block mt-1 w-full" type="date" name="birth_date" required />
+                    <input id="birth_date" value="{{ $comer->birth_date }}" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="date" name="birth_date" required />
                     <x-input-error :messages="$errors->get('birth_date')" class="mt-2" />
                 </div>
 

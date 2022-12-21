@@ -54,4 +54,5 @@
         </tbody>
     </table>
 </div>
+{{$templates->links('ourlayouts.custompagination')}}
 @endsection

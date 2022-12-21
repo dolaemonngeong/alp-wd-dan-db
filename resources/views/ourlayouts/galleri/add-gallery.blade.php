@@ -2,7 +2,7 @@
 
 @section('title', 'Unggah Galeri')
 
-@section('container')
+@section('home')
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">

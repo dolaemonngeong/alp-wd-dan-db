@@ -58,7 +58,7 @@
                     <form action="{{ route("achievements.destroy", $achievement->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn text-light" style="background-color: #F04A49" onclick="return confirm('Yakin ingin menghapusnya?');"><i class="fa fa-trash"></i></button>
+                        <button type="submit" class="btn text-light" style="background-color: #F04A49" onclick="return confirm('Yakin ingin menghapusnya?');"><i class="fa fa-trash"></i></button>
                     </form>
                 </td>
             </tr>
@@ -66,4 +66,5 @@
         </tbody>
     </table>
 </div>
+{{$achievements->links('ourlayouts.custompagination')}}
 @endsection

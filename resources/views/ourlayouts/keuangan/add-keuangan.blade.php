@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('container')
+@section('home')
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -66,7 +66,7 @@
 
             </script>
             <!-- Jumlah -->
-            <p name="total">Total: <span id="total" name="total"></span></p>
+            <p class="mt-2 text-gray" style="font-size: 14px" name="total">Total: <span id="total" name="total"></span></p>
             {{-- <div class="mt-4">
                 <x-input-label for="total" :value="__('Jumlah (Rp)')" />
                 <x-text-input id="total" class="block mt-1 w-full" type="text" name="total" readonly/>

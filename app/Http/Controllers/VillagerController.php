@@ -121,8 +121,8 @@ class VillagerController extends Controller
     public function create()
     {
         return view('ourlayouts.penduduk.reg-penduduk', [
-            'pagetitle' =>'Rgistrasi Penduduk',
-            'maintitle' =>'Rgistrasi Penduduk',
+            'pagetitle' =>'Registrasi Penduduk',
+            'maintitle' =>'Registrasi Penduduk',
         ]);
     }
 

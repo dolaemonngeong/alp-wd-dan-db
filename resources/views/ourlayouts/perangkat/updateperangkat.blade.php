@@ -2,11 +2,11 @@
 
 @section('title', 'Update Perangkat')
 
-@section('container')
+@section('home')
 <x-auth-card>
     <x-slot name="logo">
-        <h1 style="font-size: 2rem; font-weight: bolder;">
-            Tambah Data Perangkat
+        <h1 class="mt-4" style="font-size: 2rem; font-weight: bolder;">
+            Ubah Data Perangkat
         </h1>
     </x-slot>
 

@@ -24,7 +24,7 @@ class PositionController extends Controller
         }else{
             return view('ourlayouts.jabatan.data-jabatan',[
                 'title' =>'Jabatan',
-                'positions' => Position::paginate(2),
+                'positions' => Position::paginate(10),
             ]);
         }
     }

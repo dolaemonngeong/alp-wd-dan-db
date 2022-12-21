@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Penduduk')
 
-@section('container')
+@section('home')
             <x-auth-card>
                 <x-slot name="logo">
                     <h1 style="font-size: 2rem; font-weight: bolder; padding-top: 2rem;">
@@ -57,7 +57,7 @@
                             <input style="color: #124A49" class="form-check-input ml-4 mr-1" type="radio" name="gender" id="gender2" value="perempuan">
                             <label class="form-check-label text-gray-700" for="gender2" required>Perempuan</label>
                         </div>
-                        <x-input-error :messages="$errors->get('gender')" class="mt-2" />      
+                        <x-input-error :messages="$errors->get('gender')" class="mt-2" />
                     </div>
 
                     <!-- Role -->

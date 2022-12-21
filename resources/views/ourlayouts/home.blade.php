@@ -2,7 +2,7 @@
 
 @section('title', 'Home')
 
-@section('container')
+@section('home')
 <!-- Background image -->
   <div id="intro-example" class="text-center bg-image"
     style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp'); background-repeat: no-repeat; background-blend-mode: darken; background-size: cover">

@@ -57,8 +57,8 @@
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Pekerjaan</th>
                 <th scope="col">Status</th>
-                <th scope="col">Aksi</th>
-                <th scope="col"> </th>
+                <th scope="col">Ubah Data</th>
+                <th scope="col">Ubah Status</th>
             </tr>
         </thead>
         <tbody>
@@ -76,7 +76,7 @@
                     <a class="btn text-light" href="{{ route("villagers.edit", $villager->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
                 </td>
                 <td>
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal{{$villager->id}}" class="btn text-light" href="#" role="button" style="background-color: #F04A49"><i class="fa fa-trash"></i></a>
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModal{{$villager->id}}" class="btn text-light" href="#" role="button" style="background-color: #F04A49"><i class="fa-solid fa-user-pen"></i></a>
                 </td>
             </tr>
             <!-- Modal -->
@@ -85,7 +85,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Hapus</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close text-black" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
 
@@ -107,8 +107,8 @@
                                             </label>
 
                                         </div>
-                                        <button type="btn" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                        <button type="btn submit" class="btn btn-primary">Simpan</button>
+                                        <button type="btn" class="mt-2 btn btn-outline-dark" data-bs-dismiss="modal">Tutup</button>
+                                        <button type="btn submit" class="mt-2 btn text-white" style="background-color: #124A49">Simpan</button>
 
                             </form>
                             <div class="modal-footer">
@@ -121,6 +121,6 @@
             @endforeach
         </tbody>
     </table>
-    {{$villagers->links('ourlayouts.custompagination')}}
 </div>
+{{$villagers->links('ourlayouts.custompagination')}}
 @endsection
