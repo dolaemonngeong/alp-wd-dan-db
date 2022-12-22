@@ -53,7 +53,8 @@
             <!-- Message -->
             <div class="mt-4">
                 <x-input-label for="message" :value="__('Pesan')" />
-                <x-text-input id="message" class="block mt-1 w-full" type="text" name="message" :value="old('message')"  />
+                {{-- <x-text-input id="message" class="block mt-1 w-full" type="text" name="message" :value="old('message')"  /> --}}
+                <textarea id="message" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="message" :value="old('message')" required></textarea>
                 <x-input-error :messages="$errors->get('message')" class="mt-2" />
             </div>
 

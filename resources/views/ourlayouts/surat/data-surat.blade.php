@@ -62,10 +62,8 @@
                 <input disabled style="color: #124A49;" type="checkbox" name="proses" {{ ($letter['proses'] === 'selesai') ? 'checked' : ''}}/>&nbsp;
                 </td>
                 <td>
-                    <a class="btn text-light" href="{{ route("letters.edit", $letter->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
+                    <a class="btn text-light mb-2" href="{{ route("letters.edit", $letter->id) }}" role="button" style="background-color: #A69297"><i class="fas fa-edit"></i></a>
                     {{-- <a class="btn text-light" href="{{ route("etters.destroy", $position->id) }}" role="button" style="background-color: #F04A49"><i class="fa fa-trash"></i></a> --}}
-                </td>
-                <td>
                     <form action="{{ route("letters.destroy", $letter->id) }}" method="POST">
                         @csrf
                         @method('DELETE')

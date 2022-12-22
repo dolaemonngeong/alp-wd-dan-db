@@ -1,15 +1,13 @@
 @extends('layouts.app')
 @section('container')
-
-<p class="d-justify-content-center">Jumlah penduduk saat ini {{ $sumVillagers }} orang dengan {{ $percentageBoys }} % laki-laki dan {{ $percentageGirls }} % perempuan<p>
-
-<table class="table mt-4">
+<h1 class="fs-1 fw-bold mb-3 text-center">Sensus Penduduk</h1>
+<table class="table table-hover mb-4">
     <thead>
         <tr>
             <th scope="col">Kategori usia</th>
             <th scope="col">Laki-laki</th>
             <th scope="col">Perempuan</th>
-            <th scope="col">Total</th>
+            <th scope="col">Jumlah</th>
         </tr>
     </thead>
     <tbody>
@@ -22,11 +20,19 @@
         </tr>
         @endforeach
     </tbody>
+    <tfoot>
+        <tr>
+            <td class="fw-bold">Total</td>
+            <td>{{$percentageBoys}}</td>
+            <td>{{$percentageGirls}}</td>
+            <td>{{$sumVillagers}}</td>
+        </tr>
+    </tfoot>
 </table>
 
-<canvas class="w-50%" id="barChart1"></canvas>
+<canvas class="my-4" id="barChart1"></canvas>
 
-<canvas class="w-50%" id="barChart2"></canvas>
+<canvas class="my-4" id="barChart2"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>

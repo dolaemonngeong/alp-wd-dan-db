@@ -43,9 +43,9 @@ Route::get('/map', function () {
     return view('ourlayouts.map');
 });
 
-Route::get('/data-penduduk/grafik', [VillagerController::class, 'showGraphic'])->middleware(['admin']);
+Route::get('/data-penduduk/grafik', [VillagerController::class, 'showGraphic']);
 
-Route::get('/data-pendatang/grafik', [ComerController::class, 'showGraphic'])->middleware(['admin']);
+Route::get('/data-pendatang/grafik', [ComerController::class, 'showGraphic']);
 
 Route::get('/admin',[DashboardController::class, 'adminview']);
     

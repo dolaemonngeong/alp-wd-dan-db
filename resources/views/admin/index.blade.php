@@ -27,7 +27,17 @@
 </head>
 
 <body id="page-top">
-
+    <style>
+        .bg-gradient-primary{
+            background: #124A49;
+        }
+        .btn-primary{
+            background: #124A49;
+        }
+        .text-primary{
+            color: #124A49;
+        }
+    </style>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -163,7 +173,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Prestasi</h6>
                         <a class="collapse-item" href="/add-prestasi">Tambah Prestasi Desa</a>
-                        <a class="collapse-item" href="/prestasi-desa">Lihat Daftar Prestasi Desa</a>
+                        <a class="collapse-item" href="/data-prestasi">Lihat Daftar Prestasi Desa</a>
                         <a class="collapse-item" href="/add-kategoriprestasi">Tambah Kategori Prestasi</a>
                         <a class="collapse-item" href="/data-kategori">Lihat Daftar Kategori</a>
                     </div>
@@ -409,7 +419,7 @@
                                                     @else
                                                     <td>Tidak Ada Jenis Surat</td>
                                                     @endif
-                                                    <td><a href="{{ asset('storage/'.$letter->file)}}">{{ $letter['file'] }}</a></td>
+                                                    <td class="w-50"><a href="{{ asset('storage/'.$letter->file)}}">{{ $letter['file'] }}</a></td>
                                                     <td>{{ $letter['message'] }}</td>
                                                     <td>
                                                         <input disabled style="color: #124A49;" type="checkbox" name="proses" {{ ($letter['proses'] === 'selesai') ? 'checked' : ''}} />&nbsp;
@@ -471,10 +481,10 @@
                     </div>
                     <div class="modal-body">Pilih "Keluar" jika Anda yakin ingin keluar dari akun.</div>
                     <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                         <form action="/logout" method="POST">
                             @csrf
-                            <button class="btn btn-secondary" type="submit" data-dismiss="modal">Batal</button>
-                            <a class="btn btn-primary" href="/">Keluar</a>
+                            <button class="btn btn-primary" type="submit">Keluar</button>
                         </form>
                     </div>
                 </div>
