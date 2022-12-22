@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Unggah Galeri')
-
 @section('home')
 <x-guest-layout>
     <x-auth-card>

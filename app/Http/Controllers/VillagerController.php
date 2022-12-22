@@ -63,7 +63,7 @@ class VillagerController extends Controller
             ->when($status != '#', function($query) use ($status) {
                 $query->where('status', $status);
             })
-            ->paginate()
+            ->paginate(100)
         ]);
     }
 
@@ -110,6 +110,15 @@ class VillagerController extends Controller
             'ageGender' => $ageGender,
             'villagers1' => $villagers1,
             'villagers2' => $villagers2,
+        ]);
+    }
+
+    public function adminvillager(){
+        // dd('t');
+        $sumVillagers = Villager::where('status','hidup')->count();
+        
+        return view ('admin.index',[
+            'sumVillagers' => $sumVillagers,
         ]);
     }
 

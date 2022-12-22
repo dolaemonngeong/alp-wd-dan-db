@@ -19,7 +19,7 @@ class CategoryController extends Controller
         if($request->has('search')){
             return view('ourlayouts.kategori.data-kategori',[
                 'title' =>'Kategori',
-                'categories' => Category::where('name','like','%'.$request->search.'%')->orWhere('description', 'like', '%'.$request->search.'%')->paginate()
+                'categories' => Category::where('name','like','%'.$request->search.'%')->orWhere('description', 'like', '%'.$request->search.'%')->paginate(10)
             ]);
         }else{
             return view('ourlayouts.kategori.data-kategori',[

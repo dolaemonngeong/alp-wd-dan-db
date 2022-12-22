@@ -12,7 +12,10 @@ class UserController extends Controller
         if($request->has('search')){
             return view('ourlayouts.user.data-user',[
                 'title' =>'User',
-                'users' => User::where('email','like','%'.$request->search.'%')->orWhere('description', 'like', '%'.$request->search.'%')->paginate()
+                'users' => User::where('email','like','%'.$request->search.'%')
+                ->orWhere('name', 'like', '%'.$request->search.'%')
+                ->orWhere('status', 'like', '%'.$request->search.'%')
+                ->paginate(10)
             ]);
         }else{
             return view('ourlayouts.user.data-user',[

@@ -106,7 +106,7 @@ class StructureController extends Controller
             })->when($status_jabat != '#', function($query) use ($status_jabat) {
                 $query->where('status_jabat', $status_jabat);
             })
-            ->paginate()
+            ->paginate(10)
         ]);
     }
 

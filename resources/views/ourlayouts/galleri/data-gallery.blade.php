@@ -9,10 +9,6 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Gambar</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
                 <th scope="col">Hapus</th>
             </tr>
         </thead>
@@ -25,7 +21,7 @@
                     <form action="{{ route("galleries.destroy", $gallery->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="btn text-light" role="button" style="background-color: #F04A49"><i class="fa fa-trash"></i></button>
+                        <button class="btn text-light" role="button" style="background-color: #F04A49" onclick="return confirm('Yakin ingin menghapusnya?');"><i class="fa fa-trash"></i></button>
                     </form>
                 </td>
             </tr>

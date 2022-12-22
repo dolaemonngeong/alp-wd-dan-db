@@ -10,7 +10,7 @@
 </div>
 <div class="container-fluid mt-8">
     <form class="d-flex" role="search">
-      <input class="block me-2 w-20% rounded-md " type="search" placeholder="Cari data berdasarkan nama atau NIK" aria-label="Search">
+      <input class="block me-2 w-100 rounded-md " type="search" placeholder="Cari data berdasarkan nama atau email" aria-label="Search">
       <button class="btn btn-outline-dark" type="submit">Cari</button>
       {{-- <div class="dropdown">
         <button class="btn btn-outline-dark dropdown-toggle ml-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">

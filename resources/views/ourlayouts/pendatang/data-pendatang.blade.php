@@ -10,13 +10,13 @@
     <a class="btn text-light ms-auto" href="{{ route("comers.create")}}" role="button" style="background-color: #124A49">Tambah Data</a>
 </div>
 <div class="container-fluid my-4">
-    <form action="/data-pendatang" method="GET" value="{{ $search }}" class="form d-flex" role="search">
-        <input type="search" class="form-control outline-secondary rounded-md me-3" placeholder="Cari berdasarkan nama atau NIK..." name="search" value="{{ $search }}">
+    <form action="/data-pendatang" method="GET" value="{{ $search }}" class=" form d-flex" role="search">
+        <input type="search" class="form-control outline-secondary rounded-md me-3" placeholder="Cari berdasarkan nama pendatang atau pic..." name="search" value="{{ $search }}">
         {{-- <input class="block bg-white outline-gray shadow-sm me-2 w-20% rounded-md " type="search" placeholder="Cari data berdasarkan nama atau NIK" aria-label="Search"> --}}
         {{-- <input type="search" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black-500 focus:border-black-500 block w-full p-2.5 mr-2 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari data berdasarkan nama atau NIK"> --}}
         {{-- <label for="sort">Urutkan usia</label> --}}
         
-        <select name="sort" id="sort" class="form-select" style="width: auto" aria-label="Default select example">
+        <select name="sort" id="sort" class="btn btn-outline-secondary dropdown-toggle ml-4 form-select" style="width: auto" aria-label="Default select example">
             <option value="#" >Semua</option>
             <option value="asc" {{ $sort == 'asc' ? 'selected' : '' }}>Tertua</option>
             <option value="desc" {{ $sort == 'desc' ? 'selected' : '' }}>Termuda</option>

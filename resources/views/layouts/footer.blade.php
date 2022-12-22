@@ -53,7 +53,7 @@
             <a href="/add-pelaporan" style="text-decoration: none; color: #124A49" class="text-reset">Pelaporan</a>
           </p>
           <p>
-            <a href="/add-suratonline" style="text-decoration: none; color: #124A49" class="text-reset">Pelayanan Surat Online</a>
+            <a href="/jenis-surat" style="text-decoration: none; color: #124A49" class="text-reset">Pelayanan Surat Online</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -63,9 +63,9 @@
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4  text-dark">Media Sosial</h6>
           {{-- Icons --}}
-          <a href="#" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-facebook me-3"></i>Facebook</p></a>
-          <a href="#" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-instagram me-3"></i>Instagram</p></a>
-          <a href="#" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-twitter me-3"></i>Twitter</p></a>
+          <a href="https://id-id.facebook.com/people/Desa-Tulungrejo/100009131379550/" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-facebook me-3"></i>Facebook</p></a>
+          <a href="https://www.instagram.com/forumkampungbahasa/" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-instagram me-3"></i>Instagram</p></a>
+          <a href="https://www.youtube.com/@desatulungrejo1467" style="text-decoration: none; color: #124A49"><p><i class="fa-brands fa-square-youtube me-3"></i>Youtube</p></a>
         </div>
         <!-- Grid column -->
       </div>

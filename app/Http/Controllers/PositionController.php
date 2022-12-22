@@ -19,7 +19,7 @@ class PositionController extends Controller
         if($request->has('search')){
             return view('ourlayouts.jabatan.data-jabatan',[
                 'title' =>'Jabatan',
-                'positions' => Position::where('name','like','%'.$request->search.'%')->orWhere('description', 'like', '%'.$request->search.'%')->paginate()
+                'positions' => Position::where('name','like','%'.$request->search.'%')->orWhere('description', 'like', '%'.$request->search.'%')->paginate(10)
             ]);
         }else{
             return view('ourlayouts.jabatan.data-jabatan',[

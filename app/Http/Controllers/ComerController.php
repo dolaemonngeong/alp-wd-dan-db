@@ -97,13 +97,30 @@ class ComerController extends Controller
     }
 
     public function showGraphic(){
-
+        $sumComers = Comer::count();
+        
         $males = Comer::where('gender', 'laki-laki')->count();
         $females = Comer::where('gender', 'perempuan')->count();
 
         return view('ourlayouts.pendatang.graphic-pendatang', [
             'males' => $males,
-            'females' => $females
+            'females' => $females,
+            'sumComers' => $sumComers
+        ]);
+    }
+
+    public function admincomer(){
+        $sumComers = Comer::count();
+        $sumVillagers = Villager::where('status','hidup')->count();
+        
+        $males = Comer::where('gender', 'laki-laki')->count();
+        $females = Comer::where('gender', 'perempuan')->count();
+
+        return view('admin.index', [
+            'males' => $males,
+            'females' => $females,
+            'sumComers' => $sumComers,
+            'sumVillagers' => $sumVillagers
         ]);
     }
 

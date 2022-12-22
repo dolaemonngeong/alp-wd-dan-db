@@ -16,17 +16,40 @@ class FinanceController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('search')){
-            return view('ourlayouts.keuangan.data-keuangan',[
-                'title' =>'Keuangan',
-                'finances' => Finance::where('description','like','%'.$request->search.'%')->orWhere('volume', 'like', '%'.$request->search.'%')->orWhere('unit', 'like', '%'.$request->search.'%')->orWhere('date', 'like', '%'.$request->search.'%')->orWhere('price', 'like', '%'.$request->search.'%')->orWhere('total', 'like', '%'.$request->search.'%')->paginate()
-            ]);
-        }else{
-            return view('ourlayouts.keuangan.data-keuangan',[
-                'title' =>'Keuangan',
-                'finances' => Finance::paginate(10),
-            ]);
-        }
+        // if($request->has('search')){
+        //     return view('ourlayouts.keuangan.data-keuangan',[
+        //         'title' =>'Keuangan',
+        //         'finances' => Finance::where('description','like','%'.$request->search.'%')->orWhere('volume', 'like', '%'.$request->search.'%')->orWhere('unit', 'like', '%'.$request->search.'%')->orWhere('date', 'like', '%'.$request->search.'%')->orWhere('price', 'like', '%'.$request->search.'%')->orWhere('total', 'like', '%'.$request->search.'%')->paginate()
+        //     ]);
+        // }else{
+        //     return view('ourlayouts.keuangan.data-keuangan',[
+        //         'title' =>'Keuangan',
+        //         'finances' => Finance::paginate(10),
+        //     ]);
+        // }
+        $sort = $request->query('sort');
+        $search = $request->query('search');
+        $totkeuangan = Finance::sum('total') ;
+        $finances = Finance::select('*')
+        ->when($search !='', function($query) use ($search) {
+            $query->where('description', 'like', '%'.$search.'%')
+            ->orWhere('price', 'like', '%'.$search.'%')
+            ->orWhere('total', 'like', '%'.$search.'%');
+        })
+        ->when($sort != '#', function($query) use ($sort) {
+            if ($sort === 'asc') {
+                $query->orderBy('date', 'asc');
+            } else if ($sort === 'desc') {
+                $query->orderBy('date', 'desc');
+            }
+        })
+        ->paginate(10);
+        return view('ourlayouts.keuangan.data-keuangan', [
+            'finances' => $finances,
+            'search' => $search,
+            'sort' => $sort,
+            'totkeuangan' => $totkeuangan,
+        ]);
     }
 
     /**

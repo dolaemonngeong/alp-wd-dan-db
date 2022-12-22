@@ -31,11 +31,19 @@ class LetterController extends Controller
         //         // 'templates' => Template::whereRelation('template', 'name', 'like','%'.$request->search.'%')->get(),
         //     ]);
         // }else{
+           // $temp=Template::all();
+            // $letters = Letter::where(function ($query) use ($temp) {
+            //     $query->whereIn('template_id', $temp->id);
+            // })->paginate(10);\
+            // $letters= Letter::where('template_id','=',"3")->paginate(10);
             return view('ourlayouts.surat.data-surat',[
                 'title' =>'Surat',
                 'proses' =>'',
                 'search' =>'',
-                'letters' => Letter::paginate(10)
+               'letters' => Letter::paginate(10),
+                // 'letters' => $letters
+
+                // 'template' => Template::all()
             ]);
         //}
     }
@@ -60,7 +68,7 @@ class LetterController extends Controller
             ->when($proses != '#', function($query) use ($proses) {
                 $query->where('proses', $proses);
             })
-            ->paginate()
+            ->paginate(10)
         ]);
     }
 

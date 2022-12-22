@@ -56,7 +56,7 @@ class ReportController extends Controller
             ->when($proses != '#', function($query) use ($proses) {
                 $query->where('proses', $proses);
             })
-            ->paginate()
+            ->paginate(10)
         ]);
     }
 

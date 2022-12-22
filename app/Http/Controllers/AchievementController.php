@@ -22,7 +22,7 @@ class AchievementController extends Controller
                 'maintitle' =>'Data Prestasi',
                 'achievements' => Achievement::where(
                     'name','like','%'.$request->search.'%')
-                    ->paginate(),
+                    ->paginate(20),
                 'categories' => Category::all(),
                 // 'books' => Book::whereRelation('Achievement', 'name', 'like','%'.$request->search.'%')->get()
             ]);

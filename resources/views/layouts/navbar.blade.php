@@ -1,7 +1,7 @@
 <nav class="sticky-top bg-white navbar navbar-expand-lg navbar-light shadow-sm text-dark">
     <div class="container-fluid">
       <img src="https://kedirikab.go.id/uploads/filex/logo_pemkab_official_1660871333.png" alt="Bootstrap" width="30" height="24">
-      <a class="navbar-brand mx-2" href="/">
+      <a class="navbar-brand mx-2 fw-bold" href="/">
         Tulungrejo
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,7 @@
               <i class="fa-solid fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Sejarah</a></li>
+              <li><a class="dropdown-item" href="/sejarah">Sejarah</a></li>
               <li><a class="dropdown-item" href="/#visimisi">Visi dan Misi</a></li>
               <li><a class="dropdown-item" href="/map">Peta</a></li>
               <li><a class="dropdown-item" href="/prestasi-desa">Prestasi</a></li>
@@ -34,10 +34,12 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/add-pelaporan">Pelaporan</a></li>
-              <li><a class="dropdown-item" href="/add-suratonline">Pelayanan Surat Online</a></li>
+              <li><a class="dropdown-item" href="/jenis-surat">Pelayanan Surat Online</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
+          @auth
+          @if(auth()->user()->status == 'admin')
             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Statistik
               <i class="fa-solid fa-angle-down"></i>
@@ -47,10 +49,19 @@
               <li><a class="dropdown-item" href="/data-pendatang/grafik">Statistik Pendatang</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+          @endif
+          @endauth
+          @auth
+          @if(auth()->user()->status == 'admin')
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/admin">Admin</a>
+            </li>
+          @endif
+          @endauth
+          {{-- <li class="nav-item dropdown">
           @auth
             @if(auth()->user()->status == 'admin')
-            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link" href="/admin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Admin
               <i class="fa-solid fa-angle-down"></i>
             </a>
@@ -70,8 +81,8 @@
             </ul>
             @endif
           @endauth
-          </li>
-          <li class="nav-item dropdown">
+          </li> --}}
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Forms
               <i class="fa-solid fa-angle-down"></i>
@@ -89,7 +100,7 @@
               <li><a class="dropdown-item" href="/add-kategoriprestasi">Tambah Kategori Prestasi</a></li>
               <li><a class="dropdown-item" href="/add-prestasi">Tambah Prestasi</a></li>
             </ul>
-          </li>
+          </li> --}}
           <li class="nav-item">
             @auth
             <form action="/logout" method="POST">

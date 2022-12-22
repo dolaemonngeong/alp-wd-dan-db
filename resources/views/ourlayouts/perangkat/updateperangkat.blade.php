@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Update Perangkat')
 
 @section('home')
 <x-auth-card>

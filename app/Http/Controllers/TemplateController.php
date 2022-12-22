@@ -35,6 +35,12 @@ class TemplateController extends Controller
         }
     }
 
+    public function theview(){
+        return view('ourlayouts.template',[
+            'templates' => Template::all()
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

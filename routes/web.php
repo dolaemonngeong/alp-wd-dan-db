@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Structure;
+use App\Models\Achievement;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComerController;
@@ -12,6 +14,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\VillagerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\AchievementController;
 
@@ -30,11 +33,24 @@ use App\Http\Controllers\AchievementController;
 // Route::get('/auth/callback', [LoginController::class, 'handleProviderCallback']);
 
 Route::get('/', function () {
-    return view('ourlayouts.home');
+    return view('ourlayouts.home',[
+'achievements' => Achievement::paginate(3) ,
+'structures' => Structure::paginate(2) ,
+]);
 });
 
 Route::get('/map', function () {
     return view('ourlayouts.map');
+});
+
+Route::get('/data-penduduk/grafik', [VillagerController::class, 'showGraphic'])->middleware(['admin']);
+
+Route::get('/data-pendatang/grafik', [ComerController::class, 'showGraphic'])->middleware(['admin']);
+
+Route::get('/admin',[DashboardController::class, 'adminview']);
+    
+Route::get('/sejarah', function () {
+    return view('ourlayouts.sejarah');
 });
 
 Route::get('/dashboard', function () {
@@ -48,6 +64,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/jenis-surat',  [TemplateController::class, 'theview']);
 
 Route::get('/galeri',  [GalleryController::class, 'index']);
 
@@ -90,10 +108,6 @@ Route::post('/data-perangkat', [StructureController::class, 'filterstatus'])->mi
 Route::post('/data-pelaporan', [ReportController::class, 'filterstatus'])->middleware(['admin']);
 
 Route::post('/data-surat', [LetterController::class, 'filterstatus'])->middleware(['admin']);
-
-Route::get('/data-penduduk/grafik', [VillagerController::class, 'showGraphic'])->middleware(['admin']);
-
-Route::get('/data-pendatang/grafik', [ComerController::class, 'showGraphic'])->middleware(['admin']);
 
 Route::get('/reg-penduduk', [VillagerController::class,'create'])->middleware(['admin']);
 
